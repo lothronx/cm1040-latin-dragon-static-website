@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--basic information-->
+    <!-------------basic information------------->
     <link rel="icon" href="assets/favicon.png" />
     <title>China-LAC Trade Solutions - Latin Dragon</title>
     <meta
@@ -13,25 +13,147 @@
       content="Latin Dragon provides China-Latin America trade information and multilingual communications. Start your first import/export business from here."
     />
     <meta name="author" content="Yue Wu" />
-    <meta name="keywords" content="China-LAC trade, import and export, trade consulting" />
+    <meta
+      name="keywords"
+      content="China-LAC trade, import and export, trade consulting"
+    />
 
-    <!--open graph tags-->
-    <meta property="og:title" content="Your Best China-LAC Trade Consultant - Latin Dragon" />
+    <!-------------open graph tags------------->
+    <meta
+      property="og:title"
+      content="Your Best China-LAC Trade Consultant - Latin Dragon"
+    />
     <meta property="og:image" content="assets/favicon.png" />
     <meta
       property="og:description"
       content="Latin Dragon provides China-Latin America trade information and multilingual communications. Start your first import/export business from here."
     />
 
-    <!--css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!------------------css------------------>
+    <!--normalize for different browsers-->
     <link rel="stylesheet" type="text/css" href="styles/normalize.css" />
+    <!--css for this website-->
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
-    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <!--simple animations-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
-    <!--JavaScript-->
+    <!-------------JavaScript------------->
+    <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="js/common.js"></script>
+    <!--icons-->
+    <script
+      src="https://kit.fontawesome.com/1b7a04e5af.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--js for this website-->
+    <script src="scripts/common.js" defer></script>
   </head>
-  <body></body>
+  <body id="homepage">
+    <!--Header contains 3 sections: logo, navigation bar, and accessibility bar-->
+    <header>
+      <!--Section 1: logo-->
+      <section id="header-logo">
+        <i class="fa-solid fa-earth-americas fa-3x"></i>
+        <h6>LATIN<br />DRAGON</h6>
+      </section>
+
+      <!--Section 2: navigation bar-->
+      <nav id="header-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="whitepaper.html">Whitepaper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news.html">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!--Section 3: accessibility bar-->
+      <section id="accessibility-bar">
+        <a href="#"><i class="fa-solid fa-circle-half-stroke"></i></a>
+        <a href="#"><i class="fa-solid fa-underline"></i></a>
+        <div class="dropdown">
+          <a class="dropbtn" onclick="openLanguageOptions()">
+            <i class="fa-solid fa-language"></i>
+          </a>
+          <div id="languages" class="dropdown-content">
+            <a class="language" id="english" href="#">English</a>
+            <a class="language" id="spanish" href="#">Spanish</a>
+            <a class="language" id="chinese" href="#">Chinese</a>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <!--Main body contains -->
+    <main></main>
+
+    <!--Footer contains 4 sections: logo, navigation, social media links, and footnote-->
+    <footer>
+      <!--Section 1: logo-->
+      <section id="footer-logo">
+        <i class="fa-solid fa-earth-americas fa-3x"></i>
+        <h6>LATIN<br />DRAGON</h6>
+      </section>
+
+      <!--Section 2: footer navigation bar-->
+      <nav id="footer-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="whitepaper.html">Whitepaper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="news.html">News</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!--Section 3: social media links-->
+      <section id="social-media">
+        <ul class="nav">
+          <!--Facebook-->
+          <li class="nav-item">
+            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+          </li>
+          <!--Linkedin-->
+          <li class="nav-item">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </li>
+          <!--WeChat-->
+          <li class="nav-item">
+            <a href="#"><i class="fa-brands fa-weixin"></i></a>
+          </li>
+        </ul>
+      </section>
+
+      <!--Section 4: footnote-->
+      <section id="footer-note">
+        <span
+          >Latin Dragon provides China-Latin America trade information and
+          multilingual communications. Start your first import/export business
+          from here.</span
+        >
+      </section>
+    </footer>
+  </body>
 </html>

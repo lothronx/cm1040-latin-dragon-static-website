@@ -1,58 +1,80 @@
 /* Custom Fonts: Lato & Merriweather---------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Merriweather:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
 
 /* Common Layout ----------------------------------*/
-:root {
-  --side-margin: 10vw;
-}
-
 * {
-  border-radius: 5px;
   margin: 0;
+  padding: 0;
 }
 
 a:link {
   text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
-article {
-  margin: 5% 10%;
+ul {
+  list-style: none;
 }
 
 /* Color Scheme --------------------------------------*/
 :root {
-  --highlight: #c24336;
-  --blue: #4e82c0;
-  --blue-opaque: #4e82c0cc;
-  --white: #ffffff;
-  --white-opaque: #ffffffcc;
-  --gray: #434343;
-  --gray-opaque: #434343cc;
-  --background: #e5e5e54d;
-  --shadow-softest: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-soft: 0 0 8px rgba(0, 0, 0, 0.4);
+  --red: #f13c1f;
+  --red-opaque: #f13b1fb2;
+  --yellow: #d79922;
+  --yellow-opaque: #d79922b2;
+  --blue: #3a57a6;
+  --blue-opaque: #3a57a6b2;
+  --green: #1c552a;
+  --green-opaque: #1c552ab2;
+  --light: #efe1ba;
+  --dark: #4b5563;
+  --background: #f9f7f3;
+  --shadow-soft: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 0 8px rgba(0, 0, 0, 0.4);
   --shadow-hard: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  --shadow-red: 2px 2px 4px #c24336cc;
 }
 
 /* Typography ----------------------------------------*/
 body {
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+  font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--gray);
+  background-color: var(--background);
 }
 
-.hero-text {
-  font-family: Monoton, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: var(--white-opaque);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li {
+  font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 h1,
 h2 {
-  font-family: "Montserrat Alternates", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
   font-size: 2.074rem;
   font-weight: 500;
   text-shadow: var(--shadow-softest);
@@ -65,59 +87,145 @@ h3 {
   text-shadow: var(--shadow-softest);
 }
 
-.big-text {
-  font-size: 1.2rem;
-}
-
 p {
   margin: 0.25rem 0 0.5rem;
-}
-
-.small-text {
-  font-size: 0.8rem;
 }
 
 article > p::first-letter {
   font-size: 1.44rem;
 }
 
-/* Header and Footer Layout ---------------------------------------*/
-header,
-#footer-main {
+/* Header Layout --------------------------------------------*/
+/*
+Header contains 3 sections, with logo and navigation bar on the left and accessibility bar on the right.
+Header of each page should be in its own page theme color. (Homepage will be transparent.)
+*/
+header {
   width: 100%;
-  display: inline-flex;
+  height: 80px;
+  display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  border-radius: 0;
-  background-color: var(--white);
-}
-
-header,
-#bottom-ad {
+  justify-content: flex-start;
+  background-color: var(--theme-color);
+  color: var(--light);
   box-shadow: var(--shadow-soft);
 }
 
-footer {
-  margin: 4vw 0;
+/*Logo layout*/
+#header-logo {
+  padding-left: 5vw;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 2rem 0 0;
 }
 
-#copyright-information {
-  margin: 4vw;
+h6 {
+  font-size: 1.86rem;
+  font-weight: 300;
+  line-height: 0.7;
+  padding: 0 0 0 1.2rem;
+}
+
+/*Navigation bar layout*/
+.nav {
+  display: flex;
+  list-style-type: "";
+  justify-self: right;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 0 0.7rem;
+}
+
+.nav-item:hover {
+  transform: perspective(100px) translateZ(2px);
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/*Accessibility bar layout*/
+#accessibility-bar {
+  padding-right: 5vw;
+  font-size: 16px;
+  margin-left: auto;
+  display: flex;
+  justify-self: right;
+  align-items: center;
+}
+
+#accessibility-bar a {
+  padding: 0 0.7rem;
+}
+
+#accessibility-bar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#accessibility-bar a {
+  float: left;
+  font-size: 16px;
+  color: white;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-#bottom-ad {
-  padding: 0.5vw;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--blue);
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-#bottom-ad span {
-  padding: 0 2vw;
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-/* stick header to the top */
+#accessibility-bar a:hover,
+.dropdown:hover .dropbtn,
+.dropbtn:focus {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+/*Stick header to the top*/
 header {
   z-index: 999;
   position: fixed;
@@ -126,42 +234,94 @@ header {
 }
 
 main {
-  margin-top: 66px;
+  margin-top: 80px;
 }
 
-/* stick bottom ad to the bottom */
-#bottom-ad {
-  z-index: 999;
-  position: fixed;
-  bottom: 0%;
-  width: 100vw;
+/*
+When screen gets small, the nav bar turns into the mobile hamburger menu.
+The mobile header is narrower and not stick to top.
+*/
+@media screen and (max-width: 744px) {
 }
 
-/* Navbar layout ----------------------------------*/
-.navbar-nav {
+/* Footer Layout --------------------------------------------*/
+/*
+The 4 footer section should display in a 2*2 grid: 
+logo                       nav
+footnote    social media links
+Each page should use their own page theme color. (Homepage will use red.)
+*/
+footer {
+  display: grid;
+  grid-template-areas:
+    "logo nav nav nav"
+    "note note note social-media";
+  padding: 2rem 5vw;
+  grid-gap: 0.8rem;
+  color: var(--theme-color);
+  background-color: #22222208;
+}
+
+#footer-logo {
+  grid-area: logo;
+  align-self: end;
   display: flex;
-  list-style-type: "";
-  justify-self: right;
+  align-items: flex-end;
 }
 
-.nav-item {
-  padding: 0.4vw 1.5vw;
+#footer-note {
+  grid-area: note;
+  align-self: start;
+  font-size: 0.9rem;
+  max-width: 24rem;
+  line-height: normal;
+  color: var(--theme-color-opaque);
 }
 
-.nav-item:hover {
-  transform: perspective(100px) translateZ(5px);
+#footer-nav {
+  grid-area: nav;
+  align-self: center;
+  justify-self: end;
+  font-size: 1.1rem;
 }
 
-.nav-link {
-  color: var(--blue);
+#social-media {
+  grid-area: social-media;
+  align-self: center;
+  justify-self: end;
+  font-size: 20px;
 }
 
-.nav-link:hover {
-  color: var(--gray);
-}
+/*
+When screen gets small, display the 4 footer sections in columns.
+Make sure everything is horizontally centered.
+*/
+@media screen and (max-width: 696px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  #footer-logo,
+  #footer-nav,
+  #social-media,
+  #footer-note {
+    align-self: center;
+  }
+
+  #footer-nav .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #footer-note {
+    text-align: center;
+  }
+}
 
 /* Button CSS ----------------------------------*/
+
 .btn {
   align-self: center;
   color: var(--blue);
@@ -177,9 +337,36 @@ main {
   border: 1px solid var(--gray);
 }
 
-.btn-booking {
-  font-weight: 900;
-  color: var(--white);
-  background-color: var(--highlight);
-  border: none;
+/* Page 1: Homepage page specific css---------------*/
+#homepage {
+  --theme-color: var(--red);
+  --theme-color-opaque: var(--red-opaque);
+}
+
+header {
+  box-shadow: none;
+}
+
+/* Page 2: Whitepaper page specific css---------------*/
+#whitepaper {
+  --theme-color: var(--green);
+  --theme-color-opaque: var(--green-opaque);
+}
+
+/* Page 3: News page specific css---------------*/
+#news {
+  --theme-color: var(--blue);
+  --theme-color-opaque: var(--blue-opaque);
+}
+
+/* Page 4: FAQ page specific css---------------*/
+#faq {
+  --theme-color: var(--yellow);
+  --theme-color-opaque: var(--yellow-opaque);
+}
+
+/* Page 5: Contact page specific css---------------*/
+#contact {
+  --theme-color: var(--red);
+  --theme-color-opaque: var(--red-opaque);
 }
