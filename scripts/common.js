@@ -8,7 +8,7 @@ function openLanguageOptions() {
 
 //Hide the language options when clicked elsewhere
 window.onclick = function (e) {
-  if (!e.target.matches(".dropbtn")) {
+  if (!e.target.matches(".fa-language")) {
     let languages = document.getElementById("languages");
     if (languages.classList.contains("show")) {
       languages.classList.remove("show");

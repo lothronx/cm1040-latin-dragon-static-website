@@ -1,12 +1,14 @@
-/* Custom Fonts: Lato & Merriweather---------------------------------------*/
+/* Custom Fonts: League Spartan & Libre Baskerville-----------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
 
-/* Common Layout ----------------------------------*/
+/*Clean the system default layout ---------------------------------------------------------------------*/
+/*Remove margins and paddings*/
 * {
   margin: 0;
   padding: 0;
 }
 
+/*Remove link styles*/
 a:link {
   text-decoration: none;
   color: inherit;
@@ -28,11 +30,12 @@ a:active {
   color: inherit;
 }
 
+/*Remove list style*/
 ul {
   list-style: none;
 }
 
-/* Color Scheme --------------------------------------*/
+/* Color Scheme ----------------------------------------------------------------------*/
 :root {
   --red: #f13c1f;
   --red-opaque: #f13b1fb2;
@@ -50,7 +53,7 @@ ul {
   --shadow-hard: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Typography ----------------------------------------*/
+/* Typography ------------------------------------------------------------------------*/
 body {
   font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -66,8 +69,8 @@ h3,
 h4,
 h5,
 h6,
-span,
-li {
+header,
+footer {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
@@ -95,10 +98,10 @@ article > p::first-letter {
   font-size: 1.44rem;
 }
 
-/* Header Layout --------------------------------------------*/
+/* Header Layout ---------------------------------------------------------------------*/
 /*
-Header contains 3 sections, with logo and navigation bar on the left and accessibility bar on the right.
-Header of each page should be in its own page theme color. (Homepage will be transparent.)
+Header contains 3 sections: logo and navigation bar align left, accessibility bar align right.
+Header of each page should use its own page theme color. (Homepage will be transparent.)
 */
 header {
   width: 100%;
@@ -108,15 +111,14 @@ header {
   justify-content: flex-start;
   background-color: var(--theme-color);
   color: var(--light);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-medium);
 }
 
-/*Logo layout*/
+/*Logo layout-------------------------------*/
 #header-logo {
-  padding-left: 5vw;
   display: flex;
   align-items: flex-end;
-  padding: 0 2rem 0 0;
+  padding: 0 2rem 0 5vw;
 }
 
 h6 {
@@ -126,10 +128,9 @@ h6 {
   padding: 0 0 0 1.2rem;
 }
 
-/*Navigation bar layout*/
+/*Navigation bar layout------------------*/
 .nav {
   display: flex;
-  list-style-type: "";
   justify-self: right;
   align-items: center;
 }
@@ -147,11 +148,10 @@ h6 {
   font-weight: 300;
 }
 
-/*Accessibility bar layout*/
+/*Accessibility bar layout------------------*/
 #accessibility-bar {
   padding-right: 5vw;
-  font-size: 16px;
-  margin-left: auto;
+  margin-left: auto; /*right align*/
   display: flex;
   justify-self: right;
   align-items: center;
@@ -161,71 +161,39 @@ h6 {
   padding: 0 0.7rem;
 }
 
-#accessibility-bar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#accessibility-bar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
+.dropbtn {
   cursor: pointer;
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
 }
 
-#accessibility-bar a:hover,
-.dropdown:hover .dropbtn,
-.dropbtn:focus {
-  background-color: red;
+.fa-solid:hover {
+  transform: perspective(100px) translateZ(2px);
 }
 
+/*Language dropdown list. Hidden by default, click to display.*/
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  color: var(--light);
+  background-color: var(--theme-color);
+  box-shadow: var(--shadow-medium);
   z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
 }
 
 .show {
   display: block;
 }
 
-/*Stick header to the top*/
+.language {
+  display: block;
+}
+
+.language:hover {
+  background-color: var(--light);
+  color: var(--theme-color);
+}
+
+/*Stick header to the top------------------*/
 header {
   z-index: 999;
   position: fixed;
@@ -242,9 +210,12 @@ When screen gets small, the nav bar turns into the mobile hamburger menu.
 The mobile header is narrower and not stick to top.
 */
 @media screen and (max-width: 744px) {
+  header {
+    height: 72px;
+  }
 }
 
-/* Footer Layout --------------------------------------------*/
+/* Footer Layout ---------------------------------------------------------------------*/
 /*
 The 4 footer section should display in a 2*2 grid: 
 logo                       nav
@@ -337,7 +308,7 @@ Make sure everything is horizontally centered.
   border: 1px solid var(--gray);
 }
 
-/* Page 1: Homepage page specific css---------------*/
+/* Page 1: Homepage page specific css-------------------------------------------------*/
 #homepage {
   --theme-color: var(--red);
   --theme-color-opaque: var(--red-opaque);
@@ -347,25 +318,25 @@ header {
   box-shadow: none;
 }
 
-/* Page 2: Whitepaper page specific css---------------*/
+/* Page 2: Whitepaper page specific css-----------------------------------------------*/
 #whitepaper {
   --theme-color: var(--green);
   --theme-color-opaque: var(--green-opaque);
 }
 
-/* Page 3: News page specific css---------------*/
+/* Page 3: News page specific css-----------------------------------------------------*/
 #news {
   --theme-color: var(--blue);
   --theme-color-opaque: var(--blue-opaque);
 }
 
-/* Page 4: FAQ page specific css---------------*/
+/* Page 4: FAQ page specific css------------------------------------------------------*/
 #faq {
   --theme-color: var(--yellow);
   --theme-color-opaque: var(--yellow-opaque);
 }
 
-/* Page 5: Contact page specific css---------------*/
+/* Page 5: Contact page specific css--------------------------------------------------*/
 #contact {
   --theme-color: var(--red);
   --theme-color-opaque: var(--red-opaque);

@@ -53,7 +53,7 @@
   </head>
   <body id="homepage">
     <!--Header contains 3 sections: logo, navigation bar, and accessibility bar-->
-    <header>
+    <header class="animate__animated animate__fadeInDown">
       <!--Section 1: logo-->
       <section id="header-logo">
         <i class="fa-solid fa-earth-americas fa-3x"></i>
@@ -91,10 +91,18 @@
           </a>
           <div id="languages" class="dropdown-content">
             <a class="language" id="english" href="#">English</a>
-            <a class="language" id="spanish" href="#">Spanish</a>
-            <a class="language" id="chinese" href="#">Chinese</a>
+            <a class="language" id="spanish" href="#">Español</a>
+            <a class="language" id="chinese" href="#">中文</a>
           </div>
         </div>
+      </section>
+
+      <!--Hidden section: responsive hamburger menu-->
+      <section id="bar">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa-solid fa-bars fa-2x"></i>
+          <i class="fa-solid fa-xmark fa-2x"></i>
+        </a>
       </section>
     </header>
 
