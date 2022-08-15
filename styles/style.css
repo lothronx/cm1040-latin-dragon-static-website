@@ -1,4 +1,4 @@
-/* Custom Fonts: League Spartan & Libre Baskerville-----------------------------------*/
+/* Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
 
 /*Clean the system default layout ---------------------------------------------------------------------*/
@@ -35,16 +35,16 @@ ul {
   list-style: none;
 }
 
-/* Color Scheme ----------------------------------------------------------------------*/
+/* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
-  --red: #f13c1f;
-  --red-opaque: #f13b1fb2;
-  --yellow: #d79922;
-  --yellow-opaque: #d79922b2;
-  --blue: #3a57a6;
-  --blue-opaque: #3a57a6b2;
-  --green: #1c552a;
-  --green-opaque: #1c552ab2;
+  --contact-color: #f13c1f;
+  --contact-color-opaque: #f13b1fb2;
+  --faq-color: #d79922;
+  --faq-color-opaque: #d79922b2;
+  --news-color: #3a57a6;
+  --news-color-opaque: #3a57a6b2;
+  --whitepaper-color: #1c552a;
+  --whitepaper-color-opaque: #1c552ab2;
   --light: #efe1ba;
   --dark: #4b5563;
   --background: #f9f7f3;
@@ -53,7 +53,7 @@ ul {
   --shadow-hard: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Typography ------------------------------------------------------------------------*/
+/* Typography -----------------------------------------------------------------------------------------*/
 body {
   font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -96,7 +96,7 @@ article > p::first-letter {
   font-size: 1.44rem;
 }
 
-/* Header Layout ---------------------------------------------------------------------*/
+/* Header Layout --------------------------------------------------------------------------------------*/
 /*
 Header contains 3 sections: logo and navigation bar align left, accessibility bar align right.
 Header of each page should use its own page theme color. (Homepage will be transparent.)
@@ -215,7 +215,7 @@ The mobile header is narrower and not stick to top.
   }
 }
 
-/* Footer Layout ---------------------------------------------------------------------*/
+/* Footer Layout --------------------------------------------------------------------------------------*/
 /*
 The 4 footer section should display in a 2*2 grid: 
 logo                       nav
@@ -295,9 +295,9 @@ Make sure everything is horizontally centered.
 
 .btn {
   align-self: center;
-  color: var(--blue);
+  color: var(--news-color);
   background-color: transparent;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--news-color);
   padding: 0.5vw 1vw;
 }
 
@@ -309,10 +309,10 @@ Make sure everything is horizontally centered.
   border: 1px solid var(--gray);
 }
 
-/* Page 1: Homepage page specific css-------------------------------------------------*/
+/* Page 1: Homepage page specific css------------------------------------------------------------------*/
 #homepage {
-  --theme-color: var(--red);
-  --theme-color-opaque: var(--red-opaque);
+  --theme-color: var(--contact-color);
+  --theme-color-opaque: var(--contact-color-opaque);
 }
 
 /* Special settings for homepage: transparent header*/
@@ -321,12 +321,18 @@ Make sure everything is horizontally centered.
   background-color: transparent;
 }
 
-#homepage main {
-  margin-top: 0px;
+#homepage body {
+  overflow: hidden;
 }
 
-#homepage .main-section {
+#homepage #homepage-sections-container {
+  margin-top: 0px;
+  transition: all 1000ms ease;
+}
+
+#homepage .homepage-section {
   height: 100vh;
+  width: 100%;
 }
 
 /*Sidebar layout: fixed to the right side of the page. */
@@ -350,46 +356,57 @@ Make sure everything is horizontally centered.
   box-shadow: var(--shadow-soft);
 }
 
+/*interactivity*/
 .sidebar-item:hover {
   height: 30px;
 }
 
-.home {
-  background-color: var(--red);
-}
-.whitepaper {
-  background-color: var(--green);
-}
-.news {
-  background-color: var(--blue);
-}
-.faq {
-  background-color: var(--yellow);
-}
-.contact {
-  background-color: var(--red);
+.elongation {
+  height: 30px;
 }
 
-/* Page 2: Whitepaper page specific css-----------------------------------------------*/
+/*color palette*/
+#index-home,
+#index-home-btn {
+  background-color: var(--contact-color);
+}
+#index-whitepaper,
+#index-whitepaper-btn {
+  background-color: var(--whitepaper-color);
+}
+#index-news,
+#index-news-btn {
+  background-color: var(--news-color);
+}
+#index-faq,
+#index-faq-btn {
+  background-color: var(--faq-color);
+}
+#index-contact,
+#index-contact-btn {
+  background-color: var(--contact-color);
+}
+
+/* Page 2: Whitepaper page specific css----------------------------------------------------------------*/
 #whitepaper {
-  --theme-color: var(--green);
-  --theme-color-opaque: var(--green-opaque);
+  --theme-color: var(--whitepaper-color);
+  --theme-color-opaque: var(--whitepaper-color-opaque);
 }
 
-/* Page 3: News page specific css-----------------------------------------------------*/
+/* Page 3: News page specific css----------------------------------------------------------------------*/
 #news {
-  --theme-color: var(--blue);
-  --theme-color-opaque: var(--blue-opaque);
+  --theme-color: var(--news-color);
+  --theme-color-opaque: var(--news-color-opaque);
 }
 
-/* Page 4: FAQ page specific css------------------------------------------------------*/
+/* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
 #faq {
-  --theme-color: var(--yellow);
-  --theme-color-opaque: var(--yellow-opaque);
+  --theme-color: var(--faq-color);
+  --theme-color-opaque: var(--faq-color-opaque);
 }
 
-/* Page 5: Contact page specific css--------------------------------------------------*/
+/* Page 5: Contact page specific css-------------------------------------------------------------------*/
 #contact {
-  --theme-color: var(--red);
-  --theme-color-opaque: var(--red-opaque);
+  --theme-color: var(--contact-color);
+  --theme-color-opaque: var(--contact-color-opaque);
 }

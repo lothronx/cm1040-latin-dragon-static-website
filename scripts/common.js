@@ -37,3 +37,42 @@ document.getElementById("index-faq-btn").addEventListener("click", function () {
 document.getElementById("index-contact-btn").addEventListener("click", function () {
   window.location.href = "index.html#index-contact";
 });
+
+//========================================================
+//               Homepage page effect
+//========================================================
+// throttle function
+function throttle(fn, delay) {
+  let baseTime = 0;
+  return function () {
+    const currentTime = Date.now();
+    if (baseTime + delay < currentTime) {
+      fn.apply(this, arguments);
+      baseTime = currentTime;
+    }
+  };
+}
+
+let homepageSections = document.getElementsByClassName("homepage-section");
+let homepageSectionsContainer = document.getElementById("homepage-sections-container");
+let i = 0;
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/mousewheel_event#The_detail_property
+if (navigator.userAgent.toLowerCase().indexOf("firefox") === -1) {
+  document.addEventListener("mousewheel", throttle(scrollMove, 1000));
+} else {
+  document.addEventListener("DOMMouseScroll", throttle(scrollMove, 1000));
+}
+
+function scrollMove(e) {
+  if (e.deltaY > 0) {
+    if (i == homepageSections.length - 1) return;
+    i++;
+  } else {
+    if (i == 0) return;
+    i--;
+  }
+
+  homepageSectionsContainer.style.marginTop = -100 * i + "vh";
+  console.log(homepageSectionsContainer.style.scrollTop);
+}
