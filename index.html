@@ -83,13 +83,16 @@
 
       <!--Section 3: accessibility bar-->
       <section id="accessibility-bar">
+        <!--contrast control-->
         <a href="#"><i class="fa-solid fa-circle-half-stroke"></i></a>
+        <!--link underline-->
         <a href="#"><i class="fa-solid fa-underline"></i></a>
-        <div class="dropdown">
-          <a class="dropbtn" onclick="openLanguageOptions()">
+        <!--language options-->
+        <div>
+          <a id="language-btn">
             <i class="fa-solid fa-language"></i>
           </a>
-          <div id="languages" class="dropdown-content">
+          <div id="languages" class="languages">
             <a class="language" id="english" href="#">English</a>
             <a class="language" id="spanish" href="#">Español</a>
             <a class="language" id="chinese" href="#">中文</a>
@@ -99,7 +102,7 @@
 
       <!--Hidden section: responsive hamburger menu-->
       <section id="bar">
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon">
           <i class="fa-solid fa-bars fa-2x"></i>
           <i class="fa-solid fa-xmark fa-2x"></i>
         </a>
@@ -107,7 +110,19 @@
     </header>
 
     <!--Main body contains -->
-    <main></main>
+    <main>
+      <!--Main body contains -->
+      <main>
+        <!--sidebar: navigation inside the homepage-->
+        <aside id="sidebar">
+          <a href="index.html#intro" id="subpage1"></a>
+          <a href="index.html#whitepaper" id="subpage2"></a>
+          <a href="index.html#news" id="subpage3"></a>
+          <a href="index.html#faq" id="subpage4"></a>
+          <a href="index.html#contact" id="subpage5"></a>
+        </aside>
+      </main>
+    </main>
 
     <!--Footer contains 4 sections: logo, navigation, social media links, and footnote-->
     <footer>

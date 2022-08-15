@@ -162,7 +162,7 @@ h6 {
   padding: 0 0.7rem;
 }
 
-.dropbtn {
+#language-btn {
   cursor: pointer;
 }
 
@@ -172,7 +172,7 @@ h6 {
 }
 
 /*Language dropdown list. Hidden by default, click to display.*/
-.dropdown-content {
+.languages {
   display: none;
   position: absolute;
   border-radius: 5%;
@@ -214,7 +214,6 @@ The mobile header is narrower and not stick to top.
 @media screen and (max-width: 744px) {
   header {
     height: 72px;
-    
   }
 }
 
