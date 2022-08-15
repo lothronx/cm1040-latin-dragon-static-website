@@ -13,16 +13,10 @@
       content="Latin Dragon provides China-Latin America trade information and multilingual communications. Start your first import/export business from here."
     />
     <meta name="author" content="Yue Wu" />
-    <meta
-      name="keywords"
-      content="China-LAC trade, import and export, trade consulting"
-    />
+    <meta name="keywords" content="China-LAC trade, import and export, trade consulting" />
 
     <!-------------open graph tags------------->
-    <meta
-      property="og:title"
-      content="Your Best China-LAC Trade Consultant - Latin Dragon"
-    />
+    <meta property="og:title" content="Your Best China-LAC Trade Consultant - Latin Dragon" />
     <meta property="og:image" content="assets/favicon.png" />
     <meta
       property="og:description"
@@ -44,10 +38,7 @@
     <!--jQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!--icons-->
-    <script
-      src="https://kit.fontawesome.com/1b7a04e5af.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/1b7a04e5af.js" crossorigin="anonymous"></script>
     <!--js for this website-->
     <script src="scripts/common.js" defer></script>
   </head>
@@ -109,19 +100,31 @@
       </section>
     </header>
 
-    <!--Main body contains -->
+    <!--Main body contains 5 sections and a sidebar-->
     <main>
-      <!--Main body contains -->
-      <main>
-        <!--sidebar: navigation inside the homepage-->
-        <aside id="sidebar">
-          <a href="index.html#intro" id="subpage1"></a>
-          <a href="index.html#whitepaper" id="subpage2"></a>
-          <a href="index.html#news" id="subpage3"></a>
-          <a href="index.html#faq" id="subpage4"></a>
-          <a href="index.html#contact" id="subpage5"></a>
-        </aside>
-      </main>
+      <!--Section 1: home-->
+      <section class="main-section" id="index-home"></section>
+
+      <!--Section 2: whitepaper-->
+      <section class="main-section" id="index-whitepaper"></section>
+
+      <!--Section 3: news-->
+      <section class="main-section" id="index-news"></section>
+
+      <!--Section 4: faq-->
+      <section class="main-section" id="index-faq"></section>
+
+      <!--Section 5: contact-->
+      <section class="main-section" id="index-contact"></section>
+
+      <!--sidebar: navigation inside the homepage-->
+      <aside id="sidebar">
+        <div class="sidebar-item" id="index-home"></div>
+        <div class="sidebar-item" id="index-whitepaper"></div>
+        <div class="sidebar-item" id="index-news"></div>
+        <div class="sidebar-item" id="index-faq"></div>
+        <div class="sidebar-item" id="index-contact"></div>
+      </aside>
     </main>
 
     <!--Footer contains 4 sections: logo, navigation, social media links, and footnote-->
@@ -172,9 +175,8 @@
       <!--Section 4: footnote-->
       <section id="footer-note">
         <span
-          >Latin Dragon provides China-Latin America trade information and
-          multilingual communications. Start your first import/export business
-          from here.</span
+          >Latin Dragon provides China-Latin America trade information and multilingual
+          communications. Start your first import/export business from here.</span
         >
       </section>
     </footer>

@@ -13,9 +13,27 @@ function openLanguageOptions() {
 //Hide the language options when clicked elsewhere
 window.addEventListener("click", closeLanguageOptions);
 function closeLanguageOptions(e) {
-  if (
-    !e.target.matches(".fa-language") & languages.classList.contains("show")
-  ) {
+  if (!e.target.matches(".fa-language") & languages.classList.contains("show")) {
     languages.classList.remove("show");
   }
 }
+
+//========================================================
+//               Homepage sidebar items
+//   Click the sidebar item to jump to its location
+//========================================================
+document.getElementById("index-home").addEventListener("click", function () {
+  window.location.href = "index.html#index-home";
+});
+document.getElementById("index-whitepaper").addEventListener("click", function () {
+  window.location.href = "index.html#index-whitepaper";
+});
+document.getElementById("index-news").addEventListener("click", function () {
+  window.location.href = "index.html#index-news";
+});
+document.getElementById("index-faq").addEventListener("click", function () {
+  window.location.href = "index.html#index-faq";
+});
+document.getElementById("index-contact").addEventListener("click", function () {
+  window.location.href = "index.html#index-contact";
+});
