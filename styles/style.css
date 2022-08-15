@@ -341,7 +341,7 @@ Make sure everything is horizontally centered.
   margin-right: 10px;
 }
 
-/*Each item represents a sub page.*/
+/*Each sidebar item links to a main body section.*/
 .sidebar-item {
   width: 15px;
   height: 15px;
@@ -354,20 +354,20 @@ Make sure everything is horizontally centered.
   height: 30px;
 }
 
-#index-home {
-  background-color: var(--theme-color);
+.home {
+  background-color: var(--red);
 }
-#index-whitepaper {
+.whitepaper {
   background-color: var(--green);
 }
-#index-news {
+.news {
   background-color: var(--blue);
 }
-#index-faq {
+.faq {
   background-color: var(--yellow);
 }
-#index-contact {
-  background-color: var(--theme-color);
+.contact {
+  background-color: var(--red);
 }
 
 /* Page 2: Whitepaper page specific css-----------------------------------------------*/
