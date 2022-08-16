@@ -23,6 +23,21 @@ menuIcon.addEventListener("click", function () {
   accessibilityBar.classList.toggle("show");
 });
 
+//Hide the menu when clicked elsewhere
+window.addEventListener("click", function (e) {
+  if (
+    !e.target.matches(".header-nav") &&
+    !e.target.matches(".accessibility-bar") &&
+    !e.target.matches(".fa-solid") &&
+    headerNav.classList.contains("show")
+  ) {
+    console.log(1);
+    headerNav.classList.remove("show");
+    accessibilityBar.classList.remove("show");
+    menuIcon.className = "fa-solid fa-bars fa-3x";
+  }
+});
+
 //========================================================
 //           Language options dropdown list
 //========================================================
@@ -38,7 +53,7 @@ function openLanguageOptions() {
 //Hide the language options when clicked elsewhere
 window.addEventListener("click", closeLanguageOptions);
 function closeLanguageOptions(e) {
-  if (!e.target.matches(".fa-language") & languages.classList.contains("show")) {
+  if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
     languages.classList.remove("show");
   }
 }
@@ -116,3 +131,35 @@ function isSectionInViewport(e) {
       (window.innerHeight || document.documentElement.clientHeight)
   );
 }
+
+//========================================================
+//               Homepage article animation
+//     Animate when section title is in viewpoint.
+//========================================================
+const sectionTitles = homepage.getElementsByTagName("h1");
+
+window.addEventListener("scroll", function () {
+  //Don't animate the first title
+  for (let i = 1; i < sectionTitles.length; i++) {
+    if (isTitleInViewport(sectionTitles[i])) {
+      //Only need to animate once when the page first load, no need to remove these class.
+      sectionTitles[i].className += "animate__animated animate__fadeIn";
+    }
+  }
+});
+
+// This function to check whether the section title is in viewpoint.
+// The title is considered to be in viewpoint when its top border is in viewpoint.
+function isTitleInViewport(e) {
+  let rect = e.getBoundingClientRect();
+  return rect.top >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+}
+
+// //========================================================
+// //               Homepage button animation
+// //                 Animate when hover
+// //========================================================
+// const contactBtn = homepage.getElementsByClassName("contact-btn")[0];
+// contactBtn.addEventListener("mouseover", function () {
+//   contactBtn.classList.toggle("animate__pulse");
+// });
