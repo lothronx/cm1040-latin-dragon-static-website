@@ -35,15 +35,14 @@
     />
 
     <!-------------JavaScript------------->
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="scripts/common.js" defer></script>
     <!--icons-->
     <script src="https://kit.fontawesome.com/1b7a04e5af.js" crossorigin="anonymous"></script>
-    <!--js for this website-->
-    <script src="scripts/common.js" defer></script>
   </head>
+
+  <!--------------------------------------------------------Page 1: Homepage-------------------------------------------------------->
   <body id="homepage">
-    <!--Header contains 3 sections: logo, navigation bar, and accessibility bar-->
+    <!---------------------------Header contains 3 sections: logo, navigation bar, and accessibility bar--------------------------->
     <header class="animate__animated animate__fadeInDown">
       <!--Section 1: logo-->
       <section id="header-logo">
@@ -101,34 +100,34 @@
       </section>
     --></header>
 
-    <!--Main body contains 5 sections and a sidebar-->
-    <main id="homepage-sections-container">
+    <!--------------------------------------------Main body contains 5 sections--------------------------------------------->
+    <main>
       <!--Section 1: home-->
-      <section class="homepage-section home" id="index-home"></section>
+      <section class="section home" id="index-home"></section>
 
       <!--Section 2: whitepaper-->
-      <section class="homepage-section whitepaper" id="index-whitepaper"></section>
+      <section class="section whitepaper" id="index-whitepaper"></section>
 
       <!--Section 3: news-->
-      <section class="homepage-section news" id="index-news"></section>
+      <section class="section news" id="index-news"></section>
 
       <!--Section 4: faq-->
-      <section class="homepage-section faq" id="index-faq"></section>
+      <section class="section faq" id="index-faq"></section>
 
       <!--Section 5: contact-->
-      <section class="homepage-section contact" id="index-contact"></section>
-
-      <!--sidebar: navigation inside the homepage-->
-      <aside id="sidebar">
-        <div class="sidebar-item home" id="index-home-btn"></div>
-        <div class="sidebar-item whitepaper" id="index-whitepaper-btn"></div>
-        <div class="sidebar-item news" id="index-news-btn"></div>
-        <div class="sidebar-item faq" id="index-faq-btn"></div>
-        <div class="sidebar-item contact" id="index-contact-btn"></div>
-      </aside>
+      <section class="section contact" id="index-contact"></section>
     </main>
 
-    <!--Footer contains 4 sections: logo, navigation, social media links, and footnote-->
+    <!---------------------------------------Sidebar: navigation inside the homepage---------------------------------------->
+    <aside id="sidebar">
+      <div class="sidebar-item active home" id="index-home-btn"></div>
+      <div class="sidebar-item whitepaper" id="index-whitepaper-btn"></div>
+      <div class="sidebar-item news" id="index-news-btn"></div>
+      <div class="sidebar-item faq" id="index-faq-btn"></div>
+      <div class="sidebar-item contact" id="index-contact-btn"></div>
+    </aside>
+
+    <!--------------------Footer contains 4 sections: logo, navigation, social media links, and footnote-------------------->
     <footer>
       <!--Section 1: logo-->
       <section id="footer-logo">

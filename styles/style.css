@@ -6,6 +6,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /*Remove link styles*/
@@ -33,6 +34,10 @@ a:active {
 /*Remove list style*/
 ul {
   list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Color Scheme ---------------------------------------------------------------------------------------*/
@@ -169,13 +174,13 @@ h6 {
   backface-visibility: hidden;
 }
 
-/*Language dropdown list. Hidden by default, click to display.*/
+/*Language dropdown list. Hidden by default, click to show.*/
 .languages {
   display: none;
   position: absolute;
   border-radius: 5%;
   color: var(--light);
-  background-color: var(--theme-color);
+  background-color: inherit;
   box-shadow: var(--shadow-medium);
   z-index: 1;
 }
@@ -190,7 +195,7 @@ h6 {
 
 .language:hover {
   background-color: var(--light);
-  color: var(--theme-color);
+  color: var(--dark);
 }
 
 /*Stick header to the top------------------*/
@@ -291,24 +296,6 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* Button CSS ----------------------------------*/
-
-.btn {
-  align-self: center;
-  color: var(--news-color);
-  background-color: transparent;
-  border: 1px solid var(--news-color);
-  padding: 0.5vw 1vw;
-}
-
-.btn:hover {
-  transform: scale(1.06);
-  backface-visibility: hidden;
-  color: var(--gray);
-  background-color: transparent;
-  border: 1px solid var(--gray);
-}
-
 /* Page 1: Homepage page specific css------------------------------------------------------------------*/
 #homepage {
   --theme-color: var(--contact-color);
@@ -321,22 +308,18 @@ Make sure everything is horizontally centered.
   background-color: transparent;
 }
 
-#homepage body {
-  overflow: hidden;
-}
-
-#homepage #homepage-sections-container {
+#homepage main {
   margin-top: 0px;
-  transition: all 1000ms ease;
 }
 
-#homepage .homepage-section {
+#homepage .section {
   height: 100vh;
   width: 100%;
 }
 
-/*Sidebar layout: fixed to the right side of the page. */
-#sidebar {
+/*Sidebar layout---------------------------------------*/
+/*Fixed to the right side of the page. */
+#homepage #sidebar {
   position: fixed;
   right: 0;
   top: 50%;
@@ -348,42 +331,42 @@ Make sure everything is horizontally centered.
 }
 
 /*Each sidebar item links to a main body section.*/
-.sidebar-item {
+#homepage .sidebar-item {
   width: 15px;
   height: 15px;
   border-radius: 15px;
   margin: 15px 10px;
   box-shadow: var(--shadow-soft);
+  cursor: pointer;
 }
 
-/*interactivity*/
-.sidebar-item:hover {
+/*Interactivity*/
+#sidebar .active {
   height: 30px;
+  transition-duration: 800ms;
 }
 
-.elongation {
-  height: 30px;
+/*Hide sidebar on mobile version*/
+@media screen and (max-width: 744px) {
+  #sidebar {
+    display: none;
+  }
 }
 
 /*color palette*/
-#index-home,
-#index-home-btn {
+#homepage .home {
   background-color: var(--contact-color);
 }
-#index-whitepaper,
-#index-whitepaper-btn {
+#homepage .whitepaper {
   background-color: var(--whitepaper-color);
 }
-#index-news,
-#index-news-btn {
+#homepage .news {
   background-color: var(--news-color);
 }
-#index-faq,
-#index-faq-btn {
+#homepage .faq {
   background-color: var(--faq-color);
 }
-#index-contact,
-#index-contact-btn {
+#homepage .contact {
   background-color: var(--contact-color);
 }
 
