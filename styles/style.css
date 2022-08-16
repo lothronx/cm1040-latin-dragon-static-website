@@ -1,7 +1,7 @@
 /* Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
 
-/*Clean the system default layout ---------------------------------------------------------------------*/
+/*Modify the system default layout ---------------------------------------------------------------------*/
 /*Remove margins and paddings*/
 * {
   margin: 0;
@@ -36,6 +36,7 @@ ul {
   list-style: none;
 }
 
+/*Smooth scroll*/
 html {
   scroll-behavior: smooth;
 }
@@ -203,20 +204,17 @@ header {
   z-index: 999;
   position: fixed;
   top: 0;
-  width: 100%;
 }
 
 main {
   margin-top: 80px;
 }
 
-/*
-When screen gets small, the nav bar turns into the mobile hamburger menu.
-The mobile header is narrower and not stick to top.
-*/
+/*When screen gets small, the navigation bar and accessibility bar turn into the mobile hamburger menu*/
 @media screen and (max-width: 744px) {
   header {
-    height: 72px;
+    height: 72px; /*The mobile menu is narrower*/
+    transition: top 1000ms; /*show/hide transition*/
   }
 }
 
