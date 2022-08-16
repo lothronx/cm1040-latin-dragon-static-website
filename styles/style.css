@@ -117,6 +117,9 @@ header {
   color: var(--light);
   box-shadow: var(--shadow-medium);
 }
+#responsive-menu {
+  display: none;
+}
 
 /*Logo layout-------------------------------*/
 #header-logo {
@@ -144,7 +147,7 @@ h6 {
 }
 
 .nav-item:hover {
-  transform: scale(1.06);
+  transform: scale(1.1);
   backface-visibility: hidden;
 }
 
@@ -162,15 +165,15 @@ h6 {
   align-items: center;
 }
 
-#accessibility-bar a {
-  padding: 0 0.7rem;
-}
-
 #language-btn {
   cursor: pointer;
 }
 
-.fa-solid:hover {
+#accessibility-bar a {
+  padding: 0 0.7rem;
+}
+
+#accessibility-bar .fa-solid:hover {
   transform: scale(1.1);
   backface-visibility: hidden;
 }
@@ -179,6 +182,8 @@ h6 {
 .languages {
   display: none;
   position: absolute;
+  top: 70%;
+  right: 5vw;
   border-radius: 5%;
   color: var(--light);
   background-color: inherit;
@@ -215,6 +220,68 @@ main {
   header {
     height: 72px; /*The mobile menu is narrower*/
     transition: top 1000ms; /*show/hide transition*/
+  }
+
+  /* Show the hamburger icon*/
+  #responsive-menu {
+    display: block;
+    padding-right: 5vw;
+    margin-left: auto;
+  }
+
+  /* Hide the menu by default*/
+  #header-nav,
+  #accessibility-bar {
+    display: none;
+  }
+
+  /* Mobile menu layout---------------*/
+  .show {
+    display: block !important;
+  }
+
+  #header-nav {
+    width: 100%;
+    height: 240px;
+    position: fixed;
+    top: 72px;
+    background-color: var(--background);
+    color: var(--theme-color);
+  }
+
+  #header-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.5rem;
+  }
+
+  .nav-item {
+    padding: 0.5rem 2rem;
+  }
+
+  .nav-link {
+    font-weight: 400;
+  }
+
+  #accessibility-bar {
+    width: 100%;
+    height: 100px;
+    padding-right: 0;
+    position: fixed;
+    top: 312px;
+    align-items: center;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--theme-color);
+    border-top: var(--light) 1px solid;
+  }
+
+  #accessibility-bar a {
+    display: inline;
+  }
+
+  .fa-language {
+    display: none;
   }
 }
 
@@ -264,6 +331,11 @@ footer {
   align-self: center;
   justify-self: end;
   font-size: 20px;
+}
+
+#social-media .fa-solid:hover {
+  transform: scale(1.1);
+  backface-visibility: hidden;
 }
 
 /*
@@ -338,10 +410,11 @@ Make sure everything is horizontally centered.
   cursor: pointer;
 }
 
-/*Interactivity*/
+/*animation*/
 #sidebar .active {
   height: 30px;
-  transition-duration: 800ms;
+  transition-duration: 500ms;
+  transition-delay: 200ms;
 }
 
 /*Hide sidebar on mobile version*/

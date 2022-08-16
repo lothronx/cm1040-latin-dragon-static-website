@@ -1,38 +1,26 @@
 //========================================================
-//               Responsive menu icon
-//  toggle between the hamburger icon and the X icon
+//        Responsive hamburger menu icon
+//  Toggle between the hamburger icon and the X icon
 //========================================================
-let menuIcon = document.getElementById("menu-icon");
+const menuIcon = document.getElementById("menu-icon");
+menuIcon.addEventListener("click", function () {
+  if (menuIcon.className == "fa-solid fa-bars fa-3x") {
+    menuIcon.className = "fa-solid fa-xmark fa-3x";
+  } else {
+    menuIcon.className = "fa-solid fa-bars fa-3x";
+  }
+});
+
+//========================================================
+//             Responsive hamburger menu
+//       Toggle between show and hide the menu
+//========================================================
+const headerNav = document.getElementById("header-nav");
+const accessibilityBar = document.getElementById("accessibility-bar");
 
 menuIcon.addEventListener("click", function () {
-  if (menuIcon.className == "fa-solid fa-bars fa-2x") {
-    menuIcon.className = "fa-solid fa-xmark fa-2x";
-  } else {
-    menuIcon.className = "fa-solid fa-bars fa-2x";
-  }
-});
-
-//========================================================
-//          Show/hide menu on mobile devices
-//           Hide the menu when scroll down
-//        Show the menu when scroll up or tap
-// *Only works when the screen is small and is a touchscreen*
-//========================================================
-let menu = document.getElementsByTagName("header")[0];
-let startY = 0;
-let endY = 0;
-
-window.addEventListener("touchstart", function (e) {
-  startY = e.changedTouches[0].screenY;
-});
-
-window.addEventListener("touchend", function (e) {
-  endY = e.changedTouches[0].screenY;
-  if (endY < startY) {
-    menu.style.top = "-72px";
-  } else {
-    menu.style.top = "0";
-  }
+  headerNav.classList.toggle("show");
+  accessibilityBar.classList.toggle("show");
 });
 
 //========================================================
@@ -54,6 +42,29 @@ function closeLanguageOptions(e) {
     languages.classList.remove("show");
   }
 }
+
+//========================================================
+//            Show/hide menu on mobile devices
+//      Hide the menu when scroll up AND the mobile menu not open
+//  Show the menu when scroll down or tap or the mobile menu not open
+//   *Only works when the screen is small and is a touchscreen*
+//========================================================
+let menu = document.getElementsByTagName("header")[0];
+let startY = 0;
+let endY = 0;
+
+window.addEventListener("touchstart", function (e) {
+  startY = e.changedTouches[0].screenY;
+});
+
+window.addEventListener("touchend", function (e) {
+  endY = e.changedTouches[0].screenY;
+  if (endY < startY - 20 && !headerNav.classList.contains("show")) {
+    menu.style.top = "-72px";
+  } else {
+    menu.style.top = "0";
+  }
+});
 
 //========================================================
 //               Homepage sidebar items
