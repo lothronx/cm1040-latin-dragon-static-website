@@ -59,7 +59,7 @@ window.addEventListener("touchstart", function (e) {
 
 window.addEventListener("touchend", function (e) {
   endY = e.changedTouches[0].screenY;
-  if (endY < startY - 20 && !headerNav.classList.contains("show")) {
+  if (endY < startY - 10 && !headerNav.classList.contains("show")) {
     menu.style.top = "-72px";
   } else {
     menu.style.top = "0";
