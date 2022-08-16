@@ -40,7 +40,7 @@ document.getElementById("index-contact-btn").addEventListener("click", function 
 
 //========================================================
 //               Homepage sidebar interactivity
-//   Make the sidebar item "active" when the corresponding page section is in viewpoint
+// Make the sidebar item "active" when the corresponding page section is in viewpoint.
 //========================================================
 let homepage = document.getElementById("homepage");
 let sections = homepage.getElementsByClassName("section");
@@ -49,15 +49,17 @@ let sidebarItems = homepage.getElementsByClassName("sidebar-item");
 window.addEventListener("scroll", function () {
   for (let i = 0; i < sections.length; i++) {
     if (isSectionInViewport(sections[i])) {
+      //Remove the old active class
       let current = homepage.getElementsByClassName("active");
       current[0].className = current[0].className.replace(" active", "");
+      //Add the active class to the current element
       sidebarItems[i].className += " active";
     }
   }
 });
 
 // The function to check whether a section is in viewpoint.
-// the section is considered to be in viewpoint when its middle line is in viewpoint.
+// The section is considered to be in viewpoint when its middle line is in viewpoint.
 function isSectionInViewport(e) {
   let rect = e.getBoundingClientRect();
   return (
