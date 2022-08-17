@@ -669,7 +669,7 @@ Make sure everything is horizontally centered.
 /*Card layout-------------------------*/
 #faq .card {
   border-radius: 16px;
-  padding: 10% 6% 3%;
+  padding: 3rem 2vw;
   text-align: center;
   background-color: #c5cbe355;
 }
@@ -681,7 +681,7 @@ Make sure everything is horizontally centered.
 
 #faq .contact-btn {
   display: inline-block;
-  margin: 1rem;
+  margin-top: 1rem;
   padding: 0.8rem 1.2rem;
   border-radius: 10px;
   background-color: var(--theme-color);
@@ -702,7 +702,6 @@ Make sure everything is horizontally centered.
     margin: 0 10vw 4vw;
   }
 }
-
 
 /* Page 5: Contact page specific css-------------------------------------------------------------------*/
 #contact {

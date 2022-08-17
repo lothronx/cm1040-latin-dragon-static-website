@@ -143,12 +143,13 @@ function isItInViewport(e) {
 //     Animate when section title is in viewport.
 //========================================================
 if (homepage) {
-  const sectionTitles = homepage.getElementsByTagName("h1");
+  const sectionTitles = homepage.getElementsByClassName("index-title");
 
   window.addEventListener("scroll", function () {
     let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
-
     for (let i = 0; i < sectionTitles.length; i++) {
+      console.log(sectionTitles);
+
       if (
         //1. the current element is in viewport
         isItInViewport(sectionTitles[i]) &&
