@@ -103,26 +103,27 @@ document.getElementById("index-contact-btn").addEventListener("click", function 
 
 //========================================================
 //               Homepage sidebar animation
-// Make the sidebar item larger when the corresponding page section is in viewpoint.
+// Make the sidebar item larger when the corresponding page section is in viewport.
 //========================================================
 const homepage = document.getElementById("homepage");
 const sections = homepage.getElementsByClassName("section");
 const sidebarItems = homepage.getElementsByClassName("sidebar-item");
 
 window.addEventListener("scroll", function () {
+  let previous = homepage.getElementsByClassName("active")[0];
+
   for (let i = 0; i < sections.length; i++) {
     if (isSectionInViewport(sections[i])) {
       //Remove the active class from the previous element
-      let previous = homepage.getElementsByClassName("active");
-      previous[0].className = previous[0].className.replace(" active", "");
+      previous.classList.remove("active");
       //Add the active class to the current element
       sidebarItems[i].className += " active";
     }
   }
 });
 
-// This function to check whether a section is in viewpoint.
-// The section is considered to be in viewpoint when 60% of it is in viewpoint.
+// This function to check whether a section is in viewport.
+// The section is considered to be in viewport when 60% of it is in viewport.
 function isSectionInViewport(e) {
   let rect = e.getBoundingClientRect();
   return (
@@ -134,32 +135,25 @@ function isSectionInViewport(e) {
 
 //========================================================
 //               Homepage article animation
-//     Animate when section title is in viewpoint.
+//     Animate when section title is in viewport.
 //========================================================
-const sectionTitles = homepage.getElementsByTagName("h1");
+const sectionTitles = homepage.getElementsByTagName("article");
 
 window.addEventListener("scroll", function () {
-  //Don't animate the first title
-  for (let i = 1; i < sectionTitles.length; i++) {
-    if (isTitleInViewport(sectionTitles[i])) {
-      //Only need to animate once when the page first load, no need to remove these class.
-      sectionTitles[i].className += "animate__animated animate__fadeIn";
+  let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
+  console.log();
+  for (let i = 0; i < sectionTitles.length; i++) {
+    if (isTitleInViewport(sectionTitles[i]) && previous != sectionTitles[i]) {
+      // Remove the class name from the previous element
+      previous.classList.remove("animate__fadeIn");
+      //Add the class name to the current element
+      sectionTitles[i].className += " animate__fadeIn";
     }
   }
 });
 
-// This function to check whether the section title is in viewpoint.
-// The title is considered to be in viewpoint when its top border is in viewpoint.
+// This function to check whether the section title is in viewport.
 function isTitleInViewport(e) {
   let rect = e.getBoundingClientRect();
   return rect.top >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
 }
-
-// //========================================================
-// //               Homepage button animation
-// //                 Animate when hover
-// //========================================================
-// const contactBtn = homepage.getElementsByClassName("contact-btn")[0];
-// contactBtn.addEventListener("mouseover", function () {
-//   contactBtn.classList.toggle("animate__pulse");
-// });
