@@ -67,13 +67,13 @@ html {
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
   --contact-color: #f13c1f;
-  --contact-color-opaque: #f13b1fb2;
+  --contact-color-opaque: #f13b1fcc;
   --faq-color: #3a57a6;
-  --faq-color-opaque: #3a57a6b2;
+  --faq-color-opaque: #3a57a6cc;
   --news-color: #d79922;
-  --news-color-opaque: #d79922b2;
+  --news-color-opaque: #d79922cc;
   --whitepaper-color: #1c552a;
-  --whitepaper-color-opaque: #1c552ab2;
+  --whitepaper-color-opaque: #1c552acc;
   --light: #efe1ba;
   --dark: #4b5563;
   --background: #f9f7f3;
@@ -87,7 +87,6 @@ body {
   font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1rem;
-  line-height: 1.5;
   background-color: var(--background);
 }
 
@@ -103,7 +102,6 @@ h6,
 .read-more {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.15;
 }
 
 h1 {
@@ -129,11 +127,12 @@ h5 {
 }
 
 p {
-  margin: 0.25rem 0 0.25rem;
+  margin: 0.25rem 0;
+  line-height: 1.5;
 }
 
-article > p::first-letter {
-  font-size: 1.44rem;
+.contact-btn {
+  font-size: 1.125rem;
 }
 
 @media screen and (max-width: 806px) {
@@ -213,7 +212,7 @@ h6 {
 }
 
 #accessibility-bar a {
-  padding: 0 0.7rem;
+  padding: 0.4rem 0.7rem;
 }
 
 #accessibility-bar .fa-solid:hover {
@@ -229,7 +228,7 @@ h6 {
   right: 5vw;
   border-radius: 5%;
   color: var(--light);
-  background-color: var(--theme-color);
+  background-color: var(--theme-color-opaque);
   box-shadow: var(--shadow-medium);
   z-index: 1;
 }
@@ -298,7 +297,7 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
   #header-nav ul {
     flex-direction: column;
     align-items: center;
-    padding-top: 0.5rem;
+    padding-top: 1.5rem;
   }
 
   .nav-item {
@@ -461,7 +460,7 @@ Make sure everything is horizontally centered.
 }
 
 #homepage .languages {
-  background-color: inherit;
+  background-color: #22222244;
 }
 
 @media screen and (max-width: 806px) {
@@ -603,20 +602,14 @@ Make sure everything is horizontally centered.
 }
 
 /* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
-/* Color settings for homepage -----------------------*/
+/* Color settings for homepage -------*/
 #faq {
   --theme-color: var(--faq-color);
   --theme-color-opaque: var(--faq-color-opaque);
   color: var(--theme-color);
 }
 
-#faq .main h5,
-#faq .main a,
-#faq .main i {
-  color: var(--background);
-}
-
-/* General layout*/
+/* General layout--------------------*/
 #faq .main {
   width: 100vw;
   display: grid;
@@ -625,45 +618,55 @@ Make sure everything is horizontally centered.
 }
 
 #faq .main section:first-child {
-  padding: 4rem 1rem 4rem 6rem;
+  padding: 4vw 1vw 4vw 10vw;
 }
 
 #faq .main section:last-child {
-  margin: 0 6rem 0 1rem;
+  margin: 0 10vw 0 1vw;
 }
 
 #faq .page-title {
-  margin: 0 2rem 4vh;
+  margin: 0 2vw 4vh;
 }
 
-/*Questions layout*/
+/*Questions layout------------------*/
+#faq .question-container {
+  margin-bottom: 8px;
+}
+
 #faq .question {
-  position: relative;
-  padding: 1.25rem 2rem;
-  margin-bottom: 1px;
+  cursor: pointer;
+  padding: 1.25rem 0 1.25rem 5vw;
   border-radius: 0.5rem;
-  background-color: var(--theme-color);
-}
-
-#faq .question h5 {
-  cursor: pointer;
-  padding-right: 2rem;
-}
-
-#faq .question i {
-  cursor: pointer;
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
-#faq .question p {
-  display: none;
+  display: grid;
+  grid-template-columns: 1fr 10vw;
   background-color: var(--background);
+  border: var(--theme-color-opaque) 1px dashed;
 }
 
-/*Card layout*/
+#faq .question-icon {
+  justify-self: center;
+  align-self: center;
+}
+
+#faq .question-container .alt-style {
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: var(--theme-color);
+  color: var(--background);
+}
+
+#faq .answer {
+  display: none;
+  padding: 1.25rem 5vw 2.5rem;
+  margin: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  line-height: 2;
+  background-color: #ffffff44;
+  border: var(--theme-color-opaque) 1px dashed;
+  border-top: none;
+}
+
+/*Card layout-------------------------*/
 #faq .card {
   border-radius: 16px;
   padding: 10% 6% 3%;
@@ -671,13 +674,35 @@ Make sure everything is horizontally centered.
   background-color: #c5cbe355;
 }
 
+#faq .card p {
+  font-size: 0.875rem;
+  color: var(--theme-color-opaque);
+}
+
 #faq .contact-btn {
   display: inline-block;
   margin: 1rem;
-  padding: 7% 10%;
+  padding: 0.8rem 1.2rem;
   border-radius: 10px;
   background-color: var(--theme-color);
+  color: var(--background);
 }
+
+/*Media queries -----------------*/
+@media screen and (max-width: 961px) {
+  #faq .main {
+    display: block;
+  }
+
+  #faq .main section:first-child {
+    padding: 4vw 10vw;
+  }
+
+  #faq .main section:last-child {
+    margin: 0 10vw 4vw;
+  }
+}
+
 
 /* Page 5: Contact page specific css-------------------------------------------------------------------*/
 #contact {

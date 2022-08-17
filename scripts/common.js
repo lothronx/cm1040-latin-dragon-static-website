@@ -4,10 +4,10 @@
 //========================================================
 const menuIcon = document.getElementById("menu-icon");
 menuIcon.addEventListener("click", function () {
-  if (menuIcon.className == "fa-solid fa-bars fa-3x") {
-    menuIcon.className = "fa-solid fa-xmark fa-3x";
+  if (menuIcon.classList.contains("fa-bars")) {
+    menuIcon.classList.replace("fa-bars", "fa-xmark");
   } else {
-    menuIcon.className = "fa-solid fa-bars fa-3x";
+    menuIcon.classList.replace("fa-xmark", "fa-bars");
   }
 });
 
@@ -85,51 +85,56 @@ window.addEventListener("touchend", function (e) {
 //               Homepage sidebar items
 //   Click the sidebar item to jump to its section
 //========================================================
-document.getElementById("index-home-btn").addEventListener("click", function () {
-  window.location.href = "#index-home";
-});
-document.getElementById("index-whitepaper-btn").addEventListener("click", function () {
-  window.location.href = "#index-whitepaper";
-});
-document.getElementById("index-news-btn").addEventListener("click", function () {
-  window.location.href = "#index-news";
-});
-document.getElementById("index-faq-btn").addEventListener("click", function () {
-  window.location.href = "#index-faq";
-});
-document.getElementById("index-contact-btn").addEventListener("click", function () {
-  window.location.href = "#index-contact";
-});
+const homepage = document.getElementById("homepage");
+
+//If we are on homepage
+if (homepage) {
+  document.getElementById("index-home-btn").addEventListener("click", function () {
+    window.location.href = "#index-home";
+  });
+  document.getElementById("index-whitepaper-btn").addEventListener("click", function () {
+    window.location.href = "#index-whitepaper";
+  });
+  document.getElementById("index-news-btn").addEventListener("click", function () {
+    window.location.href = "#index-news";
+  });
+  document.getElementById("index-faq-btn").addEventListener("click", function () {
+    window.location.href = "#index-faq";
+  });
+  document.getElementById("index-contact-btn").addEventListener("click", function () {
+    window.location.href = "#index-contact";
+  });
+}
 
 //========================================================
 //               Homepage sidebar animation
 // Make the sidebar item larger when the corresponding page section is in viewport.
 //========================================================
-const homepage = document.getElementById("homepage");
-const sections = homepage.getElementsByClassName("section");
-const sidebarItems = homepage.getElementsByClassName("sidebar-item");
+if (homepage) {
+  const sections = homepage.getElementsByClassName("section");
+  const sidebarItems = homepage.getElementsByClassName("sidebar-item");
 
-window.addEventListener("scroll", function () {
-  let previous = homepage.getElementsByClassName("active")[0];
+  window.addEventListener("scroll", function () {
+    let previous = homepage.getElementsByClassName("active")[0];
 
-  for (let i = 0; i < sections.length; i++) {
-    if (isItInViewport(sections[i])) {
-      //Remove the active class from the previous element
-      previous.classList.remove("active");
-      //Add the active class to the current element
-      sidebarItems[i].className += " active";
+    for (let i = 0; i < sections.length; i++) {
+      if (isItInViewport(sections[i])) {
+        //Remove the active class from the previous element
+        previous.classList.remove("active");
+        //Add the active class to the current element
+        sidebarItems[i].className += " active";
+      }
     }
-  }
-});
+  });
+}
 
 // This function to check whether an element is in viewport.
-// An element is considered to be in viewport when 60% of it is in viewport.
+// An element is considered to be in viewport when half of it is in viewport.
 function isItInViewport(e) {
   let rect = e.getBoundingClientRect();
   return (
-    (rect.bottom - rect.top) * 0.6 + rect.top >= 0 &&
-    (rect.bottom - rect.top) * 0.6 + rect.top <=
-      (window.innerHeight || document.documentElement.clientHeight)
+    (rect.bottom + rect.top) / 2 >= 0 &&
+    (rect.bottom + rect.top) / 2 <= (window.innerHeight || document.documentElement.clientHeight)
   );
 }
 
@@ -137,22 +142,51 @@ function isItInViewport(e) {
 //               Homepage article animation
 //     Animate when section title is in viewport.
 //========================================================
-const sectionTitles = homepage.getElementsByTagName("h1");
+if (homepage) {
+  const sectionTitles = homepage.getElementsByTagName("h1");
 
-window.addEventListener("scroll", function () {
-  let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
+  window.addEventListener("scroll", function () {
+    let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
 
-  for (let i = 0; i < sectionTitles.length; i++) {
-    if (
-      //1. the current element is in viewport
-      isItInViewport(sectionTitles[i]) &&
-      //2. the previous element is no longer in viewport
-      !isItInViewport(previous)
-    ) {
-      //Remove the class from the previous element
-      previous.classList.remove("animate__fadeIn");
-      //Add the class to the current element
-      sectionTitles[i].className += " animate__fadeIn";
+    for (let i = 0; i < sectionTitles.length; i++) {
+      if (
+        //1. the current element is in viewport
+        isItInViewport(sectionTitles[i]) &&
+        //2. the previous element is no longer in viewport
+        !isItInViewport(previous)
+      ) {
+        //Remove the class from the previous element
+        previous.classList.remove("animate__fadeIn");
+        //Add the class to the current element
+        sectionTitles[i].className += " animate__fadeIn";
+      }
     }
+  });
+}
+
+//========================================================
+//             FAQ page show/hide answers
+//========================================================
+const faq = document.getElementById("faq");
+
+//If we are on the FAQ page
+if (faq) {
+  const questions = document.getElementsByClassName("question");
+  const questionIcons = document.getElementsByClassName("question-icon");
+  const answers = document.getElementsByClassName("answer");
+
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].addEventListener("click", function () {
+      //  Toggle between the + icon and the X icon
+      if (questionIcons[i].classList.contains("fa-angle-down")) {
+        questionIcons[i].classList.replace("fa-angle-down", "fa-angle-up");
+      } else {
+        questionIcons[i].classList.replace("fa-angle-up", "fa-angle-down");
+      }
+
+      //Show answer
+      answers[i].classList.toggle("show");
+      questions[i].classList.toggle("alt-style");
+    });
   }
-});
+}
