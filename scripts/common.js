@@ -113,7 +113,7 @@ window.addEventListener("scroll", function () {
   let previous = homepage.getElementsByClassName("active")[0];
 
   for (let i = 0; i < sections.length; i++) {
-    if (isSectionInViewport(sections[i])) {
+    if (isItInViewport(sections[i])) {
       //Remove the active class from the previous element
       previous.classList.remove("active");
       //Add the active class to the current element
@@ -122,9 +122,9 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// This function to check whether a section is in viewport.
-// The section is considered to be in viewport when 60% of it is in viewport.
-function isSectionInViewport(e) {
+// This function to check whether an element is in viewport.
+// An element is considered to be in viewport when 60% of it is in viewport.
+function isItInViewport(e) {
   let rect = e.getBoundingClientRect();
   return (
     (rect.bottom - rect.top) * 0.6 + rect.top >= 0 &&
@@ -137,23 +137,22 @@ function isSectionInViewport(e) {
 //               Homepage article animation
 //     Animate when section title is in viewport.
 //========================================================
-const sectionTitles = homepage.getElementsByTagName("article");
+const sectionTitles = homepage.getElementsByTagName("h1");
 
 window.addEventListener("scroll", function () {
   let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
-  console.log();
+
   for (let i = 0; i < sectionTitles.length; i++) {
-    if (isTitleInViewport(sectionTitles[i]) && previous != sectionTitles[i]) {
-      // Remove the class name from the previous element
+    if (
+      //1. the current element is in viewport
+      isItInViewport(sectionTitles[i]) &&
+      //2. the previous element is no longer in viewport
+      !isItInViewport(previous)
+    ) {
+      //Remove the class from the previous element
       previous.classList.remove("animate__fadeIn");
-      //Add the class name to the current element
+      //Add the class to the current element
       sectionTitles[i].className += " animate__fadeIn";
     }
   }
 });
-
-// This function to check whether the section title is in viewport.
-function isTitleInViewport(e) {
-  let rect = e.getBoundingClientRect();
-  return rect.top >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight);
-}
