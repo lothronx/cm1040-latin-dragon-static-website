@@ -485,7 +485,8 @@ main {
 
 #homepage .contact-btn:hover {
   animation-name: pop;
-  animation-duration: 500ms;
+  animation-duration: 400ms;
+  animation-timing-function: ease-out;
 }
 
 /*The rest sections layout*/
