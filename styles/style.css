@@ -97,20 +97,35 @@ h3,
 h4,
 h5,
 h6,
-header,
-footer,
+#header,
+#footer,
 .contact-btn,
 .read-more {
   font-family: "League Spartan", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.15;
 }
 
 h1 {
   font-size: 3.75rem;
-  line-height: normal;
   margin: 0;
   font-weight: 700;
   text-shadow: var(--shadow-soft);
+}
+
+h2 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: var(--shadow-soft);
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
 p {
@@ -123,6 +138,9 @@ article > p::first-letter {
 
 @media screen and (max-width: 806px) {
   h1 {
+    font-size: 3rem;
+  }
+  h2 {
     font-size: 2.25rem;
   }
 }
@@ -132,7 +150,7 @@ article > p::first-letter {
 Header contains 3 sections: logo and navigation bar align left, accessibility bar align right.
 Header of each page should use its own page theme color. (Homepage will be transparent.)
 */
-header {
+#header {
   width: 100%;
   height: 80px;
   display: flex;
@@ -211,7 +229,7 @@ h6 {
   right: 5vw;
   border-radius: 5%;
   color: var(--light);
-  background-color: inherit;
+  background-color: var(--theme-color);
   box-shadow: var(--shadow-medium);
   z-index: 1;
 }
@@ -230,13 +248,13 @@ h6 {
 }
 
 /*Stick header to the top------------------*/
-header {
+#header {
   z-index: 999;
   position: fixed;
   top: 0;
 }
 
-main {
+#main {
   margin-top: 80px;
 }
 
@@ -244,9 +262,13 @@ main {
 When screen gets small, the navigation bar and accessibility bar turn into the mobile hamburger menu
 */
 @media screen and (max-width: 806px) {
-  header {
+  #header {
     height: 72px; /*The mobile menu is narrower*/
     transition: top 1000ms; /*show/hide transition*/
+  }
+
+  #main {
+    margin-top: 72px;
   }
 
   /* Show the hamburger icon*/
@@ -336,7 +358,7 @@ logo                       nav
 footnote    social media links
 Each page should use their own page theme color. (Homepage will use red.)
 */
-footer {
+#footer {
   display: grid;
   grid-template-areas:
     "logo nav nav nav"
@@ -387,7 +409,7 @@ When screen gets small, display the 4 footer sections in columns.
 Make sure everything is horizontally centered.
 */
 @media screen and (max-width: 696px) {
-  footer {
+  #footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -415,6 +437,7 @@ Make sure everything is horizontally centered.
 #homepage {
   --theme-color: var(--contact-color);
   --theme-color-opaque: var(--contact-color-opaque);
+  color: var(--light);
 }
 
 #homepage .home {
@@ -433,9 +456,12 @@ Make sure everything is horizontally centered.
   background-color: var(--contact-color);
 }
 
-#homepage header {
-  box-shadow: none;
-  background-color: transparent;
+#homepage #header {
+  background-color: #22222222;
+}
+
+#homepage .languages {
+  background-color: inherit;
 }
 
 @media screen and (max-width: 806px) {
@@ -444,13 +470,9 @@ Make sure everything is horizontally centered.
     color: var(--dark);
     background-color: var(--light);
   }
-  #accessibility-bar .languages {
+  #homepage .languages {
     color: var(--dark);
   }
-}
-
-main {
-  color: var(--light);
 }
 
 /*Main sections layout--------------------------------*/
@@ -475,15 +497,15 @@ main {
 
 #homepage .contact-btn {
   margin-top: 2rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 1em;
+  padding: 1rem 2rem;
+  border-radius: 16px;
   font-size: 1.44rem;
   background-color: var(--light);
   color: var(--theme-color);
   box-shadow: var(--shadow-medium);
 }
 
-#homepage .contact-btn:hover {
+.contact-btn:hover {
   animation-name: pop;
   animation-duration: 400ms;
   animation-timing-function: ease-out;
@@ -581,9 +603,80 @@ main {
 }
 
 /* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
+/* Color settings for homepage -----------------------*/
 #faq {
   --theme-color: var(--faq-color);
   --theme-color-opaque: var(--faq-color-opaque);
+  color: var(--theme-color);
+}
+
+#faq .main h5,
+#faq .main a,
+#faq .main i {
+  color: var(--background);
+}
+
+/* General layout*/
+#faq .main {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  align-items: center;
+}
+
+#faq .main section:first-child {
+  padding: 4rem 1rem 4rem 6rem;
+}
+
+#faq .main section:last-child {
+  margin: 0 6rem 0 1rem;
+}
+
+#faq .page-title {
+  margin: 0 2rem 4vh;
+}
+
+/*Questions layout*/
+#faq .question {
+  position: relative;
+  padding: 1.25rem 2rem;
+  margin-bottom: 1px;
+  border-radius: 0.5rem;
+  background-color: var(--theme-color);
+}
+
+#faq .question h5 {
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+#faq .question i {
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#faq .question p {
+  display: none;
+  background-color: var(--background);
+}
+
+/*Card layout*/
+#faq .card {
+  border-radius: 16px;
+  padding: 10% 6% 3%;
+  text-align: center;
+  background-color: #c5cbe355;
+}
+
+#faq .contact-btn {
+  display: inline-block;
+  margin: 1rem;
+  padding: 7% 10%;
+  border-radius: 10px;
+  background-color: var(--theme-color);
 }
 
 /* Page 5: Contact page specific css-------------------------------------------------------------------*/
