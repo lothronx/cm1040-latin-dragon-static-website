@@ -1,3 +1,14 @@
+/**********************************************************/
+/*                      Table on Content
+1. Responsive hamburger menu
+2. Language options dropdown list
+3. Show/hide menu on mobile devices
+4. Homepage sidebar items
+5. Homepage sidebar animation
+6. Homepage article animation
+7. FAQ page show/hide answers
+/**********************************************************/
+
 //========================================================
 //             Responsive hamburger menu
 //  Toggle between the hamburger icon and the X icon
@@ -25,12 +36,12 @@ window.addEventListener("click", function (e) {
     !e.target.matches(".accessibility-bar") &&
     !e.target.matches(".fa-solid") &&
     headerNav.classList.contains("show")
-  ) { 
+  ) {
     headerNav.classList.remove("show");
     accessibilityBar.classList.remove("show");
     menuIcon.className = "fa-solid fa-bars fa-3x";
   }
-}); 
+});
 
 //========================================================
 //           Language options dropdown list
@@ -50,7 +61,6 @@ languagesBtn.addEventListener("click", function () {
 //     languages.classList.remove("show");
 //   }
 // });
-
 
 //========================================================
 //            Show/hide menu on mobile devices

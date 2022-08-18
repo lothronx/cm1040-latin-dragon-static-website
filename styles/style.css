@@ -1,5 +1,44 @@
-/* Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
+/**********************************************************/
+/*                      Table of contents
+1. Import Custom Fonts
+2. Define Animations
+3. System settings
+4. Color Scheme
+5. Typography
+6. Header Layout
+7. Footer Layout
+8. Page 1: Home page specific css
+9. Page 2: Whitepaper page specific css
+10. Page 3: News page specific css
+11. Page 4: FAQ page specific css
+12. Page 5: Contact page specific css
+/*********************************************************/
+
+/* Import Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
+
+/* Define Animations -------------------------------------------------------------------------------*/
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: rotateX(30deg);
+  }
+  80% {
+    transform: rotateX(-30deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+:root {
+  --animate-delay: 0;
+}
 
 /* System settings ---------------------------------------------------------------------*/
 /*Remove margins and paddings*/
@@ -46,29 +85,6 @@ html {
   display: block !important;
 }
 
-/* Simple Animations -------------------------------------------------------------------------------*/
-@keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.2);
-  }
-  60% {
-    transform: rotateX(30deg);
-  }
-  80% {
-    transform: rotateX(-30deg);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-:root {
-  --animate-delay: 0;
-}
-
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
   --contact-color: #f13c1f;
@@ -82,9 +98,9 @@ html {
   --light: #efe1ba;
   --dark: #4b5563;
   --background: #f9f7f3;
-  --shadow-soft: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  --shadow-medium: 2px 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-hard: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
+  --shadow-medium: 2px 2px 8px rgba(89, 82, 82, 0.4);
+  --shadow-hard: 2px 2px 8px rgba(89, 82, 82, 0.6);
 }
 
 /* Typography -----------------------------------------------------------------------------------------*/
@@ -122,6 +138,10 @@ h2 {
   text-shadow: var(--shadow-soft);
 }
 
+h3 {
+  font-size: 1.875rem;
+}
+
 h4 {
   font-size: 1.5rem;
 }
@@ -143,17 +163,34 @@ p {
 @media screen and (max-width: 806px) {
   h1 {
     font-size: 3rem;
+    line-height: 0.8;
   }
   h2 {
     font-size: 2.25rem;
+    line-height: 1;
+  }
+  p {
+    line-height: 1.25;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    font-size: 0.9rem;
   }
 }
 
 /* Header Layout --------------------------------------------------------------------------------------*/
 /*
-Header contains 3 sections: logo and navigation bar align left, accessibility bar align right.
-Header of each page should use its own page theme color. (Homepage will be transparent.)
+1. general layout
+2. logo layout
+3. navigation bar layout
+4. accessibility bar layout
+5. Stick header to the top
+6. Media queries
 */
+
+/*General layout*/
 #header {
   width: 100%;
   height: 80px;
@@ -163,7 +200,20 @@ Header of each page should use its own page theme color. (Homepage will be trans
   background-color: var(--theme-color);
   color: var(--light);
   box-shadow: var(--shadow-medium);
+  /* The following background pattern code adapted from MagicPattern https://www.magicpattern.design/tools/css-backgrounds */
+  opacity: 1;
+  background-image: repeating-radial-gradient(
+    circle at 8% 50%,
+    var(--background),
+    var(--background),
+    1vw,
+    transparent 2vw,
+    transparent 1vw
+  );
+  background-blend-mode: multiply;
+  /* Adaption ends*/
 }
+
 #responsive-menu {
   display: none;
 }
@@ -431,7 +481,7 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* Page 1: Homepage page specific css------------------------------------------------------------------*/
+/* Page 1: Home page specific css------------------------------------------------------------------*/
 /* Color settings for homepage -----------------------*/
 #homepage {
   --theme-color: var(--contact-color);
@@ -440,7 +490,7 @@ Make sure everything is horizontally centered.
 }
 
 #homepage .home {
-  background-image: conic-gradient(
+  background: conic-gradient(
     from 290deg at 58% 80%,
     var(--contact-color) 90deg,
     var(--faq-color) 90deg 180deg,
@@ -463,7 +513,7 @@ Make sure everything is horizontally centered.
 }
 
 #homepage #header {
-  background-color: #22222222;
+  background: #22222222;
 }
 
 #homepage .languages {
@@ -610,7 +660,7 @@ Make sure everything is horizontally centered.
 }
 
 /* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
-/* Color settings for homepage -------*/
+/* Color settings for FAQ page -------*/
 #faq {
   --theme-color: var(--faq-color);
   --theme-color-opaque: var(--faq-color-opaque);
@@ -668,7 +718,7 @@ Make sure everything is horizontally centered.
   padding: 1.25rem 5vw 2.5rem;
   margin: 0;
   border-radius: 0 0 0.5rem 0.5rem;
-  line-height: 2;
+  line-height: 1.75;
   background-color: #ffffff44;
   border: var(--theme-color-opaque) 1px dashed;
   border-top: none;
@@ -703,7 +753,7 @@ Make sure everything is horizontally centered.
   }
 
   #faq .main section:first-child {
-    padding: 4vw 10vw;
+    padding: 5vw 10vw;
   }
 
   #faq .main section:last-child {
@@ -712,7 +762,106 @@ Make sure everything is horizontally centered.
 }
 
 /* Page 5: Contact page specific css-------------------------------------------------------------------*/
+/* Color settings for Contact page -------*/
 #contact {
   --theme-color: var(--contact-color);
   --theme-color-opaque: var(--contact-color-opaque);
+}
+
+/* About us layout -------------------*/
+#contact .about-us {
+  padding: 5vw 10vw;
+  color: var(--theme-color);
+}
+
+#contact .about-us .page-title {
+  margin: 0 2vw 4vh;
+}
+
+#contact .abouts-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 50% 50%;
+}
+
+#contact .about-container {
+  padding: 2vw 3vw;
+  border-radius: 16px;
+}
+
+#contact .about-container:first-child,
+#contact .about-container:last-child {
+  background-color: var(--theme-color);
+  color: var(--light);
+}
+
+/* About us media queries --------------*/
+@media screen and (max-width: 806px) {
+  #contact .abouts-container {
+    display: block;
+  }
+
+  #contact .about-container:nth-child(odd) {
+    background-color: var(--theme-color);
+    color: var(--light);
+  }
+
+  #contact .about-container:nth-child(even) {
+    background-color: transparent;
+    color: var(--theme-color);
+  }
+
+  #contact .about-container {
+    padding: 4vw 6vw;
+  }
+}
+
+/* Contact us layout-------------*/
+#contact .contact-us {
+  margin: 15vw 0;
+  padding: 0 10vw;
+  background-color: var(--theme-color);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+#contact .contact-us .page-title {
+  margin-bottom: 2vw;
+}
+
+#contact .contact-info {
+  color: var(--light);
+  padding: 4vw;
+}
+
+#contact .contact-info i {
+  padding-right: 1rem;
+}
+
+#contact form {
+  padding: 4vw 6vw;
+  margin-top: -10vw;
+  margin-bottom: -10vw;
+  border-radius: 16px;
+  background-color: var(--background);
+  box-shadow: var(--shadow-hard);
+}
+
+@media screen and (max-width: 806px) {
+  #contact .contact-us {
+    grid-template-columns: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 10vw;
+  }
+
+  #contact .contact-info {
+    background-color: var(--contact-color);
+    padding: 10vw 10vw 28vw;
+  }
+
+  #contact form {
+    justify-self: center;
+    margin: -20vw 10vw 0;
+    max-width: 400px;
+  }
 }
