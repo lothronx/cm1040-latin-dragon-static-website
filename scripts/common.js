@@ -43,11 +43,7 @@ languagesBtn.addEventListener("click", function () {
   languages.classList.toggle("show");
 });
 
-// // Show the language list with keyboard too.
-// languagesBtn.addEventListener("keydown", function (e) {
-//   if (e.code === "Tab") languages.classList.toggle("show");
-// });
-      
+// FIXME: conflict with keyboard accessibility
 // //Hide the language options when clicked elsewhere
 // window.addEventListener("click", function (e) {
 //   if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
@@ -55,10 +51,6 @@ languagesBtn.addEventListener("click", function () {
 //   }
 // });
 
-// // Hide the language list with keyboard too.
-// document.getElementById("chinese").addEventListener("keydown", function (e) {
-//   if (e.code === "Tab") languages.classList.toggle("show");
-// });
 
 //========================================================
 //            Show/hide menu on mobile devices

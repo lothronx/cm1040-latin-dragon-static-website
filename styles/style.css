@@ -290,7 +290,7 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
     width: 100%;
     height: 240px;
     position: fixed;
-    top: 72px;  
+    top: 72px;
     background-color: var(--background);
     color: var(--theme-color);
   }
@@ -440,8 +440,15 @@ Make sure everything is horizontally centered.
 }
 
 #homepage .home {
-  background-color: var(--contact-color);
+  background-image: conic-gradient(
+    from 290deg at 58% 80%,
+    var(--contact-color) 90deg,
+    var(--faq-color) 90deg 180deg,
+    var(--whitepaper-color) 180deg 270deg,
+    var(--news-color) 270deg
+  );
 }
+
 #homepage .whitepaper {
   background-color: var(--whitepaper-color);
 }
