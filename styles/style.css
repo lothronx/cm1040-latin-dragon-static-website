@@ -23,7 +23,7 @@
     transform: scale(1);
   }
   40% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   60% {
     transform: rotateX(30deg);
@@ -33,6 +33,15 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
   }
 }
 
@@ -88,16 +97,25 @@ html {
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
   --contact-color: #f13c1f;
-  --contact-color-opaque: #f13b1fcc;
+  --contact-color-light: #f3634b;
+  --contact-color-dark: #c03018;
+
   --faq-color: #3a57a6;
-  --faq-color-opaque: #3a57a6cc;
+  --faq-color-light: #6178b7;
+  --faq-color-dark: #2e4584;
+
   --news-color: #d79922;
-  --news-color-opaque: #d79922cc;
+  --news-color-light: #dfad4e;
+  --news-color-dark: #ac7a1b;
+
   --whitepaper-color: #1c552a;
-  --whitepaper-color-opaque: #1c552acc;
+  --whitepaper-color-light: #497754;
+  --whitepaper-color-dark: #164421;
+
   --light: #efe1ba;
   --dark: #4b5563;
   --background: #f9f7f3;
+
   --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
   --shadow-medium: 2px 2px 8px rgba(89, 82, 82, 0.4);
   --shadow-hard: 2px 2px 8px rgba(89, 82, 82, 0.6);
@@ -152,6 +170,12 @@ h5 {
   font-size: 1.125rem;
 }
 
+.contact-btn:hover {
+  animation-name: pop;
+  animation-duration: 400ms;
+  animation-timing-function: ease-out;
+}
+
 p {
   margin: 0.25rem 0;
   line-height: 1.5;
@@ -199,17 +223,15 @@ p {
   background-color: var(--theme-color);
   color: var(--light);
   box-shadow: var(--shadow-medium);
-  /* The following background pattern code adapted from MagicPattern https://www.magicpattern.design/tools/css-backgrounds */
-  opacity: 1;
-  background-image: repeating-radial-gradient(
-    circle at 8% 50%,
-    var(--background),
-    var(--background),
-    1vw,
-    transparent 2vw,
-    transparent 1vw
+  /* The following background pattern code adapted from https://www.sliderrevolution.com/coding/css-background-patterns/ */
+  background: linear-gradient(
+    -45deg,
+    var(--theme-color-dark),
+    var(--theme-color),
+    var(--theme-color-dark)
   );
-  background-blend-mode: multiply;
+  background-size: 200% 200%;
+  animation: gradient 10s ease-in-out infinite alternate;
   /* Adaption ends*/
 }
 
@@ -282,7 +304,7 @@ h6 {
   right: 5vw;
   border-radius: 5%;
   color: var(--light);
-  background-color: var(--theme-color-opaque);
+  background-color: var(--theme-color-light);
   box-shadow: var(--shadow-medium);
   z-index: 1;
 }
@@ -430,7 +452,7 @@ Each page should use their own page theme color. (Homepage will use red.)
   font-size: 0.9rem;
   max-width: 24rem;
   line-height: normal;
-  color: var(--theme-color-opaque);
+  color: var(--theme-color-light);
 }
 
 #footer-nav {
@@ -484,7 +506,8 @@ Make sure everything is horizontally centered.
 /* Color settings for homepage -----------------------*/
 #homepage {
   --theme-color: var(--contact-color);
-  --theme-color-opaque: var(--contact-color-opaque);
+  --theme-color-light: var(--contact-color-light);
+  --theme-color-dark: var(--contact-color-dark);
   color: var(--light);
 }
 
@@ -559,12 +582,6 @@ Make sure everything is horizontally centered.
   background-color: var(--light);
   color: var(--theme-color);
   box-shadow: var(--shadow-medium);
-}
-
-.contact-btn:hover {
-  animation-name: pop;
-  animation-duration: 400ms;
-  animation-timing-function: ease-out;
 }
 
 /*The rest sections layout*/
@@ -649,20 +666,23 @@ Make sure everything is horizontally centered.
 /* Page 2: Whitepaper page specific css----------------------------------------------------------------*/
 #whitepaper {
   --theme-color: var(--whitepaper-color);
-  --theme-color-opaque: var(--whitepaper-color-opaque);
+  --theme-color-light: var(--whitepaper-color-light);
+  --theme-color-dark: var(--whitepaper-color-dark);
 }
 
 /* Page 3: News page specific css----------------------------------------------------------------------*/
 #news {
   --theme-color: var(--news-color);
-  --theme-color-opaque: var(--news-color-opaque);
+  --theme-color-light: var(--news-color-light);
+  --theme-color-dark: var(--news-color-dark);
 }
 
 /* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
 /* Color settings for FAQ page -------*/
 #faq {
   --theme-color: var(--faq-color);
-  --theme-color-opaque: var(--faq-color-opaque);
+  --theme-color-light: var(--faq-color-light);
+  --theme-color-dark: var(--faq-color-dark);
   color: var(--theme-color);
 }
 
@@ -674,11 +694,11 @@ Make sure everything is horizontally centered.
   align-items: center;
 }
 
-#faq .main section:first-child {
+#faq .main .questions {
   padding: 4vw 1vw 4vw 10vw;
 }
 
-#faq .main section:last-child {
+#faq .main .card {
   margin: 0 10vw 0 1vw;
 }
 
@@ -698,7 +718,7 @@ Make sure everything is horizontally centered.
   display: grid;
   grid-template-columns: 1fr 10vw;
   background-color: var(--background);
-  border: var(--theme-color-opaque) 1px dashed;
+  border: var(--theme-color-light) 1px dashed;
 }
 
 #faq .question-icon {
@@ -719,7 +739,7 @@ Make sure everything is horizontally centered.
   border-radius: 0 0 0.5rem 0.5rem;
   line-height: 1.75;
   background-color: #ffffff44;
-  border: var(--theme-color-opaque) 1px dashed;
+  border: var(--theme-color-light) 1px dashed;
   border-top: none;
 }
 
@@ -732,7 +752,7 @@ Make sure everything is horizontally centered.
 }
 
 #faq .card p {
-  color: var(--theme-color-opaque);
+  color: var(--theme-color-light);
 }
 
 #faq .contact-btn {
@@ -763,7 +783,8 @@ Make sure everything is horizontally centered.
 /* Color settings for Contact page -------*/
 #contact {
   --theme-color: var(--contact-color);
-  --theme-color-opaque: var(--contact-color-opaque);
+  --theme-color-light: var(--contact-color-light);
+  --theme-color-dark: var(--contact-color-dark);
 }
 
 /* About us layout -------------------*/
@@ -832,16 +853,50 @@ Make sure everything is horizontally centered.
 }
 
 #contact .contact-info i {
-  padding-right: 1rem;
+  padding-right: 0.7rem;
 }
 
 #contact form {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
   padding: 4vw 6vw;
   margin-top: -10vw;
   margin-bottom: -10vw;
   border-radius: 16px;
   background-color: var(--background);
   box-shadow: var(--shadow-hard);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100%;
+  resize: none;
+}
+
+#contact .contact-btn {
+  justify-self: center;
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--theme-color);
+  color: var(--background);
+  box-shadow: var(--shadow-soft);
 }
 
 @media screen and (max-width: 806px) {
@@ -858,8 +913,6 @@ Make sure everything is horizontally centered.
   }
 
   #contact form {
-    justify-self: center;
     margin: -20vw 10vw 0;
-    max-width: 400px;
   }
 }

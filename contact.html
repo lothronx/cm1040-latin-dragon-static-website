@@ -100,7 +100,9 @@
 
     <!-------------------------------------Main body contains 2 sections: About us and Contact us -------------------------------------->
     <main id="main" class="main">
-      <section class="about-us">
+      <!-- Section 1: about us. It contains a title and 4 body parts-->
+      <section class="about-us" tabindex="0">
+        <!-- Part 1: title-->
         <header class="page-title">
           <h2>About Us</h2>
           <p>
@@ -108,24 +110,25 @@
             small businesses wishing to expand their borders.
           </p>
         </header>
+        <!-- Part 2: 4 body parts-->
         <main class="abouts-container">
-          <article class="about-container" tabindex="0">
+          <article class="about-container">
             <h3>Background</h3>
             <p>
-              After years of witnessing the fast-growing China economy, we see a huge
-              demand for raw materials and food that sometimes couldn’t be fulfilled by the local
-              suppliers. Latin America has exactly the capability to provide a stable supply.
+              After years of witnessing the fast-growing China economy, we see a huge demand for raw
+              materials and food that sometimes couldn’t be fulfilled by the local suppliers. Latin
+              America has exactly the capability to provide a stable supply.
             </p>
           </article>
-          <article class="about-container" tabindex="0">
+          <article class="about-container">
             <h3>Our goal</h3>
             <p>
-              Our goal is to make import/export easier and and to create a secure and transparent
+              Our goal is to make import & export easier and and to create a secure and transparent
               platform dedicated to help all those small businesses to develop, improve and become
               exporters of their high quality products.
             </p>
           </article>
-          <article class="about-container" tabindex="0">
+          <article class="about-container">
             <h3>Our service</h3>
             <p>
               We not only provide critical China-Latin America trade information and multilingual
@@ -133,7 +136,7 @@
               and products.
             </p>
           </article>
-          <article class="about-container" tabindex="0">
+          <article class="about-container">
             <h3>Our vision</h3>
             <p>
               To be the bridge between China and Latin America and a trustworthy, stable, and strong
@@ -143,7 +146,9 @@
         </main>
       </section>
 
+      <!-- Section 2: contact us. It contains 2 parts: contact information and a contact form. -->
       <section class="contact-us">
+        <!-- Part 1: contact information -->
         <div class="contact-info">
           <header class="page-title">
             <h2>Contact Us</h2>
@@ -151,26 +156,29 @@
           </header>
           <main>
             <p><i class="fa-brands fa-weixin"></i>jrml2675</p>
-            <p><i class="fa-solid fa-envelope"></i>yuewuxd@gmail.com</p>
+            <p><i class="fa-solid fa-envelope"></i>consultslad@outlook.com</p>
             <p><i class="fa-solid fa-location-dot"></i>Songjiang, Shanghai, China</p>
           </main>
         </div>
-        <form>
-          <label for="name">Your name</label>
-          <input name="name" id="name" type="text" required placeholder="Name" />
-          <label for="email">Email address</label>
-          <input name="email" id="email" type="text" placeholder="Email Address" />
-          <label for="phone-number">Phone number</label>
-          <input name="phone-number" id="phone-number" type="text" placeholder="Phone Number" />
-          <label for="message">Message</label>
-          <textarea
-            required
-            placeholder="Leave a message"
-            name="message"
-            id="message"
-            rows="10"
-          ></textarea>
-          <button>Send Message</button>
+        <!-- Part 2: contact form. This is a real form. When you submit it, I'll receive an email from Formspree!-->
+        <form tabindex="0" action="https://formspree.io/f/xnqrqrra" method="post">
+          <div class="form-group">
+            <label for="name">Your name *</label>
+            <input id="name" name="name" type="text" required placeholder="Name" autofocus />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Email Address" />
+          </div>
+          <div class="form-group">
+            <label for="phone-number">Phone number</label>
+            <input id="phone-number" name="phone-number" type="text" placeholder="Phone Number" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea required placeholder="Leave a message" id="message" name="message"></textarea>
+          </div>
+          <button class="contact-btn" type="submit">Send Message</button>
         </form>
       </section>
     </main>
