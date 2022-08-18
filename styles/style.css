@@ -230,8 +230,8 @@ p {
     var(--theme-color),
     var(--theme-color-dark)
   );
-  background-size: 200% 200%;
-  animation: gradient 10s ease-in-out infinite alternate;
+  background-size: 200% 800%;
+  animation: gradient 4s ease-in-out infinite alternate;
   /* Adaption ends*/
 }
 
