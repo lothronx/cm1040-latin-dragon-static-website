@@ -1,7 +1,7 @@
 /* Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
 
-/*Modify the system default layout ---------------------------------------------------------------------*/
+/* System settings ---------------------------------------------------------------------*/
 /*Remove margins and paddings*/
 * {
   margin: 0;
@@ -39,6 +39,11 @@ ul {
 /*Smooth scroll*/
 html {
   scroll-behavior: smooth;
+}
+
+/*Show/hide*/
+.show {
+  display: block !important;
 }
 
 /* Simple Animations -------------------------------------------------------------------------------*/
@@ -233,10 +238,6 @@ h6 {
   z-index: 1;
 }
 
-.show {
-  display: block !important;
-}
-
 .language {
   display: block;
 }
@@ -289,7 +290,7 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
     width: 100%;
     height: 240px;
     position: fixed;
-    top: 72px;
+    top: 72px;  
     background-color: var(--background);
     color: var(--theme-color);
   }
@@ -318,7 +319,6 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
 
     background-color: var(--background);
     color: var(--theme-color);
-    border-top: var(--light) 1px solid;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
   }
 
@@ -407,7 +407,7 @@ Each page should use their own page theme color. (Homepage will use red.)
 When screen gets small, display the 4 footer sections in columns.
 Make sure everything is horizontally centered.
 */
-@media screen and (max-width: 696px) {
+@media screen and (max-width: 806px) {
   #footer {
     display: flex;
     flex-direction: column;
@@ -471,6 +471,7 @@ Make sure everything is horizontally centered.
   }
   #homepage .languages {
     color: var(--dark);
+    background-color: transparent;
   }
 }
 

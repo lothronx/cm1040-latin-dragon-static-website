@@ -1,24 +1,19 @@
 //========================================================
-//        Responsive hamburger menu icon
+//             Responsive hamburger menu
 //  Toggle between the hamburger icon and the X icon
+//         Toggle between show/hide the menu
 //========================================================
 const menuIcon = document.getElementById("menu-icon");
+const headerNav = document.getElementById("header-nav");
+const accessibilityBar = document.getElementById("accessibility-bar");
+
+// Show the dropdown menu when click the hamburger icon
 menuIcon.addEventListener("click", function () {
   if (menuIcon.classList.contains("fa-bars")) {
     menuIcon.classList.replace("fa-bars", "fa-xmark");
   } else {
     menuIcon.classList.replace("fa-xmark", "fa-bars");
   }
-});
-
-//========================================================
-//             Responsive hamburger menu
-//       Toggle between show and hide the menu
-//========================================================
-const headerNav = document.getElementById("header-nav");
-const accessibilityBar = document.getElementById("accessibility-bar");
-
-menuIcon.addEventListener("click", function () {
   headerNav.classList.toggle("show");
   accessibilityBar.classList.toggle("show");
 });
@@ -31,12 +26,11 @@ window.addEventListener("click", function (e) {
     !e.target.matches(".fa-solid") &&
     headerNav.classList.contains("show")
   ) {
-    console.log(1);
     headerNav.classList.remove("show");
     accessibilityBar.classList.remove("show");
     menuIcon.className = "fa-solid fa-bars fa-3x";
   }
-});
+}); 
 
 //========================================================
 //           Language options dropdown list
@@ -45,18 +39,26 @@ const languagesBtn = document.getElementById("language-btn");
 const languages = document.getElementById("languages");
 
 // When the language icon is clicked, toggle between hiding and showing the language options
-languagesBtn.addEventListener("click", openLanguageOptions);
-function openLanguageOptions() {
+languagesBtn.addEventListener("click", function () {
   languages.classList.toggle("show");
-}
+});
+
+// Show the language list with keyboard too.
+languagesBtn.addEventListener("keydown", function (e) {
+  if (e.code === "Tab") languages.classList.toggle("show");
+});
 
 //Hide the language options when clicked elsewhere
-window.addEventListener("click", closeLanguageOptions);
-function closeLanguageOptions(e) {
+window.addEventListener("click", function (e) {
   if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
     languages.classList.remove("show");
   }
-}
+});
+
+// Hide the language list with keyboard too.
+document.getElementById("chinese").addEventListener("keydown", function (e) {
+  if (e.code === "Tab") languages.classList.toggle("show");
+});
 
 //========================================================
 //            Show/hide menu on mobile devices
@@ -148,8 +150,6 @@ if (homepage) {
   window.addEventListener("scroll", function () {
     let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
     for (let i = 0; i < sectionTitles.length; i++) {
-      console.log(sectionTitles);
-
       if (
         //1. the current element is in viewport
         isItInViewport(sectionTitles[i]) &&
