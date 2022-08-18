@@ -25,7 +25,7 @@ window.addEventListener("click", function (e) {
     !e.target.matches(".accessibility-bar") &&
     !e.target.matches(".fa-solid") &&
     headerNav.classList.contains("show")
-  ) {
+  ) { 
     headerNav.classList.remove("show");
     accessibilityBar.classList.remove("show");
     menuIcon.className = "fa-solid fa-bars fa-3x";
@@ -43,22 +43,22 @@ languagesBtn.addEventListener("click", function () {
   languages.classList.toggle("show");
 });
 
-// Show the language list with keyboard too.
-languagesBtn.addEventListener("keydown", function (e) {
-  if (e.code === "Tab") languages.classList.toggle("show");
-});
+// // Show the language list with keyboard too.
+// languagesBtn.addEventListener("keydown", function (e) {
+//   if (e.code === "Tab") languages.classList.toggle("show");
+// });
+      
+// //Hide the language options when clicked elsewhere
+// window.addEventListener("click", function (e) {
+//   if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
+//     languages.classList.remove("show");
+//   }
+// });
 
-//Hide the language options when clicked elsewhere
-window.addEventListener("click", function (e) {
-  if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
-    languages.classList.remove("show");
-  }
-});
-
-// Hide the language list with keyboard too.
-document.getElementById("chinese").addEventListener("keydown", function (e) {
-  if (e.code === "Tab") languages.classList.toggle("show");
-});
+// // Hide the language list with keyboard too.
+// document.getElementById("chinese").addEventListener("keydown", function (e) {
+//   if (e.code === "Tab") languages.classList.toggle("show");
+// });
 
 //========================================================
 //            Show/hide menu on mobile devices

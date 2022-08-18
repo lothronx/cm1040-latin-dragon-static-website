@@ -614,7 +614,7 @@ Make sure everything is horizontally centered.
 #faq .main {
   width: 100vw;
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 65% 35%;
   align-items: center;
 }
 
