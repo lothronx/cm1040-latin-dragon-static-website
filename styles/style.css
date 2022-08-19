@@ -8,7 +8,7 @@
 6. Header Layout
 7. Footer Layout
 8. Feature layout
-9. Contact button layout
+9. Button layout
 10. Page 1: Home page specific css
 11. Page 2: Whitepaper page specific css
 12. Page 3: News page specific css
@@ -272,9 +272,15 @@ h6 {
   backface-visibility: hidden;
 }
 
+#header-nav .active .nav-link {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
 .nav-link {
   font-size: 1.2rem;
   font-weight: 300;
+  padding: 0.2rem 0;
 }
 
 /*Accessibility bar layout------------------*/
@@ -282,6 +288,7 @@ h6 {
   padding-right: 5vw;
   margin-left: auto; /*right align*/
   display: flex;
+  flex-wrap: nowrap;
   justify-self: right;
   align-items: center;
 }
@@ -383,6 +390,11 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
     font-weight: 400;
   }
 
+  #header-nav .active {
+    border: none;
+    border-radius: 10px;
+    background-color: #22222211;
+  }
   /* Mobile accessibility menu layout*/
   #accessibility-bar {
     position: fixed;
@@ -550,7 +562,8 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* Contact button layout -----------------------------------------------------------------------------*/
+/* Button layout -----------------------------------------------------------------------------*/
+/* Contact button ------------------------*/
 .contact-btn {
   display: inline-block;
   justify-self: center;
@@ -568,6 +581,7 @@ Make sure everything is horizontally centered.
   animation-timing-function: ease-out;
 }
 
+/* Scroll to top button ---------------*/
 #scroll-to-top {
   position: fixed;
   bottom: 10px;
@@ -584,11 +598,12 @@ Make sure everything is horizontally centered.
   transform: scale(1.08);
 }
 
-@media screen and (max-width: 806px) {
+@media screen and (max-width: 680px) {
   #scroll-to-top {
     display: none;
   }
 }
+
 /* Page 1: Home page specific css------------------------------------------------------------------*/
 /* Color settings for homepage -----------------------*/
 #homepage {
@@ -608,16 +623,20 @@ Make sure everything is horizontally centered.
   );
 }
 
-#homepage .whitepaper {
+#index-whitepaper-btn,
+#index-whitepaper {
   background-color: var(--whitepaper-color);
 }
-#homepage .news {
+#index-news-btn,
+#index-news {
   background-color: var(--news-color);
 }
-#homepage .faq {
+#index-faq-btn,
+#index-faq {
   background-color: var(--faq-color);
 }
-#homepage .contact {
+#index-contact-btn,
+#index-contact {
   background-color: var(--contact-color);
 }
 

@@ -2,6 +2,7 @@
 /*                      Table on Content
 1. Show/hide menu on mobile devices
 2. Responsive hamburger menu
+3. Selected menu item highlight
 3. Low contrast mode
 4. Link highlight mode
 2. Language options dropdown list
@@ -65,6 +66,20 @@ window.addEventListener("click", (e) => {
 });
 
 //========================================================
+//                Selected menu item highlight
+//                 Highlight the current tab.
+//========================================================
+const navItems = headerNav.getElementsByClassName("nav-item");
+for (let i = 0; i < navItems.length; i++) {
+  // Find the menu item which has the same class name as the page title.
+  if (navItems[i].classList.contains(document.getElementsByTagName("body")[0].id)) {
+    navItems[i].classList += " active";
+  } else {
+    navItems[i].classList.remove("active");
+  }
+}
+
+//========================================================
 //                     Low contrast mode
 //Click the low-contrast icon to toggle between high contrast and low contrast
 //========================================================
@@ -74,9 +89,14 @@ contrastBtn.addEventListener("click", () => {
   // Toggle the low-contrast mode.
   document.getElementsByTagName("html")[0].classList.toggle("low-contrast");
   // On low-contrast mode, make the text color lighter and thus more readable.
-  document.getElementsByTagName("html")[0].classList.contains("low-contrast")
-    ? document.documentElement.style.setProperty("--light", "#f1e7cb")
-    : document.documentElement.style.setProperty("--light", "#efe1ba");
+  // Also change the icon from half a circle to a full circle.
+  if (document.getElementsByTagName("html")[0].classList.contains("low-contrast")) {
+    document.documentElement.style.setProperty("--light", "#f1e7cb");
+    contrastBtn.firstChild.classList.replace("fa-circle-half-stroke", "fa-circle");
+  } else {
+    document.documentElement.style.setProperty("--light", "#efe1ba");
+    contrastBtn.firstChild.classList.replace("fa-circle", "fa-circle-half-stroke");
+  }
 });
 
 //========================================================
@@ -88,6 +108,11 @@ const linkUnderlineBtn = document.getElementById("link-underline-btn");
 linkUnderlineBtn.addEventListener("click", () => {
   // Toggle the link underline mode.
   document.getElementsByTagName("html")[0].classList.toggle("link-underline");
+
+  // Change the icon.
+  linkUnderlineBtn.firstChild.classList.contains("fa-underline")
+    ? linkUnderlineBtn.firstChild.classList.replace("fa-underline", "fa-u")
+    : linkUnderlineBtn.firstChild.classList.replace("fa-u", "fa-underline");
 });
 
 //========================================================
