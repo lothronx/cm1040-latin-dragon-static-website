@@ -143,7 +143,8 @@ body {
 }
 
 article > p,
-.page-title > p {
+.page-title > p,
+#news .news-container p {
   font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -778,6 +779,36 @@ Make sure everything is horizontally centered.
   --theme-color: var(--news-color);
   --theme-color-light: var(--news-color-light);
   --theme-color-dark: var(--news-color-dark);
+  color: var(--theme-color);
+}
+
+#news .main {
+  padding: 4vh 7.5vw 10vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#news .column {
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 2.5vw;
+}
+
+#news .column .news-container,
+#news .column .page-title {
+  margin-bottom: 2rem;
+  vertical-align: middle;
+}
+
+#news .news-container {
+  color: var(--dark);
+}
+
+@media (max-width: 700px) {
+  #news .column {
+    flex: 100%;
+    max-width: 100%;
+  }
 }
 
 /* Page 4: FAQ page specific css-----------------------------------------------------------------------*/
