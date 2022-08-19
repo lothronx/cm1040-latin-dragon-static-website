@@ -144,7 +144,7 @@ body {
 
 article > p,
 .page-title > p,
-#news .news-container p {
+.news-container p {
   font-family: "Libre Baskerville", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -182,7 +182,7 @@ h5 {
 
 p {
   margin: 0.25rem 0;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
 @media screen and (max-width: 806px) {
@@ -197,13 +197,20 @@ p {
   }
 
   p {
-    line-height: 1.25;
+    line-height: 1.5;
   }
 }
 
 @media screen and (max-width: 300px) {
   body {
     font-size: 0.9rem;
+  }
+
+  h2 {
+    line-height: 0.8;
+  }
+  h4 {
+    font-size: 1.25rem;
   }
 }
 
@@ -396,6 +403,11 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
     border-radius: 10px;
     background-color: #22222211;
   }
+
+  #header-nav .active .nav-link {
+    border: none;
+  }
+
   /* Mobile accessibility menu layout*/
   #accessibility-bar {
     position: fixed;
@@ -531,6 +543,7 @@ Make sure everything is horizontally centered.
 .feature-text {
   color: var(--light);
   align-self: center;
+  padding: 2vw 0;
 }
 
 .feature-text header {
@@ -783,31 +796,69 @@ Make sure everything is horizontally centered.
 }
 
 #news .main {
-  padding: 4vh 7.5vw 10vw;
+  padding: 4vh 10vw 6vw;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-#news .column {
+#news .page-title,
+#news .news-container {
   flex: 50%;
-  max-width: 50%;
-  padding: 0 2.5vw;
+  max-width: 48%;
+  height: fit-content;
 }
 
-#news .column .news-container,
-#news .column .page-title {
-  margin-bottom: 2rem;
-  vertical-align: middle;
+#news .page-title {
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 #news .news-container {
+  margin-bottom: 2vw;
+}
+
+.news-container {
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  background-color: var(--background);
+}
+
+.news-container:hover {
+  transform: scale(1.01);
+  box-shadow: var(--shadow-medium);
+}
+
+.news-container figure {
+  margin-bottom: 1rem;
+}
+
+.news-container img {
+  width: 100%;
+}
+
+.news-container time,
+.news-container h4,
+.news-container p {
+  margin: 1rem 2rem;
+}
+
+.news-container time,
+.news-container p {
   color: var(--dark);
 }
 
-@media (max-width: 700px) {
-  #news .column {
+.news-container i {
+  padding-right: 0.4rem;
+}
+
+@media (max-width: 806px) {
+  #news .news-container,
+  #news .page-title {
     flex: 100%;
     max-width: 100%;
+    margin-bottom: 4vw;
   }
 }
 
@@ -871,7 +922,6 @@ Make sure everything is horizontally centered.
   padding: 1.25rem 5vw 2.5rem;
   margin: 0;
   border-radius: 0 0 0.5rem 0.5rem;
-  line-height: 1.75;
   background-color: #ffffff44;
   border: var(--theme-color-light) 1px dashed;
   border-top: none;

@@ -1,18 +1,19 @@
 /**********************************************************/
 /*                      Table on Content
-1. Show/hide menu on mobile devices
-2. Responsive hamburger menu
-3. Selected menu item highlight
-3. Low contrast mode
-4. Link highlight mode
-2. Language options dropdown list
-4. Homepage sidebar items
-5. Homepage sidebar animation
-6. Homepage article animation
-7. FAQ page show/hide answers
+1. Menu: Show/hide menu on mobile devices
+2. Menu: Responsive hamburger menu
+3. Menu: Selected menu item highlight
+4. Accessibility: Low contrast mode
+5. Accessibility: Link highlight mode
+6. Accessibility: Language options dropdown list
+7. Homepage: sidebar items
+8. Homepage: sidebar animation
+9. Homepage: article animation
+10. News page: general layout
+11. FAQ page: show/hide answers
 /**********************************************************/
 //========================================================
-//            Show/hide menu on mobile devices
+//            Menu: Show/hide menu on mobile devices
 //      Hide the menu when scroll up AND the mobile menu not open
 //  Show the menu when scroll down or tap or the mobile menu not open
 //   *Only works when the screen is small and is a touchscreen*
@@ -33,7 +34,7 @@ window.addEventListener("touchend", (e) => {
 });
 
 //========================================================
-//             Responsive hamburger menu
+//           Menu: Responsive hamburger menu
 //  Toggle between the hamburger icon and the X icon
 //         Toggle between show/hide the menu
 //========================================================
@@ -66,7 +67,7 @@ window.addEventListener("click", (e) => {
 });
 
 //========================================================
-//                Selected menu item highlight
+//             Menu: Selected menu item highlight
 //                 Highlight the current tab.
 //========================================================
 const navItems = headerNav.getElementsByClassName("nav-item");
@@ -80,7 +81,7 @@ for (let i = 0; i < navItems.length; i++) {
 }
 
 //========================================================
-//                     Low contrast mode
+//             Accessibility: Low contrast mode
 //Click the low-contrast icon to toggle between high contrast and low contrast
 //========================================================
 const contrastBtn = document.getElementById("contrast-btn");
@@ -100,7 +101,7 @@ contrastBtn.addEventListener("click", () => {
 });
 
 //========================================================
-//                     Link highlight mode
+//          Accessibility: Link highlight mode
 //Click the link underline icon to highlight all links (and buttons)
 //========================================================
 const linkUnderlineBtn = document.getElementById("link-underline-btn");
@@ -116,7 +117,7 @@ linkUnderlineBtn.addEventListener("click", () => {
 });
 
 //========================================================
-//           Language options dropdown list
+//     Accessibility: Language options dropdown list
 //========================================================
 const languagesBtn = document.getElementById("language-btn");
 const languages = document.getElementById("languages");
@@ -135,7 +136,7 @@ languagesBtn.addEventListener("click", () => {
 // });
 
 //========================================================
-//               Homepage sidebar items
+//               Homepage: sidebar items
 //   Click the sidebar item to jump to its section
 //========================================================
 const homepage = document.getElementById("homepage");
@@ -160,7 +161,7 @@ if (homepage) {
 }
 
 //========================================================
-//               Homepage sidebar animation
+//               Homepage: sidebar animation
 // Make the sidebar item larger when the corresponding page section is in viewport.
 //========================================================
 if (homepage) {
@@ -192,7 +193,7 @@ function isItInViewport(e) {
 }
 
 //========================================================
-//               Homepage article animation
+//               Homepage: article animation
 //     Animate when section title is in viewport.
 //========================================================
 if (homepage) {
@@ -217,7 +218,61 @@ if (homepage) {
 }
 
 //========================================================
-//             FAQ page show/hide answers
+//               News page: general layout
+//The goal is to arrange news articles in this order and this layout:
+//                   "News "  000000
+//                   111111   000000
+//                   111111   000000
+//                   111111   222222
+//                   333333   222222
+//                   333333   222222
+//                   333333
+// My method is to set the margin-top property of odd news articles.
+//    To do this, I have to calculate the height difference
+//     between the first news article and the page title.
+//========================================================
+const news = document.getElementById("news");
+
+//If we are on the News page
+if (news) {
+  const newsArticles = news.getElementsByClassName("news-container");
+  const newsPageTitle = news.getElementsByClassName("page-title")[0];
+
+  // run when the page loads.
+  window.addEventListener("load", () => {
+    if (window.innerWidth >= 806) {
+      setMarginTop();
+    } else {
+      for (let i = 0; i < newsArticles.length; i++) {
+        newsArticles[i].style["margin-top"] = 0;
+      }
+    }
+  });
+
+  // run when the page is resized.
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 806) {
+      setMarginTop();
+    } else {
+      for (let i = 0; i < newsArticles.length; i++) {
+        newsArticles[i].style["margin-top"] = 0;
+      }
+    }
+  });
+
+  //The function to calculate the height difference between the first news article and the page title.
+  function setMarginTop() {
+    const heightDiff = newsPageTitle.offsetHeight - newsArticles[0].offsetHeight;
+    for (let i = 0; i < newsArticles.length; i++) {
+      if (i % 2) {
+        newsArticles[i].style["margin-top"] = heightDiff + "px";
+      }
+    }
+  }
+}
+
+//========================================================
+//             FAQ page: show/hide answers
 //========================================================
 const faq = document.getElementById("faq");
 
