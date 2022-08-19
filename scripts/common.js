@@ -1,13 +1,35 @@
 /**********************************************************/
 /*                      Table on Content
-1. Responsive hamburger menu
+1. Show/hide menu on mobile devices
+2. Responsive hamburger menu
+3. Low contrast mode
+4. Link highlight mode
 2. Language options dropdown list
-3. Show/hide menu on mobile devices
 4. Homepage sidebar items
 5. Homepage sidebar animation
 6. Homepage article animation
 7. FAQ page show/hide answers
 /**********************************************************/
+//========================================================
+//            Show/hide menu on mobile devices
+//      Hide the menu when scroll up AND the mobile menu not open
+//  Show the menu when scroll down or tap or the mobile menu not open
+//   *Only works when the screen is small and is a touchscreen*
+//========================================================
+const menu = document.getElementsByTagName("header")[0];
+let startY = 0;
+let endY = 0;
+
+window.addEventListener("touchstart", (e) => {
+  startY = e.changedTouches[0].screenY;
+});
+
+window.addEventListener("touchend", (e) => {
+  endY = e.changedTouches[0].screenY;
+  endY < startY - 10 && !headerNav.classList.contains("show")
+    ? (menu.style.top = "-72px")
+    : (menu.style.top = "0");
+});
 
 //========================================================
 //             Responsive hamburger menu
@@ -19,18 +41,17 @@ const headerNav = document.getElementById("header-nav");
 const accessibilityBar = document.getElementById("accessibility-bar");
 
 // Show the dropdown menu when click the hamburger icon
-menuIcon.addEventListener("click", function () {
-  if (menuIcon.classList.contains("fa-bars")) {
-    menuIcon.classList.replace("fa-bars", "fa-xmark");
-  } else {
-    menuIcon.classList.replace("fa-xmark", "fa-bars");
-  }
+menuIcon.addEventListener("click", () => {
+  menuIcon.classList.contains("fa-bars")
+    ? menuIcon.classList.replace("fa-bars", "fa-xmark")
+    : menuIcon.classList.replace("fa-xmark", "fa-bars");
+
   headerNav.classList.toggle("show");
   accessibilityBar.classList.toggle("show");
 });
 
 //Hide the menu when clicked elsewhere
-window.addEventListener("click", function (e) {
+window.addEventListener("click", (e) => {
   if (
     !e.target.matches(".header-nav") &&
     !e.target.matches(".accessibility-bar") &&
@@ -44,13 +65,39 @@ window.addEventListener("click", function (e) {
 });
 
 //========================================================
+//                     Low contrast mode
+//Click the low-contrast icon to toggle between high contrast and low contrast
+//========================================================
+const contrastBtn = document.getElementById("contrast-btn");
+
+contrastBtn.addEventListener("click", () => {
+  // Toggle the low-contrast mode.
+  document.getElementsByTagName("html")[0].classList.toggle("low-contrast");
+  // On low-contrast mode, make the text color lighter and thus more readable.
+  document.getElementsByTagName("html")[0].classList.contains("low-contrast")
+    ? document.documentElement.style.setProperty("--light", "#f1e7cb")
+    : document.documentElement.style.setProperty("--light", "#efe1ba");
+});
+
+//========================================================
+//                     Link highlight mode
+//Click the link underline icon to highlight all links (and buttons)
+//========================================================
+const linkUnderlineBtn = document.getElementById("link-underline-btn");
+
+linkUnderlineBtn.addEventListener("click", () => {
+  // Toggle the link underline mode.
+  document.getElementsByTagName("html")[0].classList.toggle("link-underline");
+});
+
+//========================================================
 //           Language options dropdown list
 //========================================================
 const languagesBtn = document.getElementById("language-btn");
 const languages = document.getElementById("languages");
 
 // When the language icon is clicked, toggle between hiding and showing the language options
-languagesBtn.addEventListener("click", function () {
+languagesBtn.addEventListener("click", () => {
   languages.classList.toggle("show");
 });
 
@@ -63,29 +110,6 @@ languagesBtn.addEventListener("click", function () {
 // });
 
 //========================================================
-//            Show/hide menu on mobile devices
-//      Hide the menu when scroll up AND the mobile menu not open
-//  Show the menu when scroll down or tap or the mobile menu not open
-//   *Only works when the screen is small and is a touchscreen*
-//========================================================
-let menu = document.getElementsByTagName("header")[0];
-let startY = 0;
-let endY = 0;
-
-window.addEventListener("touchstart", function (e) {
-  startY = e.changedTouches[0].screenY;
-});
-
-window.addEventListener("touchend", function (e) {
-  endY = e.changedTouches[0].screenY;
-  if (endY < startY - 10 && !headerNav.classList.contains("show")) {
-    menu.style.top = "-72px";
-  } else {
-    menu.style.top = "0";
-  }
-});
-
-//========================================================
 //               Homepage sidebar items
 //   Click the sidebar item to jump to its section
 //========================================================
@@ -93,19 +117,19 @@ const homepage = document.getElementById("homepage");
 
 //If we are on homepage
 if (homepage) {
-  document.getElementById("index-home-btn").addEventListener("click", function () {
+  document.getElementById("index-home-btn").addEventListener("click", () => {
     window.location.href = "#index-home";
   });
-  document.getElementById("index-whitepaper-btn").addEventListener("click", function () {
+  document.getElementById("index-whitepaper-btn").addEventListener("click", () => {
     window.location.href = "#index-whitepaper";
   });
-  document.getElementById("index-news-btn").addEventListener("click", function () {
+  document.getElementById("index-news-btn").addEventListener("click", () => {
     window.location.href = "#index-news";
   });
-  document.getElementById("index-faq-btn").addEventListener("click", function () {
+  document.getElementById("index-faq-btn").addEventListener("click", () => {
     window.location.href = "#index-faq";
   });
-  document.getElementById("index-contact-btn").addEventListener("click", function () {
+  document.getElementById("index-contact-btn").addEventListener("click", () => {
     window.location.href = "#index-contact";
   });
 }
@@ -118,7 +142,7 @@ if (homepage) {
   const sections = homepage.getElementsByClassName("section");
   const sidebarItems = homepage.getElementsByClassName("sidebar-item");
 
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     let previous = homepage.getElementsByClassName("active")[0];
 
     for (let i = 0; i < sections.length; i++) {
@@ -135,7 +159,7 @@ if (homepage) {
 // This function to check whether an element is in viewport.
 // An element is considered to be in viewport when half of it is in viewport.
 function isItInViewport(e) {
-  let rect = e.getBoundingClientRect();
+  const rect = e.getBoundingClientRect();
   return (
     (rect.bottom + rect.top) / 2 >= 0 &&
     (rect.bottom + rect.top) / 2 <= (window.innerHeight || document.documentElement.clientHeight)
@@ -149,7 +173,7 @@ function isItInViewport(e) {
 if (homepage) {
   const sectionTitles = homepage.getElementsByClassName("index-title");
 
-  window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", () => {
     let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
     for (let i = 0; i < sectionTitles.length; i++) {
       if (
@@ -179,13 +203,11 @@ if (faq) {
   const answers = document.getElementsByClassName("answer");
 
   for (let i = 0; i < questions.length; i++) {
-    questions[i].addEventListener("click", function () {
+    questions[i].addEventListener("click", () => {
       //  Toggle between the + icon and the X icon
-      if (questionIcons[i].classList.contains("fa-angle-down")) {
-        questionIcons[i].classList.replace("fa-angle-down", "fa-angle-up");
-      } else {
-        questionIcons[i].classList.replace("fa-angle-up", "fa-angle-down");
-      }
+      questionIcons[i].classList.contains("fa-angle-down")
+        ? questionIcons[i].classList.replace("fa-angle-down", "fa-angle-up")
+        : questionIcons[i].classList.replace("fa-angle-up", "fa-angle-down");
 
       //Show answer
       answers[i].classList.toggle("show");

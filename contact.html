@@ -75,9 +75,11 @@
       <section class="accessibility-bar" id="accessibility-bar">
         <div>
           <!--contrast control-->
-          <a href="javascript:;"><i class="fa-solid fa-circle-half-stroke"></i></a>
+          <a href="javascript:;" id="contrast-btn"
+            ><i class="fa-solid fa-circle-half-stroke"></i
+          ></a>
           <!--link underline-->
-          <a href="javascript:;"><i class="fa-solid fa-underline"></i></a>
+          <a href="javascript:;" id="link-underline-btn"><i class="fa-solid fa-underline"></i></a>
         </div>
         <!--language options-->
         <a href="javascript:;" id="language-btn">
@@ -97,6 +99,11 @@
         </a>
       </section>
     </header>
+
+    <!------------------------------------------------------ Scroll to top button------------------------------------------------------>
+    <aside>
+      <a id="scroll-to-top" href="#"><i class="fa-solid fa-angle-up"></i></a>
+    </aside>
 
     <!-------------------------------------Main body contains 2 sections: About us and Contact us -------------------------------------->
     <main id="main" class="main">
@@ -147,9 +154,9 @@
       </section>
 
       <!-- Section 2: contact us. It contains 2 parts: contact information and a contact form. -->
-      <section class="contact-us">
+      <section class="contact-us feature">
         <!-- Part 1: contact information -->
-        <div class="contact-info">
+        <div class="contact-info feature-text">
           <header class="page-title">
             <h2>Contact Us</h2>
             <p>We are ready to help you.</p>
@@ -161,7 +168,12 @@
           </main>
         </div>
         <!-- Part 2: contact form. This is a real form. When you submit it, I'll receive an email from Formspree!-->
-        <form tabindex="0" action="https://formspree.io/f/xnqrqrra" method="post">
+        <form
+          class="feature-figure"
+          tabindex="0"
+          action="https://formspree.io/f/xnqrqrra"
+          method="post"
+        >
           <div class="form-group">
             <label for="name">Your name *</label>
             <input id="name" name="name" type="text" required placeholder="Name" autofocus />

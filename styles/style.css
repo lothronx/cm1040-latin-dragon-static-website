@@ -2,16 +2,18 @@
 /*                      Table of contents
 1. Import Custom Fonts
 2. Define Animations
-3. System settings
+3. General settings
 4. Color Scheme
 5. Typography
 6. Header Layout
 7. Footer Layout
-8. Page 1: Home page specific css
-9. Page 2: Whitepaper page specific css
-10. Page 3: News page specific css
-11. Page 4: FAQ page specific css
-12. Page 5: Contact page specific css
+8. Feature layout
+9. Contact button layout
+10. Page 1: Home page specific css
+11. Page 2: Whitepaper page specific css
+12. Page 3: News page specific css
+13. Page 4: FAQ page specific css
+14. Page 5: Contact page specific css
 /*********************************************************/
 
 /* Import Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
@@ -49,7 +51,7 @@
   --animate-delay: 0;
 }
 
-/* System settings ---------------------------------------------------------------------*/
+/* General settings ---------------------------------------------------------------------*/
 /*Remove margins and paddings*/
 * {
   margin: 0;
@@ -92,6 +94,17 @@ html {
 /*Show/hide*/
 .show {
   display: block !important;
+}
+
+/* Low contrast mode */
+.low-contrast {
+  filter: grayscale(25%);
+}
+
+/* Link highlight mode*/
+.link-underline a,
+.link-underline button {
+  text-decoration: underline;
 }
 
 /* Color Scheme ---------------------------------------------------------------------------------------*/
@@ -164,16 +177,6 @@ h4 {
 h5 {
   font-size: 1.25rem;
   font-weight: 400;
-}
-
-.contact-btn {
-  font-size: 1.125rem;
-}
-
-.contact-btn:hover {
-  animation-name: pop;
-  animation-duration: 400ms;
-  animation-timing-function: ease-out;
 }
 
 p {
@@ -502,6 +505,90 @@ Make sure everything is horizontally centered.
   }
 }
 
+/* Feature layout ------------------------------------------------------------------------------------*/
+/* Feature uses a 2*1 grid layout with the figure (picture or form) "pops out" from its background. */
+.feature {
+  margin: 15vw 0;
+  padding: 0 10vw;
+  background-color: var(--theme-color);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.feature-text {
+  color: var(--light);
+  align-self: center;
+}
+
+.feature-text header {
+  margin-bottom: 2vw;
+}
+
+.feature-figure {
+  margin-top: -10vw;
+  margin-bottom: -10vw;
+  border-radius: 16px;
+  background-color: var(--background);
+  box-shadow: var(--shadow-hard);
+}
+
+@media screen and (max-width: 806px) {
+  .feature {
+    grid-template-columns: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 10vw;
+  }
+
+  .feature-text {
+    background-color: var(--theme-color);
+    padding: 10vw 10vw 28vw;
+  }
+
+  .feature-figure {
+    margin: -20vw 10vw 0;
+  }
+}
+
+/* Contact button layout -----------------------------------------------------------------------------*/
+.contact-btn {
+  display: inline-block;
+  justify-self: center;
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
+}
+
+.contact-btn:hover {
+  animation-name: pop;
+  animation-duration: 400ms;
+  animation-timing-function: ease-out;
+}
+
+#scroll-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.875rem;
+  border-radius: 16px;
+  line-height: 0%;
+  padding: 12px 16px;
+  color: var(--background);
+  background-color: #22222222;
+}
+
+#scroll-to-top:hover {
+  transform: scale(1.08);
+}
+
+@media screen and (max-width: 806px) {
+  #scroll-to-top {
+    display: none;
+  }
+}
 /* Page 1: Home page specific css------------------------------------------------------------------*/
 /* Color settings for homepage -----------------------*/
 #homepage {
@@ -575,13 +662,10 @@ Make sure everything is horizontally centered.
 }
 
 #homepage .contact-btn {
-  margin-top: 2rem;
   padding: 1rem 2rem;
-  border-radius: 16px;
   font-size: 1.44rem;
   background-color: var(--light);
   color: var(--theme-color);
-  box-shadow: var(--shadow-medium);
 }
 
 /*The rest sections layout*/
@@ -756,10 +840,6 @@ Make sure everything is horizontally centered.
 }
 
 #faq .contact-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.2rem;
-  border-radius: 10px;
   background-color: var(--theme-color);
   color: var(--background);
 }
@@ -770,11 +850,11 @@ Make sure everything is horizontally centered.
     display: block;
   }
 
-  #faq .main section:first-child {
+  #faq .main .questions {
     padding: 5vw 10vw;
   }
 
-  #faq .main section:last-child {
+  #faq .main .card {
     margin: 0 10vw 4vw;
   }
 }
@@ -836,22 +916,7 @@ Make sure everything is horizontally centered.
 }
 
 /* Contact us layout-------------*/
-#contact .contact-us {
-  margin: 15vw 0;
-  padding: 0 10vw;
-  background-color: var(--theme-color);
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-#contact .contact-us .page-title {
-  margin-bottom: 2vw;
-}
-
-#contact .contact-info {
-  color: var(--light);
-  padding: 4vw;
-}
-
+/* Contact us section uses a lot of Feature Layout. No need to repeat*/
 #contact .contact-info i {
   padding-right: 0.7rem;
 }
@@ -860,11 +925,6 @@ Make sure everything is horizontally centered.
   display: grid;
   grid-template-rows: auto auto auto 1fr auto;
   padding: 4vw 6vw;
-  margin-top: -10vw;
-  margin-bottom: -10vw;
-  border-radius: 16px;
-  background-color: var(--background);
-  box-shadow: var(--shadow-hard);
 }
 
 .form-group {
@@ -889,30 +949,6 @@ textarea {
 }
 
 #contact .contact-btn {
-  justify-self: center;
-  padding: 0.8rem 1.2rem;
-  margin-top: 1rem;
-  border-radius: 10px;
-  border: none;
   background-color: var(--theme-color);
   color: var(--background);
-  box-shadow: var(--shadow-soft);
-}
-
-@media screen and (max-width: 806px) {
-  #contact .contact-us {
-    grid-template-columns: 100%;
-    background-color: transparent;
-    padding: 0;
-    margin: 0 0 10vw;
-  }
-
-  #contact .contact-info {
-    background-color: var(--contact-color);
-    padding: 10vw 10vw 28vw;
-  }
-
-  #contact form {
-    margin: -20vw 10vw 0;
-  }
 }
