@@ -130,7 +130,7 @@ html {
   --background: #f9f7f3;
 
   --gray-soft: #22222208;
-  --gray-medium:#22222222;
+  --gray-medium: #22222222;
   --gray-hard: #22222244;
 
   --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
@@ -536,49 +536,24 @@ Make sure everything is horizontally centered.
 }
 
 /* Feature layout ------------------------------------------------------------------------------------*/
-/* Feature uses a 2*1 grid layout with the figure (picture or form) "pops out" from its background. */
 .feature {
-  margin: 15vw 0;
-  padding: 0 10vw;
-  background-color: var(--theme-color);
   display: grid;
   grid-template-columns: 50% 50%;
+  height: fit-content;
+  padding: 0 10vw;
+  background-color: var(--theme-color);
 }
 
 .feature-text {
   color: var(--light);
   align-self: center;
-  padding: 2vw 0;
-}
-
-.feature-text header {
-  margin-bottom: 2vw;
+  padding: 2vw;
 }
 
 .feature-figure {
-  margin-top: -10vw;
-  margin-bottom: -10vw;
   border-radius: 16px;
   background-color: var(--background);
   box-shadow: var(--shadow-hard);
-}
-
-@media screen and (max-width: 806px) {
-  .feature {
-    grid-template-columns: 100%;
-    background-color: transparent;
-    padding: 0;
-    margin: 0 0 10vw;
-  }
-
-  .feature-text {
-    background-color: var(--theme-color);
-    padding: 10vw 10vw 28vw;
-  }
-
-  .feature-figure {
-    margin: -20vw 10vw 0;
-  }
 }
 
 /* Button layout -----------------------------------------------------------------------------*/
@@ -790,7 +765,115 @@ Make sure everything is horizontally centered.
   --theme-color: var(--whitepaper-color);
   --theme-color-semitransparent: var(--whitepaper-color-semitransparent);
   --theme-color-dark: var(--whitepaper-color-dark);
+  color: var(--theme-color);
 }
+
+/* Two feature sections layout --------------------*/
+#whitepaper .feature {
+  margin: 10vw 0;
+}
+
+#whitepaper .feature-figure {
+  overflow: hidden;
+  margin-top: -2vw;
+  margin-bottom: -2vw;
+  /* to center the image*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* to make the image cover the whole container */
+#whitepaper .feature-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#whitepaper .feature-text p::first-letter {
+  font-size: 1.375rem;
+}
+
+/* reverse the imports/exports section layout on big screen */
+@media screen and (min-width: 1061px) {
+  #whitepaper .imports-exports {
+    grid-template-areas: "image text";
+  }
+
+  #whitepaper .imports-exports .feature-text {
+    grid-area: text;
+  }
+
+  #whitepaper .imports-exports .feature-figure {
+    grid-area: image;
+  }
+}
+
+/* media queries */
+@media screen and (max-width: 1060px) {
+  #whitepaper .feature {
+    grid-template-columns: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin: 5vw 0 10vw;
+  }
+
+  #whitepaper .feature-text {
+    background-color: var(--theme-color);
+    padding: 10vw 10vw 28vw;
+  }
+
+  #whitepaper .feature-figure {
+    margin: -20vw 10vw 0;
+  }
+}
+
+/* Statistics section layout -----------------*/
+#whitepaper .statistics {
+  padding: 0 10vw;
+  text-align: center;
+}
+
+#whitepaper .statistics header {
+  margin-bottom: 3vw;
+}
+
+#whitepaper .statistics main {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  align-items: center;
+  justify-items: center;
+}
+
+#whitepaper .statistics div {
+  width: 80%;
+  padding: 1rem 0.8rem;
+  color: var(--light);
+  background-color: var(--theme-color);
+  border-radius: 16px;
+}
+
+#whitepaper .statistics p {
+  margin: 0;
+  line-height: 1;
+}
+
+/* When the screen gets smaller, turn from 4*1 grid to 2*2 grid and then to 1*4 grid*/
+@media screen and (max-width: 1060px) {
+  #whitepaper .statistics main {
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 3vw;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  #whitepaper .statistics main {
+    grid-template-columns: 100%;
+  }
+}
+
+/* */
+
 
 /* Page 3: News page specific css----------------------------------------------------------------------*/
 #news {
@@ -1022,15 +1105,29 @@ Make sure everything is horizontally centered.
 }
 
 /* Contact us layout-------------*/
-/* Contact us section uses a lot of Feature Layout. No need to repeat*/
+#contact .contact-us {
+  margin: 15vw 0;
+}
+
+#contact .contact-us .page-title {
+  margin-bottom: 2vw;
+}
+
 #contact .contact-info i {
   padding-right: 0.7rem;
 }
 
+#contact .contact-info .page-title p {
+  color: var(--light);
+}
+
+/* Form layout */
 #contact form {
   display: grid;
   grid-template-rows: auto auto auto 1fr auto;
   padding: 4vw 6vw;
+  margin-top: -10vw;
+  margin-bottom: -10vw;
 }
 
 .form-group {
@@ -1058,4 +1155,22 @@ textarea {
   background-color: var(--theme-color);
   color: var(--background);
   cursor: pointer;
+}
+
+@media screen and (max-width: 806px) {
+  #contact .feature {
+    grid-template-columns: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 10vw;
+  }
+
+  #contact .feature-text {
+    background-color: var(--theme-color);
+    padding: 10vw 10vw 28vw;
+  }
+
+  #contact .feature-figure {
+    margin: -20vw 10vw 0;
+  }
 }
