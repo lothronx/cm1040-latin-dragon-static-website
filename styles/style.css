@@ -852,7 +852,7 @@ Make sure everything is horizontally centered.
   justify-items: center;
 }
 
-#whitepaper .statistics div {
+#whitepaper .statistics section {
   width: 80%;
   padding: 1rem 0.8rem;
   color: var(--light);
@@ -896,8 +896,9 @@ Make sure everything is horizontally centered.
   padding: 1vw;
 }
 
-#whitepaper .trade-step div {
+#whitepaper .trade-step article {
   padding-left: 0.4rem;
+  height: fit-content;
 }
 
 #whitepaper .trade-step p {
@@ -942,7 +943,7 @@ line {
   }
 
   #whitepaper .trade-step h4 {
-    padding-top: 0.3rem;
+    padding-top: 0.35rem;
   }
 }
 

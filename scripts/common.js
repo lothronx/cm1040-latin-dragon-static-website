@@ -9,9 +9,11 @@
 7. Homepage: sidebar items
 8. Homepage: sidebar animation
 9. Homepage: article animation
-10. News page: general layout
-11. FAQ page: show/hide answers
+10. Whitepaper: determine SVG height on mobile devices
+11. News page: general layout
+12. FAQ page: show/hide answers
 /**********************************************************/
+
 //========================================================
 //            Menu: Show/hide menu on mobile devices
 //      Hide the menu when scroll up AND the mobile menu not open
@@ -89,7 +91,7 @@ const contrastBtn = document.getElementById("contrast-btn");
 contrastBtn.addEventListener("click", () => {
   // Toggle the low-contrast mode.
   document.querySelector("html").classList.toggle("low-contrast");
-  
+
   // On low-contrast mode, make the text color lighter and thus more readable.
   // Also change the icon from half a circle to a full circle.
   if (document.querySelector("html").classList.contains("low-contrast")) {
@@ -216,6 +218,31 @@ if (homepage) {
       }
     }
   });
+}
+
+//========================================================
+//   Whitepaper: determine SVG height on mobile devices
+//========================================================
+const whitepaper = document.getElementById("whitepaper");
+
+if (whitepaper) {
+  const tradeStepTexts = document.querySelectorAll(".trade-step-text");
+  const svgs = document.querySelectorAll("svg");
+
+  // run when the page loads.
+  window.addEventListener("load", setHeight);
+  // run when the page is resized.
+  window.addEventListener("resize", setHeight);
+
+  function setHeight() {
+    if (window.innerWidth <= 806) {
+      for (let i = 0; i < tradeStepTexts.length; i++) {
+        svgs[i].style.height = tradeStepTexts[i].offsetHeight;
+      }
+    } else {
+      svgs.forEach((svg) => (svg.style.height = "3rem"));
+    }
+  }
 }
 
 //========================================================
