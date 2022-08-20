@@ -126,6 +126,7 @@ html {
   --whitepaper-color-dark: #164421;
 
   --light: #efe1ba;
+  --light-semitransparent: #efe1badd;
   --dark: #474536;
   --background: #f9f7f3;
 
@@ -215,6 +216,7 @@ p {
   h2 {
     line-height: 0.8;
   }
+
   h4 {
     font-size: 1.25rem;
   }
@@ -551,6 +553,10 @@ Make sure everything is horizontally centered.
   padding: 2vw;
 }
 
+.feature-text p {
+  color: var(--light);
+}
+
 .feature-figure {
   border-radius: 16px;
   background-color: var(--background);
@@ -769,7 +775,7 @@ Make sure everything is horizontally centered.
   color: var(--theme-color);
 }
 
-/* Two feature sections layout --------------------*/
+/* Two feature sections layout ------------------------*/
 #whitepaper .feature {
   margin: 10vw 0;
 }
@@ -829,7 +835,7 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* Statistics section layout -----------------*/
+/* Statistics section layout ----------------------*/
 #whitepaper .statistics {
   padding: 0 10vw;
   text-align: center;
@@ -873,19 +879,74 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* trade process section layout */
+/* trade process section layout ----------------------*/
 #whitepaper .trade-process {
   padding: 0 10vw;
   margin-bottom: 5vw;
 }
 
+/* the main part of trade process section is a 3*2 grid */
 #whitepaper .trade-process main {
   margin-top: 3vw;
   display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-template-columns: 33% 33% 33%;
 }
 
-/* contact information section layout */
+#whitepaper .trade-step {
+  padding: 1vw;
+}
+
+#whitepaper .trade-step div {
+  padding-left: 0.4rem;
+}
+
+#whitepaper .trade-step p {
+  line-height: 1.5;
+  color: var(--dark);
+}
+
+/* Simple SVG */
+svg {
+  height: 2.4rem;
+  width: 100%;
+}
+
+circle {
+  fill: var(--theme-color-semitransparent);
+}
+
+line {
+  fill: none;
+  stroke: var(--theme-color-semitransparent);
+  stroke-width: 1px;
+}
+
+/* When screen gets smaller, change the trade process from a 3*2 grid to a 1*6 grid*/
+/* Also modify the performance of the svg */
+@media screen and (max-width: 806px) {
+  #whitepaper .trade-process main {
+    grid-template-columns: 100%;
+  }
+
+  #whitepaper .trade-step {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  #whitepaper .trade-step svg {
+    width: 3rem;
+  }
+
+  #whitepaper .trade-step div {
+    padding-left: 0rem;
+  }
+
+  #whitepaper .trade-step h4 {
+    padding-top: 0.3rem;
+  }
+}
+
+/* contact information section layout ---------------*/
 #whitepaper .contact-info {
   background-color: var(--theme-color);
   color: var(--light);
@@ -897,7 +958,7 @@ Make sure everything is horizontally centered.
 }
 
 #whitepaper .contact-info .page-title p {
-  color: var(--light);
+  color: var(--light-semitransparent);
 }
 
 #whitepaper .contact-info main {
@@ -917,7 +978,7 @@ Make sure everything is horizontally centered.
 }
 
 #whitepaper .contact-method:hover {
-  transform: scale(1.01);
+  transform: translateY(-2px);
   backface-visibility: hidden;
 }
 
@@ -1182,7 +1243,7 @@ Make sure everything is horizontally centered.
 }
 
 #contact .contact-info .page-title p {
-  color: var(--light);
+  color: var(--light-semitransparent);
 }
 
 /* Form layout */
