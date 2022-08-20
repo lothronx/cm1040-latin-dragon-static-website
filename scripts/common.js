@@ -72,7 +72,7 @@ window.addEventListener("click", (e) => {
 //========================================================
 const navItems = headerNav.getElementsByClassName("nav-item");
 for (let i = 0; i < navItems.length; i++) {
-  // Find the menu item which has the same class name as the page title.
+  // Find the menu item which has the same name as the page title.
   if (navItems[i].classList.contains(document.querySelector("body").id)) {
     navItems[i].classList += " active";
   } else {
@@ -89,6 +89,7 @@ const contrastBtn = document.getElementById("contrast-btn");
 contrastBtn.addEventListener("click", () => {
   // Toggle the low-contrast mode.
   document.querySelector("html").classList.toggle("low-contrast");
+  
   // On low-contrast mode, make the text color lighter and thus more readable.
   // Also change the icon from half a circle to a full circle.
   if (document.querySelector("html").classList.contains("low-contrast")) {
@@ -188,7 +189,7 @@ function isItInViewport(e) {
   const rect = e.getBoundingClientRect();
   return (
     (rect.bottom + rect.top) / 2 >= 0 &&
-    (rect.bottom + rect.top) / 2 <= (window.innerHeight || document.documentElement.clientHeight)
+    (rect.bottom + rect.top) / 2 < (window.innerHeight || document.documentElement.clientHeight)
   );
 }
 
@@ -220,53 +221,54 @@ if (homepage) {
 //========================================================
 //               News page: general layout
 //The goal is to arrange news articles in this order and this layout:
-//                   "News "  000000
-//                   111111   000000
-//                   111111   000000
-//                   111111   222222
-//                   333333   222222
-//                   333333   222222
-//                   333333
-// My method is to set the margin-top property of odd news articles.
-//    To do this, I have to calculate the height difference
+//                   "News "  111111
+//                   222222   111111
+//                   222222   111111
+//                   222222   333333
+//                   444444   333333
+//                   444444   333333
+//                   444444
+// My method is to change the "margin-top" property of even news articles (article 2, 4, 6, and 8).
 //========================================================
 const news = document.getElementById("news");
 
 //If we are on the News page
 if (news) {
-  //news list contains 9 elements: 1 page title and 8 news articles.
+  // newsList is not a very accurate name, as it actually contains 9 elements: 1 page title (index[0]) and 8 news articles (index[1]-[8]).
   const newsList = news.querySelector("main").children;
 
   // run when the page loads.
-  window.addEventListener("load", () => {
-    if (window.innerWidth >= 806) {
-      for (let i = 2; i < newsList.length; i++) {
-        if (!(i % 2)) {
-          console.log(newsList[i]);
+  window.addEventListener("load", setMarginTop);
+  // run when the page is resized.
+  window.addEventListener("resize", setMarginTop);
 
-          let heightDiff = newsList[i - 2].offsetHeight - newsList[i - 1].offsetHeight;
+  // If the screen is big and the news articles are in two columns, change the "margin-top" property of even news articles.
+  // If the screen is small and the news articles are in onw column, set everyone's "margin top" property back to its default value: 0.
+  function setMarginTop() {
+    if (window.innerWidth > 806) {
+      // The first element that needs to be changed is element[2]
+      for (let i = 2; i < newsList.length; i++) {
+        // Only change the even elements.
+        if (!(i % 2)) {
+          // The top position of element[3] is (the top position of element[1] + the height of element[1] + margin).
+          // This should also be the top position of element[2] had we not made any custom changes.
+          // Our goal is to change the top position of element[2] to be (the top position of element[0] + the height of element[0] + margin)
+          // Their height different is:
+          let heightDiff =
+            newsList[i - 2].offsetTop +
+            newsList[i - 2].offsetHeight -
+            newsList[i - 1].offsetTop -
+            newsList[i - 1].offsetHeight;
+          // So let's move our element[2] up by that amount.
           newsList[i].style["margin-top"] = heightDiff + "px";
         }
       }
     } else {
-      for (let i = 0; i < newsArticles.length; i++) {
-        newsArticles[i].style["margin-top"] = 0;
+      for (let i = 0; i < newsList.length; i++) {
+        newsList[i].style["margin-top"] = 0;
       }
     }
-  });
-
-  // // run when the page is resized.
-  // window.addEventListener("resize", () => {
-  //   if (window.innerWidth >= 806) {
-  //     setMarginTop();
-  //   } else {
-  //     for (let i = 0; i < newsArticles.length; i++) {
-  //       newsArticles[i].style["margin-top"] = 0;
-  //     }
-  //   }
-  // });
-
-  //The function to calculate the height difference between the first news article and the page title.
+  }
 }
 
 //========================================================
