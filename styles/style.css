@@ -109,21 +109,21 @@ html {
 
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
-  --contact-color: #f13c1f;
-  --contact-color-semitransparent: #f13c1fcc;
-  --contact-color-dark: #c03018;
+  --contact-color: #d8361b;
+  --contact-color-semitransparent: #d8361bcc;
+  --contact-color-dark: #902412;
 
   --faq-color: #3a57a6;
   --faq-color-semitransparent: #3a57a6cc;
-  --faq-color-dark: #2e4584;
+  --faq-color-dark: #223463;
 
   --news-color: #d79922;
   --news-color-semitransparent: #d79922cc;
-  --news-color-dark: #ac7a1b;
+  --news-color-dark: #815b14;
 
   --whitepaper-color: #1c552a;
   --whitepaper-color-semitransparent: #1c552acc;
-  --whitepaper-color-dark: #164421;
+  --whitepaper-color-dark: #103319;
 
   --light: #efe1ba;
   --light-semitransparent: #efe1badd;
@@ -249,8 +249,8 @@ p {
     var(--theme-color),
     var(--theme-color-dark)
   );
-  background-size: 200% 800%;
-  animation: gradient 4s ease-in-out infinite alternate;
+  background-size: 200% 400%;
+  animation: gradient 8s ease-in-out infinite alternate;
   /* Adaption ends*/
 }
 
