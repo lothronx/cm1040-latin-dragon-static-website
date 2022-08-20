@@ -110,24 +110,28 @@ html {
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
   --contact-color: #f13c1f;
-  --contact-color-light: #f3634b;
+  --contact-color-semitransparent: #f13c1fcc;
   --contact-color-dark: #c03018;
 
   --faq-color: #3a57a6;
-  --faq-color-light: #6178b7;
+  --faq-color-semitransparent: #3a57a6cc;
   --faq-color-dark: #2e4584;
 
   --news-color: #d79922;
-  --news-color-light: #dfad4e;
+  --news-color-semitransparent: #d79922cc;
   --news-color-dark: #ac7a1b;
 
   --whitepaper-color: #1c552a;
-  --whitepaper-color-light: #497754;
+  --whitepaper-color-semitransparent: #1c552acc;
   --whitepaper-color-dark: #164421;
 
   --light: #efe1ba;
-  --dark: #4b5563;
+  --dark: #474536;
   --background: #f9f7f3;
+
+  --gray-soft: #22222208;
+  --gray-medium:#22222222;
+  --gray-hard: #22222244;
 
   --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
   --shadow-medium: 2px 2px 8px rgba(89, 82, 82, 0.4);
@@ -152,6 +156,7 @@ article > p,
 .page-title > p {
   font-size: 1.125rem;
   font-style: italic;
+  color: var(--theme-color-semitransparent);
 }
 
 h1 {
@@ -322,7 +327,7 @@ h6 {
   right: 5vw;
   border-radius: 5%;
   color: var(--light);
-  background-color: var(--theme-color-light);
+  background-color: var(--theme-color-semitransparent);
   box-shadow: var(--shadow-medium);
   z-index: 1;
 }
@@ -401,7 +406,7 @@ When screen gets small, the navigation bar and accessibility bar turn into the m
   #header-nav .active {
     border: none;
     border-radius: 10px;
-    background-color: #22222211;
+    background-color: var(--gray-soft);
   }
 
   #header-nav .active .nav-link {
@@ -464,7 +469,7 @@ Each page should use their own page theme color. (Homepage will use red.)
   padding: 2rem 5vw;
   grid-gap: 0.8rem;
   color: var(--theme-color);
-  background-color: #22222208;
+  background-color: var(--gray-soft);
 }
 
 #footer-logo {
@@ -480,7 +485,7 @@ Each page should use their own page theme color. (Homepage will use red.)
   font-size: 0.9rem;
   max-width: 24rem;
   line-height: normal;
-  color: var(--theme-color-light);
+  color: var(--gray-hard);
 }
 
 #footer-nav {
@@ -605,7 +610,7 @@ Make sure everything is horizontally centered.
   line-height: 0%;
   padding: 12px 16px;
   color: var(--background);
-  background-color: #22222222;
+  background-color: var(--gray-medium);
 }
 
 #scroll-to-top:hover {
@@ -622,7 +627,7 @@ Make sure everything is horizontally centered.
 /* Color settings for homepage -----------------------*/
 #homepage {
   --theme-color: var(--contact-color);
-  --theme-color-light: var(--contact-color-light);
+  --theme-color-semitransparent: var(--contact-color-semitransparent);
   --theme-color-dark: var(--contact-color-dark);
   color: var(--light);
 }
@@ -655,11 +660,11 @@ Make sure everything is horizontally centered.
 }
 
 #homepage #header {
-  background: #22222222;
+  background: var(--gray-medium);
 }
 
 #homepage .languages {
-  background-color: #22222244;
+  background-color: var(--gray-hard);
 }
 
 @media screen and (max-width: 806px) {
@@ -783,14 +788,14 @@ Make sure everything is horizontally centered.
 /* Page 2: Whitepaper page specific css----------------------------------------------------------------*/
 #whitepaper {
   --theme-color: var(--whitepaper-color);
-  --theme-color-light: var(--whitepaper-color-light);
+  --theme-color-semitransparent: var(--whitepaper-color-semitransparent);
   --theme-color-dark: var(--whitepaper-color-dark);
 }
 
 /* Page 3: News page specific css----------------------------------------------------------------------*/
 #news {
   --theme-color: var(--news-color);
-  --theme-color-light: var(--news-color-light);
+  --theme-color-semitransparent: var(--news-color-semitransparent);
   --theme-color-dark: var(--news-color-dark);
   color: var(--theme-color);
 }
@@ -866,7 +871,7 @@ Make sure everything is horizontally centered.
 /* Color settings for FAQ page -------*/
 #faq {
   --theme-color: var(--faq-color);
-  --theme-color-light: var(--faq-color-light);
+  --theme-color-semitransparent: var(--faq-color-semitransparent);
   --theme-color-dark: var(--faq-color-dark);
   color: var(--theme-color);
 }
@@ -903,7 +908,7 @@ Make sure everything is horizontally centered.
   display: grid;
   grid-template-columns: 1fr 10vw;
   background-color: var(--background);
-  border: var(--theme-color-light) 1px dashed;
+  border: var(--theme-color-semitransparent) 1px dashed;
 }
 
 #faq .question-icon {
@@ -922,8 +927,9 @@ Make sure everything is horizontally centered.
   padding: 1.25rem 5vw 2.5rem;
   margin: 0;
   border-radius: 0 0 0.5rem 0.5rem;
+  color: var(--dark);
   background-color: #ffffff44;
-  border: var(--theme-color-light) 1px dashed;
+  border: var(--theme-color-semitransparent) 1px solid;
   border-top: none;
 }
 
@@ -936,7 +942,7 @@ Make sure everything is horizontally centered.
 }
 
 #faq .card p {
-  color: var(--theme-color-light);
+  color: var(--theme-color-semitransparent);
 }
 
 #faq .contact-btn {
@@ -963,7 +969,7 @@ Make sure everything is horizontally centered.
 /* Color settings for Contact page -------*/
 #contact {
   --theme-color: var(--contact-color);
-  --theme-color-light: var(--contact-color-light);
+  --theme-color-semitransparent: var(--contact-color-semitransparent);
   --theme-color-dark: var(--contact-color-dark);
 }
 
@@ -1051,4 +1057,5 @@ textarea {
 #contact .contact-btn {
   background-color: var(--theme-color);
   color: var(--background);
+  cursor: pointer;
 }

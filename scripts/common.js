@@ -18,7 +18,7 @@
 //  Show the menu when scroll down or tap or the mobile menu not open
 //   *Only works when the screen is small and is a touchscreen*
 //========================================================
-const menu = document.getElementsByTagName("header")[0];
+const menu = document.querySelector("header");
 let startY = 0;
 let endY = 0;
 
@@ -73,7 +73,7 @@ window.addEventListener("click", (e) => {
 const navItems = headerNav.getElementsByClassName("nav-item");
 for (let i = 0; i < navItems.length; i++) {
   // Find the menu item which has the same class name as the page title.
-  if (navItems[i].classList.contains(document.getElementsByTagName("body")[0].id)) {
+  if (navItems[i].classList.contains(document.querySelector("body").id)) {
     navItems[i].classList += " active";
   } else {
     navItems[i].classList.remove("active");
@@ -88,10 +88,10 @@ const contrastBtn = document.getElementById("contrast-btn");
 
 contrastBtn.addEventListener("click", () => {
   // Toggle the low-contrast mode.
-  document.getElementsByTagName("html")[0].classList.toggle("low-contrast");
+  document.querySelector("html").classList.toggle("low-contrast");
   // On low-contrast mode, make the text color lighter and thus more readable.
   // Also change the icon from half a circle to a full circle.
-  if (document.getElementsByTagName("html")[0].classList.contains("low-contrast")) {
+  if (document.querySelector("html").classList.contains("low-contrast")) {
     document.documentElement.style.setProperty("--light", "#f1e7cb");
     contrastBtn.firstChild.classList.replace("fa-circle-half-stroke", "fa-circle");
   } else {
@@ -108,7 +108,7 @@ const linkUnderlineBtn = document.getElementById("link-underline-btn");
 
 linkUnderlineBtn.addEventListener("click", () => {
   // Toggle the link underline mode.
-  document.getElementsByTagName("html")[0].classList.toggle("link-underline");
+  document.querySelector("html").classList.toggle("link-underline");
 
   // Change the icon.
   linkUnderlineBtn.firstChild.classList.contains("fa-underline")
@@ -169,7 +169,7 @@ if (homepage) {
   const sidebarItems = homepage.getElementsByClassName("sidebar-item");
 
   window.addEventListener("scroll", () => {
-    let previous = homepage.getElementsByClassName("active")[0];
+    let previous = homepage.querySelector(".active");
 
     for (let i = 0; i < sections.length; i++) {
       if (isItInViewport(sections[i])) {
@@ -200,7 +200,7 @@ if (homepage) {
   const sectionTitles = homepage.getElementsByClassName("index-title");
 
   window.addEventListener("scroll", () => {
-    let previous = homepage.getElementsByClassName("animate__fadeIn")[0];
+    let previous = homepage.querySelector(".animate__fadeIn");
     for (let i = 0; i < sectionTitles.length; i++) {
       if (
         //1. the current element is in viewport
@@ -229,19 +229,25 @@ if (homepage) {
 //                   333333
 // My method is to set the margin-top property of odd news articles.
 //    To do this, I have to calculate the height difference
-//     between the first news article and the page title.
 //========================================================
 const news = document.getElementById("news");
 
 //If we are on the News page
 if (news) {
-  const newsArticles = news.getElementsByClassName("news-container");
-  const newsPageTitle = news.getElementsByClassName("page-title")[0];
+  //news list contains 9 elements: 1 page title and 8 news articles.
+  const newsList = news.querySelector("main").children;
 
   // run when the page loads.
   window.addEventListener("load", () => {
     if (window.innerWidth >= 806) {
-      setMarginTop();
+      for (let i = 2; i < newsList.length; i++) {
+        if (!(i % 2)) {
+          console.log(newsList[i]);
+
+          let heightDiff = newsList[i - 2].offsetHeight - newsList[i - 1].offsetHeight;
+          newsList[i].style["margin-top"] = heightDiff + "px";
+        }
+      }
     } else {
       for (let i = 0; i < newsArticles.length; i++) {
         newsArticles[i].style["margin-top"] = 0;
@@ -249,26 +255,18 @@ if (news) {
     }
   });
 
-  // run when the page is resized.
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 806) {
-      setMarginTop();
-    } else {
-      for (let i = 0; i < newsArticles.length; i++) {
-        newsArticles[i].style["margin-top"] = 0;
-      }
-    }
-  });
+  // // run when the page is resized.
+  // window.addEventListener("resize", () => {
+  //   if (window.innerWidth >= 806) {
+  //     setMarginTop();
+  //   } else {
+  //     for (let i = 0; i < newsArticles.length; i++) {
+  //       newsArticles[i].style["margin-top"] = 0;
+  //     }
+  //   }
+  // });
 
   //The function to calculate the height difference between the first news article and the page title.
-  function setMarginTop() {
-    const heightDiff = newsPageTitle.offsetHeight - newsArticles[0].offsetHeight;
-    for (let i = 0; i < newsArticles.length; i++) {
-      if (i % 2) {
-        newsArticles[i].style["margin-top"] = heightDiff + "px";
-      }
-    }
-  }
 }
 
 //========================================================
