@@ -17,7 +17,7 @@
 /*********************************************************/
 
 /* Import Custom Fonts: League Spartan & Libre Baskerville----------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;700&family=Libre+Baskerville&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700&family=Libre+Baskerville&display=swap");
 
 /* Define Animations -------------------------------------------------------------------------------*/
 @keyframes pop {
@@ -872,8 +872,61 @@ Make sure everything is horizontally centered.
   }
 }
 
-/* */
+/* trade process section layout */
 
+/* contact information section layout */
+#whitepaper .contact-info {
+  background-color: var(--theme-color);
+  color: var(--light);
+  padding: 3vw 10vw 0;
+}
+
+#whitepaper .contact-info .page-title {
+  text-align: center;
+}
+
+#whitepaper .contact-info .page-title p {
+  color: var(--light);
+}
+
+#whitepaper .contact-info main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-items: center;
+}
+
+#whitepaper .contact-method {
+  background-color: var(--light);
+  color: var(--theme-color);
+  width: 80%;
+  padding: 0.7rem 2rem;
+  margin: 1rem 0 3vw;
+  border-radius: 5px;
+  box-shadow: var(--shadow-hard);
+}
+
+#whitepaper .contact-method:hover {
+  transform: scale(1.01);
+  backface-visibility: hidden;
+}
+
+#whitepaper .contact-method p:first-child {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 740px) {
+  #whitepaper .contact-info {
+    padding: 8vw 10vw 6vw;
+  }
+
+  #whitepaper .contact-info main {
+    grid-template-columns: 100%;
+  }
+
+  #whitepaper .contact-method {
+    width: 100%;
+  }
+}
 
 /* Page 3: News page specific css----------------------------------------------------------------------*/
 #news {
@@ -1153,7 +1206,7 @@ textarea {
 
 #contact .contact-btn {
   background-color: var(--theme-color);
-  color: var(--background);
+  color: var(--light);
   cursor: pointer;
 }
 
