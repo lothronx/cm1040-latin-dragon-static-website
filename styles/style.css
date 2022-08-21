@@ -630,12 +630,6 @@ Make sure everything is horizontally centered.
   background-size: cover;
 }
 
-@media screen and (max-width: 785px) {
-  #index-home {
-    background-image: url("/assets/homepage-1-mobile.jpg");
-  }
-}
-
 @media (hover: none) {
   #index-home {
     background-attachment: scroll;
@@ -1038,16 +1032,24 @@ line {
     width: 3rem;
   }
 
-  #whitepaper .trade-step .horizontal-line {
-    display: none;
-  }
-
   #whitepaper .trade-step div {
     padding-left: 0rem;
   }
 
   #whitepaper .trade-step h4 {
     padding-top: 0.35rem;
+  }
+}
+
+/* SVG functions weird on iOS 15 and I don't have android phone to test it, so just hide it for now */
+@media (hover: none) {
+  #whitepaper .trade-step {
+    display: block;
+    padding-left: 5vw;
+  }
+
+  #whitepaper .trade-step svg {
+    display: none;
   }
 }
 
