@@ -622,6 +622,7 @@ Make sure everything is horizontally centered.
   background-attachment: fixed;
 }
 
+/*the whitepaper section color*/
 #index-whitepaper {
   background-color: var(--whitepaper-color);
 }
@@ -629,21 +630,30 @@ Make sure everything is horizontally centered.
   background-image: url("https://www.transparenttextures.com/patterns/green-gobbler.png");
 }
 
+/*the news section color*/
 #index-news {
   background-image: url("/assets/homepage-3.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
+#index-news article {
+  background-color: var(--news-color-semitransparent);
+}
 
+/*the faq section color*/
 #index-faq {
   background-color: var(--faq-color);
   background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }
 
+/*the contact section color*/
 #index-contact {
   background-image: url("/assets/homepage-5.jpg");
   background-size: cover;
   background-attachment: fixed;
+}
+#index-contact article {
+  background-color: var(--contact-color-semitransparent);
 }
 
 #homepage #header {
@@ -674,13 +684,13 @@ Make sure everything is horizontally centered.
 #homepage main .section {
   height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*The first section layout*/
 #homepage main .section:first-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0 3rem;
@@ -695,24 +705,29 @@ Make sure everything is horizontally centered.
 }
 
 /*The rest sections layout*/
-#homepage main .section:not(:first-child) {
-  display: grid;
-  grid-template-columns: 50% 50%;
+#index-whitepaper article,
+#index-faq article {
+  margin-left: 10vw;
+  margin-right: 50vw;
 }
 
-#homepage article {
+#index-whitepaper {
+  position: relative;
+}
+#index-whitepaper div {
+  position: absolute;
+  top: 0;
+  left: 50%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 50%;
 }
 
-#homepage article:nth-child(odd) {
-  padding-left: 10vw;
-}
-
-#homepage article:nth-child(even) {
-  padding-right: 10vw;
+#index-news article,
+#index-contact article {
+  height: fit-content;
+  margin-left: 45vw;
+  margin-right: 5vw;
+  padding: 5vw;
 }
 
 #homepage .read-more {
@@ -722,19 +737,21 @@ Make sure everything is horizontally centered.
 /* On mobile version, the grid boxes lie in two rows instead of two columns. */
 @media screen and (max-width: 806px) {
   #homepage main .section:not(:first-child) {
-    grid-template-columns: 100%;
-    grid-template-rows: 50% 50%;
+    justify-content: flex-end;
   }
 
-  #homepage article:nth-child(odd) {
-    align-self: flex-end;
-    padding: 0 10vw;
+  #homepage article {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10vw;
   }
 
-  #homepage article:nth-child(even) {
-    align-self: flex-start;
-    padding: 0 10vw;
-  }
+  #index-whitepaper div {
+  top: 0;
+  left: 0%;
+  height: 50%;
+  width: 100%;
+}
 }
 
 /*Sidebar layout---------------------------------------*/
@@ -1033,6 +1050,7 @@ line {
   --theme-color-semitransparent: var(--news-color-semitransparent);
   --theme-color-dark: var(--news-color-dark);
   color: var(--theme-color);
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }
 
 #news .main {
@@ -1109,6 +1127,7 @@ line {
   --theme-color-semitransparent: var(--faq-color-semitransparent);
   --theme-color-dark: var(--faq-color-dark);
   color: var(--theme-color);
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }
 
 /* General layout--------------------*/
