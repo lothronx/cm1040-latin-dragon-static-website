@@ -18,7 +18,8 @@
 //            Menu: Show/hide menu on mobile devices
 //      Hide the menu when scroll up AND the mobile menu not open
 //  Show the menu when scroll down or tap or the mobile menu not open
-//   *Only works when the screen is small and is a touchscreen*
+//               *Only works on small touchscreen*
+// *Inspired by Aureliano Far Suau's answer on stack overflow https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove. *
 //========================================================
 const menu = document.querySelector("header");
 let startY = 0;
@@ -54,6 +55,20 @@ menuIcon.addEventListener("click", () => {
   accessibilityBar.classList.toggle("show");
 });
 
+// Make it work with keyboard too
+document.getElementById("hamburger-icon").addEventListener("keydown", (e) => {
+  if (e.code == "Enter") {
+    e.preventDefault();
+    menuIcon.classList.contains("fa-bars")
+      ? menuIcon.classList.replace("fa-bars", "fa-xmark")
+      : menuIcon.classList.replace("fa-xmark", "fa-bars");
+
+    headerNav.classList.toggle("show");
+    accessibilityBar.classList.toggle("show");
+    document.querySelector(".nav-link").focus();
+  }
+});
+
 //Hide the menu when clicked elsewhere
 window.addEventListener("click", (e) => {
   if (
@@ -65,6 +80,16 @@ window.addEventListener("click", (e) => {
     headerNav.classList.remove("show");
     accessibilityBar.classList.remove("show");
     menuIcon.className = "fa-solid fa-bars fa-3x";
+  }
+});
+
+// Make sure keyboard users can close the menu easily too
+document.getElementById("chinese").addEventListener("keydown", (e) => {
+  if (e.code == "Tab" && menuIcon.classList.contains("fa-xmark")) {
+    e.preventDefault();
+    menuIcon.classList.replace("fa-xmark", "fa-bars");
+    headerNav.classList.remove("show");
+    accessibilityBar.classList.remove("show");
   }
 });
 
@@ -130,13 +155,28 @@ languagesBtn.addEventListener("click", () => {
   languages.classList.toggle("show");
 });
 
-// FIXME: conflict with keyboard accessibility
-// //Hide the language options when clicked elsewhere
-// window.addEventListener("click", function (e) {
-//   if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
-//     languages.classList.remove("show");
-//   }
-// });
+// Make it works with keyboard too
+languagesBtn.addEventListener("keydown", (e) => {
+  if (e.code == "Enter") {
+    e.preventDefault();
+    languages.classList.toggle("show");
+  }
+});
+
+//Hide the language options when clicked elsewhere
+window.addEventListener("click", function (e) {
+  if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
+    languages.classList.remove("show");
+  }
+});
+
+// Make sure keyboard users can easily close language options too
+document.getElementById("chinese").addEventListener("keydown", (e) => {
+  if (e.code == "Tab") {
+    e.preventDefault();
+    languages.classList.remove("show");
+  }
+});
 
 //========================================================
 //               Homepage: sidebar items
@@ -189,10 +229,7 @@ if (homepage) {
 // An element is considered to be in viewport when half of it is in viewport.
 function isItInViewport(e) {
   const rect = e.getBoundingClientRect();
-  return (
-    (rect.bottom + rect.top) / 2 >= 0 &&
-    (rect.bottom + rect.top) / 2 < (window.innerHeight || document.documentElement.clientHeight)
-  );
+  return (rect.bottom + rect.top) / 2 >= 0 && (rect.bottom + rect.top) / 2 < window.innerHeight;
 }
 
 //========================================================
