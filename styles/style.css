@@ -614,7 +614,7 @@ Make sure everything is horizontally centered.
   color: var(--light);
 }
 
-#homepage .home {
+#index-home {
   background: conic-gradient(
     from 290deg at 58% 80%,
     var(--contact-color) 90deg,
@@ -624,6 +624,9 @@ Make sure everything is horizontally centered.
   );
 }
 
+#index-home-btn {
+  background-color: var(--contact-color);
+}
 #index-whitepaper-btn,
 #index-whitepaper {
   background-color: var(--whitepaper-color);
