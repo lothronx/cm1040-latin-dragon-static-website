@@ -617,6 +617,7 @@ Make sure everything is horizontally centered.
 }
 
 #index-home {
+  background-color: var(--contact-color);
   background-image: url("/assets/homepage-1.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -887,13 +888,14 @@ Make sure everything is horizontally centered.
 @media screen and (max-width: 1060px) {
   #whitepaper .feature {
     grid-template-columns: 100%;
-    background-color: transparent;
+    background: none;
     padding: 0;
     margin: 5vw 0 10vw;
   }
 
   #whitepaper .feature-text {
     background-color: var(--theme-color);
+    background-image: url("/assets/stardust.png");
     padding: 10vw 10vw 28vw;
   }
 
