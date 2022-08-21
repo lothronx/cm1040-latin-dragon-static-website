@@ -137,7 +137,7 @@ html {
   --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
   --shadow-medium: 2px 2px 8px rgba(89, 82, 82, 0.4);
   --shadow-hard: 2px 2px 8px rgba(89, 82, 82, 0.6);
-  --shadow-bold: 0px 0px 15px rgba(0, 0, 0, 0.8);
+  --shadow-bold: 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* Typography -----------------------------------------------------------------------------------------*/
