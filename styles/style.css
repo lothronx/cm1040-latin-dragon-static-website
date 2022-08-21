@@ -1045,7 +1045,6 @@ line {
 @media (hover: none) {
   #whitepaper .trade-step {
     display: block;
-    padding-left: 5vw;
   }
 
   #whitepaper .trade-step svg {
