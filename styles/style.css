@@ -89,6 +89,11 @@ ul {
 /*Smooth scroll*/
 html {
   scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 /*Show/hide*/
@@ -619,13 +624,21 @@ Make sure everything is horizontally centered.
 #index-home {
   background-color: var(--contact-color);
   background-image: url("/assets/homepage-1.jpg");
-  background-size: cover;
   background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media screen and (max-width: 785px) {
   #index-home {
     background-image: url("/assets/homepage-1-mobile.jpg");
+  }
+}
+
+@media (hover: none) {
+  #index-home {
+    background-attachment: scroll;
   }
 }
 
@@ -642,13 +655,21 @@ Make sure everything is horizontally centered.
 #index-news {
   background-color: var(--news-color);
   background-image: url("/assets/homepage-2.jpg");
-  background-size: cover;
   background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media screen and (max-width: 806px) {
   #index-news {
     background-image: url("/assets/homepage-2-mobile.jpg");
+  }
+}
+
+@media (hover: none) {
+  #index-home {
+    background-attachment: scroll;
   }
 }
 
@@ -667,14 +688,22 @@ Make sure everything is horizontally centered.
 #index-contact {
   background-color: var(--contact-color);
   background-image: url("/assets/homepage-3.JPG");
-  background-size: cover;
   background-attachment: fixed;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0px 0px 5px #000000cc inset;
 }
 
 @media screen and (max-width: 806px) {
   #index-contact {
     background-image: url("/assets/homepage-3-mobile.jpg");
+  }
+}
+
+@media (hover: none) {
+  #index-home {
+    background-attachment: scroll;
   }
 }
 
@@ -1009,6 +1038,10 @@ line {
     width: 3rem;
   }
 
+  #whitepaper .trade-step .horizontal-line {
+    display: none;
+  }
+
   #whitepaper .trade-step div {
     padding-left: 0rem;
   }
@@ -1297,7 +1330,7 @@ line {
   }
 
   #contact .about-container:nth-child(even) {
-    background-color: transparent;
+    background: none;
     color: var(--theme-color);
   }
 
@@ -1362,13 +1395,15 @@ textarea {
 @media screen and (max-width: 806px) {
   #contact .feature {
     grid-template-columns: 100%;
-    background-color: transparent;
+    background: none;
     padding: 0;
     margin: 0 0 10vw;
   }
 
   #contact .feature-text {
     background-color: var(--theme-color);
+    background-image: url("/assets/stardust.png");
+
     padding: 10vw 10vw 28vw;
   }
 
