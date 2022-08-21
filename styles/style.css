@@ -617,7 +617,6 @@ Make sure everything is horizontally centered.
 }
 
 #index-home {
-  background-color: var(--contact-color);
   background-image: url("/assets/homepage-1.jpg");
   background-size: cover;
   background-attachment: fixed;
