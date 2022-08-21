@@ -668,7 +668,7 @@ Make sure everything is horizontally centered.
 }
 
 @media (hover: none) {
-  #index-home {
+  #index-news {
     background-attachment: scroll;
   }
 }
@@ -702,7 +702,7 @@ Make sure everything is horizontally centered.
 }
 
 @media (hover: none) {
-  #index-home {
+  #index-contact {
     background-attachment: scroll;
   }
 }
