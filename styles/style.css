@@ -630,6 +630,13 @@ Make sure everything is horizontally centered.
   background-size: cover;
 }
 
+/* Use smaller pic on smaller screen */
+@media screen and (max-width: 785px) {
+  #index-home {
+    background-image: url("/assets/homepage-1-mobile.jpg");
+  }
+}
+
 /* iphone does not support "background-attachment: fixed" and the page breaks down. So change it to scroll */
 @media (hover: none) {
   #index-home {
@@ -656,6 +663,12 @@ Make sure everything is horizontally centered.
   background-size: cover;
 }
 
+@media screen and (max-width: 785px) {
+  #index-news {
+    background-image: url("/assets/homepage-2-mobile.jpg");
+  }
+}
+
 @media (hover: none) {
   #index-news {
     background-attachment: scroll;
@@ -676,12 +689,18 @@ Make sure everything is horizontally centered.
 /*the contact section color*/
 #index-contact {
   background-color: var(--contact-color);
-  background-image: url("/assets/homepage-3.JPG");
+  background-image: url("/assets/homepage-3.jpg");
   background-attachment: fixed;
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0px 0px 5px #000000cc inset;
+}
+
+@media screen and (max-width: 785px) {
+  #index-contact {
+    background-image: url("/assets/homepage-3-mobile.jpg");
+  }
 }
 
 @media (hover: none) {
