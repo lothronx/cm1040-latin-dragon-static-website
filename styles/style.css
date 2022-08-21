@@ -109,21 +109,21 @@ html {
 
 /* Color Scheme ---------------------------------------------------------------------------------------*/
 :root {
-  --contact-color: #d8361b;
-  --contact-color-semitransparent: #d8361bcc;
-  --contact-color-dark: #902412;
-
-  --faq-color: #3a57a6;
-  --faq-color-semitransparent: #3a57a6cc;
-  --faq-color-dark: #223463;
+  --whitepaper-color: #1c552a;
+  --whitepaper-color-semitransparent: #1c552acc;
+  --whitepaper-color-dark: #103319;
 
   --news-color: #d79922;
   --news-color-semitransparent: #d79922cc;
   --news-color-dark: #815b14;
 
-  --whitepaper-color: #1c552a;
-  --whitepaper-color-semitransparent: #1c552acc;
-  --whitepaper-color-dark: #103319;
+  --faq-color: #3a57a6;
+  --faq-color-semitransparent: #3a57a6cc;
+  --faq-color-dark: #223463;
+
+  --contact-color: #d8361b;
+  --contact-color-semitransparent: #d8361bcc;
+  --contact-color-dark: #902412;
 
   --light: #efe1ba;
   --light-semitransparent: #efe1badd;
@@ -137,7 +137,7 @@ html {
   --shadow-soft: 1px 1px 4px rgba(89, 82, 82, 0.2);
   --shadow-medium: 2px 2px 8px rgba(89, 82, 82, 0.4);
   --shadow-hard: 2px 2px 8px rgba(89, 82, 82, 0.6);
-  --shadow-bold: 1px 1px 15px rgba(0, 0, 0, 0.8);
+  --shadow-bold: 0px 0px 15px rgba(0, 0, 0, 0.8);
 }
 
 /* Typography -----------------------------------------------------------------------------------------*/
@@ -468,8 +468,8 @@ Each page should use their own page theme color. (Homepage will use red.)
 #footer {
   display: grid;
   grid-template-areas:
-    "logo nav nav nav"
-    "note note note social-media";
+    "logo  nav   nav   nav"
+    "note  note  note  social-media";
   padding: 2rem 5vw;
   grid-gap: 0.8rem;
   color: var(--theme-color);
@@ -546,7 +546,7 @@ Make sure everything is horizontally centered.
   height: fit-content;
   padding: 0 10vw;
   background-color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
 }
 
 .feature-text {
@@ -617,25 +617,41 @@ Make sure everything is horizontally centered.
 }
 
 #index-home {
+  background-color: var(--contact-color);
   background-image: url("/assets/homepage-1.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
 
+@media screen and (max-width: 785px) {
+  #index-home {
+    background-image: url("/assets/homepage-1-mobile.jpg");
+  }
+}
+
 /*the whitepaper section color*/
 #index-whitepaper {
   background-color: var(--whitepaper-color);
+  box-shadow: var(--shadow-bold);
 }
 #index-whitepaper div {
-  background-image: url("https://www.transparenttextures.com/patterns/green-gobbler.png");
+  background-image: url("/assets/green-gobbler.png");
 }
 
 /*the news section color*/
 #index-news {
-  background-image: url("/assets/homepage-3.jpg");
+  background-color: var(--news-color);
+  background-image: url("/assets/homepage-2.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
+
+@media screen and (max-width: 806px) {
+  #index-news {
+    background-image: url("/assets/homepage-2-mobile.jpg");
+  }
+}
+
 #index-news article {
   background-color: var(--news-color-semitransparent);
 }
@@ -643,15 +659,25 @@ Make sure everything is horizontally centered.
 /*the faq section color*/
 #index-faq {
   background-color: var(--faq-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
+  box-shadow: var(--shadow-bold);
 }
 
 /*the contact section color*/
 #index-contact {
-  background-image: url("/assets/homepage-5.jpg");
+  background-color: var(--contact-color);
+  background-image: url("/assets/homepage-3.JPG");
   background-size: cover;
   background-attachment: fixed;
+  box-shadow: 0px 0px 5px #000000cc inset;
 }
+
+@media screen and (max-width: 806px) {
+  #index-contact {
+    background-image: url("/assets/homepage-3-mobile.jpg");
+  }
+}
+
 #index-contact article {
   background-color: var(--contact-color-semitransparent);
 }
@@ -874,6 +900,7 @@ Make sure everything is horizontally centered.
 
   #whitepaper .feature-figure {
     margin: -20vw 10vw 0;
+    background-color: var(--light);
   }
 }
 
@@ -899,7 +926,7 @@ Make sure everything is horizontally centered.
   padding: 1rem 0.8rem;
   color: var(--light);
   background-color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
   border-radius: 16px;
 }
 
@@ -993,7 +1020,7 @@ line {
 /* contact information section layout ---------------*/
 #whitepaper .contact-info {
   background-color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
   color: var(--light);
   padding: 3vw 10vw 0;
 }
@@ -1051,7 +1078,7 @@ line {
   --theme-color-semitransparent: var(--news-color-semitransparent);
   --theme-color-dark: var(--news-color-dark);
   color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
 }
 
 #news .main {
@@ -1128,7 +1155,7 @@ line {
   --theme-color-semitransparent: var(--faq-color-semitransparent);
   --theme-color-dark: var(--faq-color-dark);
   color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
 }
 
 /* General layout--------------------*/
@@ -1252,7 +1279,7 @@ line {
 #contact .about-container:first-child,
 #contact .about-container:last-child {
   background-color: var(--theme-color);
-  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  background-image: url("/assets/stardust.png");
   color: var(--light);
 }
 
@@ -1264,7 +1291,7 @@ line {
 
   #contact .about-container:nth-child(odd) {
     background-color: var(--theme-color);
-    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    background-image: url("/assets/stardust.png");
     color: var(--light);
   }
 
