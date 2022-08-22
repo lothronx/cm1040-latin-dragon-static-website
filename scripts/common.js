@@ -31,9 +31,7 @@ window.addEventListener("touchstart", (e) => {
 
 window.addEventListener("touchend", (e) => {
   endY = e.changedTouches[0].screenY;
-  endY < startY - 10 && !headerNav.classList.contains("show")
-    ? (menu.style.top = "-72px")
-    : (menu.style.top = "0");
+  endY < startY - 10 && !headerNav.classList.contains("show") ? (menu.style.top = "-72px") : (menu.style.top = "0");
 });
 
 //========================================================
