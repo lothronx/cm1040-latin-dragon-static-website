@@ -19,8 +19,8 @@
 //      Hide the menu when scroll up AND the mobile menu not open
 //  Show the menu when scroll down or tap or the mobile menu not open
 //               *Only works on small touchscreen*
-// *Inspired by Aureliano Far Suau's answer on stack overflow https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove. *
 //========================================================
+// The method to detect whether the user is scrolling up or down on a touch screen is inspired by Aureliano Far Suau's answer on stack overflow https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove.
 const menu = document.querySelector("header");
 let startY = 0;
 let endY = 0;
@@ -55,7 +55,7 @@ menuIcon.addEventListener("click", () => {
   accessibilityBar.classList.toggle("show");
 });
 
-// Make it work with keyboard too
+// Show the dropdown menu when the hamburger icon is tabbed and the keyboard user presses Enter
 document.getElementById("hamburger-icon").addEventListener("keydown", (e) => {
   if (e.code == "Enter") {
     e.preventDefault();
@@ -69,7 +69,7 @@ document.getElementById("hamburger-icon").addEventListener("keydown", (e) => {
   }
 });
 
-//Hide the menu when clicked elsewhere
+// Hide the menu when clicked elsewhere
 window.addEventListener("click", (e) => {
   if (
     !e.target.matches(".header-nav") &&
@@ -83,7 +83,7 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// Make sure keyboard users can close the menu easily too
+// close the menu after the keyboard user tabbed the last menu option.
 document.getElementById("chinese").addEventListener("keydown", (e) => {
   if (e.code == "Tab" && menuIcon.classList.contains("fa-xmark")) {
     e.preventDefault();
@@ -227,6 +227,7 @@ if (homepage) {
 
 // This function to check whether an element is in viewport.
 // An element is considered to be in viewport when half of it is in viewport.
+// Original code from JavaScript Tutorial, https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/.
 function isItInViewport(e) {
   const rect = e.getBoundingClientRect();
   return (rect.bottom + rect.top) / 2 >= 0 && (rect.bottom + rect.top) / 2 < window.innerHeight;

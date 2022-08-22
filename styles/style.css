@@ -620,8 +620,9 @@ Make sure everything is horizontally centered.
   color: var(--light);
 }
 
+/* Parallax scrolling code copied from W3Schools, https://www.w3schools.com/howto/howto_css_parallax.asp. */
 #index-home {
-  background-color: var(--contact-color);
+  background-color: var(--contact-color); /* fallback color */
   background-image: url("/assets/homepage-1.jpg");
   background-attachment: fixed;
   background-position: right bottom;
