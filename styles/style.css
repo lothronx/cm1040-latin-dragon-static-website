@@ -259,7 +259,7 @@ p {
 }
 
 /*Logo layout-------------------------------*/
-#header-logo {
+#header-logo a {
   display: flex;
   align-items: flex-end;
   padding: 0 2rem 0 5vw;
