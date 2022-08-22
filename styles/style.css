@@ -634,13 +634,6 @@ h1 {
   text-shadow: var(--shadow-bold);
 }
 
-/* Use smaller pic on smaller screen */
-@media screen and (max-width: 785px) {
-  #index-home {
-    background-image: url("/assets/homepage-1-mobile.jpg");
-  }
-}
-
 /* iphone does not support "background-attachment: fixed" and the page breaks down. So change it to scroll */
 @media (hover: none) {
   #index-home {
@@ -667,6 +660,7 @@ h1 {
   background-size: cover;
 }
 
+/* Use smaller pic on smaller screen */
 @media screen and (max-width: 785px) {
   #index-news {
     background-image: url("/assets/homepage-2-mobile.jpg");
