@@ -170,8 +170,7 @@ article > p,
 h1 {
   font-size: 4.125rem;
   margin: 0;
-  font-weight: 700;
-  text-shadow: var(--shadow-bold);
+  font-weight: 600;
 }
 
 h2 {
@@ -625,9 +624,14 @@ Make sure everything is horizontally centered.
   background-color: var(--contact-color);
   background-image: url("/assets/homepage-1.jpg");
   background-attachment: fixed;
-  background-position: center top;
+  background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+h1 {
+  color: var(--light);
+  text-shadow: var(--shadow-bold);
 }
 
 /* Use smaller pic on smaller screen */
@@ -753,14 +757,6 @@ Make sure everything is horizontally centered.
   padding: 0 3rem;
 }
 
-#homepage .contact-btn {
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  background-color: var(--theme-color);
-  color: var(--light);
-  box-shadow: var(--shadow-bold);
-}
-
 /*The rest sections layout*/
 #index-whitepaper article,
 #index-faq article {
@@ -793,8 +789,12 @@ Make sure everything is horizontally centered.
 
 /* On mobile version, the grid boxes lie in two rows instead of two columns. */
 @media screen and (max-width: 806px) {
-  #homepage main .section:not(:first-child) {
+  #homepage main .section:not(:first-child):nth-child(odd) {
     justify-content: flex-end;
+  }
+
+  #homepage main .section:nth-child(even) {
+    justify-content: flex-start;
   }
 
   #homepage article {
@@ -804,7 +804,7 @@ Make sure everything is horizontally centered.
   }
 
   #index-whitepaper div {
-    top: 0;
+    top: 50%;
     left: 0%;
     height: 50%;
     width: 100%;
@@ -827,7 +827,7 @@ Make sure everything is horizontally centered.
 
 /* Colors of the sidebar items*/
 #index-home-btn {
-  background-color: var(--contact-color);
+  background-color: var(--dark);
 }
 #index-whitepaper-btn {
   background-color: var(--whitepaper-color);
