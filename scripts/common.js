@@ -347,13 +347,24 @@ if (faq) {
 
   for (let i = 0; i < questions.length; i++) {
     questions[i].addEventListener("click", () => {
-      //  Toggle between the + icon and the X icon
+      //Hide other answers
+      for (let j = 0; j < questions.length; j++) {
+        if (answers[j].classList.contains("show") && answers[j] != answers[i]) {
+          answers[j].classList.remove("show");
+          questions[j].classList.remove("alt-style");
+          questionIcons[j].classList.replace("fa-angle-up", "fa-angle-down");
+        }
+      }
+
+      // Toggle between the + icon and the X icon
       questionIcons[i].classList.contains("fa-angle-down")
         ? questionIcons[i].classList.replace("fa-angle-down", "fa-angle-up")
         : questionIcons[i].classList.replace("fa-angle-up", "fa-angle-down");
 
-      //Show answer
+      // Show answer
       answers[i].classList.toggle("show");
+
+      // Change the question background color
       questions[i].classList.toggle("alt-style");
     });
   }

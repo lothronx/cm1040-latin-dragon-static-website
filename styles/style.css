@@ -620,7 +620,7 @@ Make sure everything is horizontally centered.
   background-color: var(--contact-color); /* fallback color */
   background-image: url("/assets/homepage-1.jpg");
   background-attachment: fixed;
-  background-position: right bottom;
+  background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
 }
