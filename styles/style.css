@@ -1178,7 +1178,7 @@ line {
   padding-right: 0.4rem;
 }
 
-@media (max-width: 806px) {
+@media screen and (max-width: 806px) {
   #news .news-container,
   #news .page-title {
     flex: 100%;
