@@ -18,6 +18,7 @@
 //========================================================
 // Load the common header and footer before all else
 //          (stored in separate HTML files)
+// adapted from W3Schools, https://www.w3schools.com/js/js_promise.asp.
 //========================================================
 new Promise((myResolve) => {
   let header = new XMLHttpRequest();
