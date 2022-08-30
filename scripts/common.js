@@ -1,180 +1,211 @@
 /**********************************************************/
 /*                      Table on Content
-1. Menu: Show/hide menu on mobile devices
-2. Menu: Responsive hamburger menu
-3. Menu: Selected menu item highlight
-4. Accessibility: Low contrast mode
-5. Accessibility: Link highlight mode
-6. Accessibility: Language options dropdown list
-7. Homepage: sidebar items
-8. Homepage: sidebar animation
-9. Homepage: article animation
-10. Whitepaper: determine SVG height on mobile devices
-11. News page: general layout
-12. FAQ page: show/hide answers
+1. Load the common header and footer before all else
+2. Menu: Show/hide menu on mobile devices
+3. Menu: Responsive hamburger menu
+4. Menu: Selected menu item highlight
+5. Accessibility: Low contrast mode
+6. Accessibility: Link highlight mode
+7. Accessibility: Language options dropdown list
+8. Homepage: sidebar items
+9. Homepage: sidebar animation
+10. Homepage: article animation
+11. Whitepaper: determine SVG height on mobile devices
+12. News page: general layout
+13. FAQ page: show/hide answers
 /**********************************************************/
 
 //========================================================
-//            Menu: Show/hide menu on mobile devices
-//      Hide the menu when scroll up AND the mobile menu not open
-//  Show the menu when scroll down or tap or the mobile menu not open
-//               *Only works on small touchscreen*
+// Load the common header and footer before all else
+//          (stored in separate HTML files)
 //========================================================
-// The method to detect whether the user is scrolling up or down on a touch screen is inspired by Aureliano Far Suau's answer on stack overflow https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove.
-const menu = document.querySelector("header");
-let startY = 0;
-let endY = 0;
+new Promise((myResolve) => {
+  let header = new XMLHttpRequest();
+  header.open("GET", "/partials/header.html");
+  header.onload = function () {
+    if (header.status == 200) {
+      myResolve(header.response);
+    }
+  };
+  header.send();
+})
+  .then((headerContent) => {
+    document.getElementById("header").innerHTML = headerContent;
+  })
+  .then(() => {
+    let footer = new XMLHttpRequest();
+    footer.open("GET", "/partials/footer.html");
+    footer.onload = function () {
+      if (footer.status == 200) {
+        document.getElementById("footer").innerHTML = this.responseText;
+      }
+    };
+    footer.send();
+  })
+  .then(() => {
+    //========================================================
+    //            Menu: Show/hide menu on mobile devices
+    //      Hide the menu when scroll up AND the mobile menu not open
+    //  Show the menu when scroll down or tap or the mobile menu not open
+    //               *Only works on small touchscreen*
+    //========================================================
+    // The method to detect whether the user is scrolling up or down on a touch screen is inspired by Aureliano Far Suau's answer on stack overflow https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove.
 
-window.addEventListener("touchstart", (e) => {
-  startY = e.changedTouches[0].screenY;
-});
+    const menu = document.querySelector("header");
+    let startY = 0;
+    let endY = 0;
 
-window.addEventListener("touchend", (e) => {
-  endY = e.changedTouches[0].screenY;
-  endY < startY - 10 && !headerNav.classList.contains("show") ? (menu.style.top = "-72px") : (menu.style.top = "0");
-});
+    window.addEventListener("touchstart", (e) => {
+      startY = e.changedTouches[0].screenY;
+    });
 
-//========================================================
-//           Menu: Responsive hamburger menu
-//  Toggle between the hamburger icon and the X icon
-//         Toggle between show/hide the menu
-//========================================================
-const menuIcon = document.getElementById("menu-icon");
-const headerNav = document.getElementById("header-nav");
-const accessibilityBar = document.getElementById("accessibility-bar");
+    window.addEventListener("touchend", (e) => {
+      endY = e.changedTouches[0].screenY;
+      endY < startY - 10 && !headerNav.classList.contains("show") ? (menu.style.top = "-72px") : (menu.style.top = "0");
+    });
 
-// Show the dropdown menu when click the hamburger icon
-menuIcon.addEventListener("click", () => {
-  menuIcon.classList.contains("fa-bars")
-    ? menuIcon.classList.replace("fa-bars", "fa-xmark")
-    : menuIcon.classList.replace("fa-xmark", "fa-bars");
+    //========================================================
+    //           Menu: Responsive hamburger menu
+    //  Toggle between the hamburger icon and the X icon
+    //         Toggle between show/hide the menu
+    //========================================================
+    const menuIcon = document.getElementById("menu-icon");
+    const headerNav = document.getElementById("header-nav");
+    const accessibilityBar = document.getElementById("accessibility-bar");
 
-  headerNav.classList.toggle("show");
-  accessibilityBar.classList.toggle("show");
-});
+    // Show the dropdown menu when click the hamburger icon
+    menuIcon.addEventListener("click", () => {
+      menuIcon.classList.contains("fa-bars")
+        ? menuIcon.classList.replace("fa-bars", "fa-xmark")
+        : menuIcon.classList.replace("fa-xmark", "fa-bars");
 
-// Show the dropdown menu when the hamburger icon is tabbed and the keyboard user presses Enter
-document.getElementById("hamburger-icon").addEventListener("keydown", (e) => {
-  if (e.code == "Enter") {
-    e.preventDefault();
-    menuIcon.classList.contains("fa-bars")
-      ? menuIcon.classList.replace("fa-bars", "fa-xmark")
-      : menuIcon.classList.replace("fa-xmark", "fa-bars");
+      headerNav.classList.toggle("show");
+      accessibilityBar.classList.toggle("show");
+    });
 
-    headerNav.classList.toggle("show");
-    accessibilityBar.classList.toggle("show");
-    document.querySelector(".nav-link").focus();
-  }
-});
+    // Show the dropdown menu when the hamburger icon is tabbed and the keyboard user presses Enter
+    document.getElementById("hamburger-icon").addEventListener("keydown", (e) => {
+      if (e.code == "Enter") {
+        e.preventDefault();
+        menuIcon.classList.contains("fa-bars")
+          ? menuIcon.classList.replace("fa-bars", "fa-xmark")
+          : menuIcon.classList.replace("fa-xmark", "fa-bars");
 
-// Hide the menu when clicked elsewhere
-window.addEventListener("click", (e) => {
-  if (
-    !e.target.matches(".header-nav") &&
-    !e.target.matches(".accessibility-bar") &&
-    !e.target.matches(".fa-solid") &&
-    headerNav.classList.contains("show")
-  ) {
-    headerNav.classList.remove("show");
-    accessibilityBar.classList.remove("show");
-    menuIcon.className = "fa-solid fa-bars fa-3x";
-  }
-});
+        headerNav.classList.toggle("show");
+        accessibilityBar.classList.toggle("show");
+        document.querySelector(".nav-link").focus();
+      }
+    });
 
-// close the menu after the keyboard user tabbed the last menu option.
-document.getElementById("chinese").addEventListener("keydown", (e) => {
-  if (e.code == "Tab" && menuIcon.classList.contains("fa-xmark")) {
-    e.preventDefault();
-    menuIcon.classList.replace("fa-xmark", "fa-bars");
-    headerNav.classList.remove("show");
-    accessibilityBar.classList.remove("show");
-  }
-});
+    // Hide the menu when clicked elsewhere
+    window.addEventListener("click", (e) => {
+      if (
+        !e.target.matches(".header-nav") &&
+        !e.target.matches(".accessibility-bar") &&
+        !e.target.matches(".fa-solid") &&
+        headerNav.classList.contains("show")
+      ) {
+        headerNav.classList.remove("show");
+        accessibilityBar.classList.remove("show");
+        menuIcon.className = "fa-solid fa-bars fa-3x";
+      }
+    });
 
-//========================================================
-//             Menu: Selected menu item highlight
-//                 Highlight the current tab.
-//========================================================
-const navItems = headerNav.getElementsByClassName("nav-item");
-for (let i = 0; i < navItems.length; i++) {
-  // Find the menu item which has the same name as the page title.
-  if (navItems[i].classList.contains(document.querySelector("body").id)) {
-    navItems[i].classList += " active";
-  } else {
-    navItems[i].classList.remove("active");
-  }
-}
+    // close the menu after the keyboard user tabbed the last menu option.
+    document.getElementById("chinese").addEventListener("keydown", (e) => {
+      if (e.code == "Tab" && menuIcon.classList.contains("fa-xmark")) {
+        e.preventDefault();
+        menuIcon.classList.replace("fa-xmark", "fa-bars");
+        headerNav.classList.remove("show");
+        accessibilityBar.classList.remove("show");
+      }
+    });
 
-//========================================================
-//             Accessibility: Low contrast mode
-//Click the low-contrast icon to toggle between high contrast and low contrast
-//========================================================
-const contrastBtn = document.getElementById("contrast-btn");
+    //========================================================
+    //             Menu: Selected menu item highlight
+    //                 Highlight the current tab.
+    //========================================================
+    const navItems = headerNav.getElementsByClassName("nav-item");
+    for (let i = 0; i < navItems.length; i++) {
+      // Find the menu item which has the same name as the page title.
+      if (navItems[i].classList.contains(document.querySelector("body").id)) {
+        navItems[i].classList += " active";
+      } else {
+        navItems[i].classList.remove("active");
+      }
+    }
 
-contrastBtn.addEventListener("click", () => {
-  // Toggle the low-contrast mode.
-  document.querySelector("html").classList.toggle("low-contrast");
+    //========================================================
+    //             Accessibility: Low contrast mode
+    //Click the low-contrast icon to toggle between high contrast and low contrast
+    //========================================================
+    const contrastBtn = document.getElementById("contrast-btn");
 
-  // On low-contrast mode, make the text color lighter and thus more readable.
-  // Also change the icon from half a circle to a full circle.
-  if (document.querySelector("html").classList.contains("low-contrast")) {
-    document.documentElement.style.setProperty("--light", "#f1e7cb");
-    contrastBtn.firstChild.classList.replace("fa-circle-half-stroke", "fa-circle");
-  } else {
-    document.documentElement.style.setProperty("--light", "#efe1ba");
-    contrastBtn.firstChild.classList.replace("fa-circle", "fa-circle-half-stroke");
-  }
-});
+    contrastBtn.addEventListener("click", () => {
+      // Toggle the low-contrast mode.
+      document.querySelector("html").classList.toggle("low-contrast");
 
-//========================================================
-//          Accessibility: Link highlight mode
-//Click the link underline icon to highlight all links (and buttons)
-//========================================================
-const linkUnderlineBtn = document.getElementById("link-underline-btn");
+      // On low-contrast mode, make the text color lighter and thus more readable.
+      // Also change the icon from half a circle to a full circle.
+      if (document.querySelector("html").classList.contains("low-contrast")) {
+        document.documentElement.style.setProperty("--light", "#f1e7cb");
+        contrastBtn.firstChild.classList.replace("fa-circle-half-stroke", "fa-circle");
+      } else {
+        document.documentElement.style.setProperty("--light", "#efe1ba");
+        contrastBtn.firstChild.classList.replace("fa-circle", "fa-circle-half-stroke");
+      }
+    });
 
-linkUnderlineBtn.addEventListener("click", () => {
-  // Toggle the link underline mode.
-  document.querySelector("html").classList.toggle("link-underline");
+    //========================================================
+    //          Accessibility: Link highlight mode
+    //Click the link underline icon to highlight all links (and buttons)
+    //========================================================
+    const linkUnderlineBtn = document.getElementById("link-underline-btn");
 
-  // Change the icon.
-  linkUnderlineBtn.firstChild.classList.contains("fa-underline")
-    ? linkUnderlineBtn.firstChild.classList.replace("fa-underline", "fa-u")
-    : linkUnderlineBtn.firstChild.classList.replace("fa-u", "fa-underline");
-});
+    linkUnderlineBtn.addEventListener("click", () => {
+      // Toggle the link underline mode.
+      document.querySelector("html").classList.toggle("link-underline");
 
-//========================================================
-//     Accessibility: Language options dropdown list
-//========================================================
-const languagesBtn = document.getElementById("language-btn");
-const languages = document.getElementById("languages");
+      // Change the icon.
+      linkUnderlineBtn.firstChild.classList.contains("fa-underline")
+        ? linkUnderlineBtn.firstChild.classList.replace("fa-underline", "fa-u")
+        : linkUnderlineBtn.firstChild.classList.replace("fa-u", "fa-underline");
+    });
 
-// When the language icon is clicked, toggle between hiding and showing the language options
-languagesBtn.addEventListener("click", () => {
-  languages.classList.toggle("show");
-});
+    //========================================================
+    //     Accessibility: Language options dropdown list
+    //========================================================
+    const languagesBtn = document.getElementById("language-btn");
+    const languages = document.getElementById("languages");
 
-// Make it works with keyboard too
-languagesBtn.addEventListener("keydown", (e) => {
-  if (e.code == "Enter") {
-    e.preventDefault();
-    languages.classList.toggle("show");
-  }
-});
+    // When the language icon is clicked, toggle between hiding and showing the language options
+    languagesBtn.addEventListener("click", () => {
+      languages.classList.toggle("show");
+    });
 
-//Hide the language options when clicked elsewhere
-window.addEventListener("click", function (e) {
-  if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
-    languages.classList.remove("show");
-  }
-});
+    // Make it works with keyboard too
+    languagesBtn.addEventListener("keydown", (e) => {
+      if (e.code == "Enter") {
+        e.preventDefault();
+        languages.classList.toggle("show");
+      }
+    });
 
-// Make sure keyboard users can easily close language options too
-document.getElementById("chinese").addEventListener("keydown", (e) => {
-  if (e.code == "Tab") {
-    e.preventDefault();
-    languages.classList.remove("show");
-  }
-});
+    //Hide the language options when clicked elsewhere
+    window.addEventListener("click", function (e) {
+      if (!e.target.matches(".fa-language") && languages.classList.contains("show")) {
+        languages.classList.remove("show");
+      }
+    });
+
+    // Make sure keyboard users can easily close language options too
+    document.getElementById("chinese").addEventListener("keydown", (e) => {
+      if (e.code == "Tab") {
+        e.preventDefault();
+        languages.classList.remove("show");
+      }
+    });
+  });
 
 //========================================================
 //               Homepage: sidebar items

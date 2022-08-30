@@ -24,8 +24,6 @@
     />
 
     <!------------------css------------------>
-    <!--simple animations-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!--normalize for different browsers-->
     <link rel="stylesheet" type="text/css" href="styles/normalize.css" />
     <!--css for this website-->
@@ -39,61 +37,8 @@
 
   <!--------------------------------------------------------Page 3: News------------------------------------------------------->
   <body id="news">
-    <!---------------------------Header contains 3 sections: logo, navigation bar, and accessibility bar--------------------------->
+    <header id="header"></header>
 
-    <header id="header" class="animate__animated animate__fadeInDown">
-      <!--Section 1: logo-->
-      <section id="header-logo">
-        <a href="#">
-          <i class="fa-solid fa-earth-americas fa-3x"></i>
-          <h6>LATIN<br />DRAGON</h6>
-        </a>
-      </section>
-      <!--Section 2: navigation bar-->
-      <nav class="header-nav" id="header-nav">
-        <ul class="nav">
-          <li class="nav-item homepage">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item whitepaper">
-            <a class="nav-link" href="whitepaper.html">Whitepaper</a>
-          </li>
-          <li class="nav-item news">
-            <a class="nav-link" href="news.html">News</a>
-          </li>
-          <li class="nav-item faq">
-            <a class="nav-link" href="faq.html">FAQ</a>
-          </li>
-          <li class="nav-item contact">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </nav>
-      <!--Section 3: accessibility bar-->
-      <section class="accessibility-bar" id="accessibility-bar">
-        <div>
-          <!--contrast control-->
-          <a href="javascript:;" id="contrast-btn"><i class="fa-solid fa-circle-half-stroke"></i></a>
-          <!--link underline-->
-          <a href="javascript:;" id="link-underline-btn"><i class="fa-solid fa-underline"></i></a>
-        </div>
-        <!--language options-->
-        <a href="javascript:;" id="language-btn">
-          <i class="fa-solid fa-language"></i>
-        </a>
-        <div id="languages" class="languages">
-          <a class="language" id="english" href="javascript:;">English</a>
-          <a class="language" id="spanish" href="javascript:;">Español</a>
-          <a class="language" id="chinese" href="javascript:;">中文</a>
-        </div>
-      </section>
-      <!--Hidden section: responsive menu-->
-      <section id="responsive-menu">
-        <a href="javascript:;" id="hamburger-icon">
-          <i id="menu-icon" class="fa-solid fa-bars fa-3x"></i>
-        </a>
-      </section>
-    </header>
     <!--------------------------------------------Main body contains 1 title and 6 news --------------------------------------------->
     <main id="main" class="main">
       <header class="page-title">
@@ -293,65 +238,7 @@
       </article>
     </main>
 
-    <!--------------------Footer contains 4 sections: logo, navigation, social media links, and footnote-------------------->
-    <footer id="footer">
-      <!--Section 1: logo-->
-      <section id="footer-logo">
-        <i class="fa-solid fa-earth-americas fa-3x"></i>
-        <h6>LATIN<br />DRAGON</h6>
-      </section>
-
-      <!--Section 2: footer navigation bar-->
-      <nav id="footer-nav">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="whitepaper.html">Whitepaper</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="news.html">News</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!--Section 3: social media links-->
-      <section id="social-media">
-        <ul class="nav">
-          <!--Instagram-->
-          <li class="nav-item">
-            <a href="https://www.instagram.com/southlatindrago/" target="_blank"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-          </li>
-          <!--Linkedin-->
-          <li class="nav-item">
-            <a
-              href="https://www.linkedin.com/company/%E9%9D%92%E5%B2%9B%E6%8B%89%E6%B1%80%E9%BE%99%E8%B4%B8%E6%98%93%E8%AF%A2%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/mycompany/?viewAsMember=true"
-              target="_blank"
-              ><i class="fa-brands fa-linkedin-in"></i
-            ></a>
-          </li>
-          <!--WeChat-->
-          <li class="nav-item">
-            <a href="javascript:;"><i class="fa-brands fa-weixin"></i></a>
-          </li>
-        </ul>
-      </section>
-
-      <!--Section 4: footnote-->
-      <section id="footer-note">
-        <span
-          >Latin Dragon provides China-Latin America trade information and multilingual communications. Start your first
-          import/export business from here.</span
-        >
-      </section>
-    </footer>
+    <footer id="footer"></footer>
 
     <!------------------------------------------------------ Scroll to top button------------------------------------------------------>
     <aside>
