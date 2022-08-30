@@ -20,29 +20,36 @@
 //          (stored in separate HTML files)
 // adapted from W3Schools, https://www.w3schools.com/js/js_promise.asp.
 //========================================================
-new Promise((myResolve) => {
+let loadHeader = new Promise((resolve) => {
   let header = new XMLHttpRequest();
   header.open("GET", "/partials/header.html");
   header.onload = function () {
     if (header.status == 200) {
-      myResolve(header.response);
+      resolve(header.response);
     }
   };
   header.send();
-})
-  .then((headerContent) => {
-    document.getElementById("header").innerHTML = headerContent;
+});
+
+let loadFooter = new Promise((resolve) => {
+  let footer = new XMLHttpRequest();
+  footer.open("GET", "/partials/footer.html");
+  footer.onload = function () {
+    if (footer.status == 200) {
+      resolve(footer.response);
+    }
+  };
+  footer.send();
+});
+
+// after both header and footer are loaded, add them to the main html.
+Promise.all([loadHeader, loadFooter])
+  .then((contents) => {
+    document.getElementById("header").innerHTML = contents[0];
+    document.getElementById("footer").innerHTML = contents[1];
   })
-  .then(() => {
-    let footer = new XMLHttpRequest();
-    footer.open("GET", "/partials/footer.html");
-    footer.onload = function () {
-      if (footer.status == 200) {
-        document.getElementById("footer").innerHTML = this.responseText;
-      }
-    };
-    footer.send();
-  })
+
+  // then begin to do other header-related things
   .then(() => {
     //========================================================
     //            Menu: Show/hide menu on mobile devices
