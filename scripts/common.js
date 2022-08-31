@@ -1,6 +1,6 @@
 /**********************************************************/
 /*                      Table on Content
-1. Load the common header and footer before all else
+1. Import the common header and footer before all else
 2. Menu: Show/hide menu on mobile devices
 3. Menu: Responsive hamburger menu
 4. Menu: Selected menu item highlight
@@ -16,40 +16,18 @@
 /**********************************************************/
 
 //========================================================
-// Load the common header and footer before all else
+// Import the common header and footer before all else
 //          (stored in separate HTML files)
-// adapted from W3Schools, https://www.w3schools.com/js/js_promise.asp.
 //========================================================
-let loadHeader = new Promise((resolve) => {
-  let header = new XMLHttpRequest();
-  header.open("GET", "/partials/header.html");
-  header.onload = function () {
-    if (header.status == 200) {
-      resolve(header.response);
-    }
-  };
-  header.send();
-});
+let loadFooter = fetch("/partials/footer.html")
+  .then((response) => response.text())
+  .then((content) => (document.getElementById("footer").innerHTML = content));
 
-let loadFooter = new Promise((resolve) => {
-  let footer = new XMLHttpRequest();
-  footer.open("GET", "/partials/footer.html");
-  footer.onload = function () {
-    if (footer.status == 200) {
-      resolve(footer.response);
-    }
-  };
-  footer.send();
-});
+let loadHeader = fetch("/partials/header.html")
+  .then((response) => response.text())
+  .then((content) => (document.getElementById("header").innerHTML = content))
 
-// after both header and footer are loaded, add them to the main html.
-Promise.all([loadHeader, loadFooter])
-  .then((contents) => {
-    document.getElementById("header").innerHTML = contents[0];
-    document.getElementById("footer").innerHTML = contents[1];
-  })
-
-  // then begin to do other header-related things
+  // after the header is loaded, begin the other tasks
   .then(() => {
     //========================================================
     //            Menu: Show/hide menu on mobile devices
