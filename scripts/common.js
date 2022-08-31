@@ -18,6 +18,7 @@
 //========================================================
 // Import the common header and footer before all else
 //          (stored in separate HTML files)
+// fetch() method learned from https://javascript.info/fetch
 //========================================================
 let loadFooter = fetch("/partials/footer.html")
   .then((response) => response.text())
