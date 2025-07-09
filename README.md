@@ -16,6 +16,8 @@
 
 [![Watch Demo](https://img.youtube.com/vi/bE6d5KQ4ccU/maxresdefault.jpg)](https://www.youtube.com/watch?v=bE6d5KQ4ccU&ab_channel=WuYue)
 
+[![Watch Demo](https://img.shields.io/badge/Watch-Demo-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=bE6d5KQ4ccU&ab_channel=WuYue)
+
 _See the responsive design, accessibility features, and smooth animations in action!_
 
 </div>
