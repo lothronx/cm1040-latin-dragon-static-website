@@ -10,6 +10,16 @@
 ![Font Awesome](https://img.shields.io/badge/Font%20Awesome-%23528DD7.svg?style=for-the-badge&logo=fontawesome&logoColor=white)
 ![Animate.css](https://img.shields.io/badge/Animate.css-%23FF6B6B.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+## 🎬 Live Demo
+
+<div align="center">
+
+[![Watch Demo](https://img.youtube.com/vi/bE6d5KQ4ccU/maxresdefault.jpg)](https://www.youtube.com/watch?v=bE6d5KQ4ccU&ab_channel=WuYue)
+
+_See the responsive design, accessibility features, and smooth animations in action!_
+
+</div>
+
 ## 📖 Project Overview
 
 **Latin Dragon** wasn't just born from a coursework assignment—it was inspired by a real need from a real friend.
@@ -32,6 +42,30 @@ This project demonstrates how web development can solve real business problems. 
 - **📰 Dynamic Content** - News section with engaging layouts for effective content marketing
 - **📋 Interactive Elements** - Contact forms, FAQ section, and navigation features for lead generation
 - **🌐 Multi-page Architecture** - Comprehensive platform covering all aspects of China-LAC trade
+
+## 🚀 Pages
+
+The website includes the following pages:
+
+- **Home** - Company introduction and service overview
+
+![Homepage](demo/1.jpeg)
+
+- **Whitepaper** - Comprehensive trade guides and market analysis
+
+![Whitepaper](demo/2.jpeg)
+
+- **News** - Latest developments in China-LAC trade
+
+![News](demo/3.jpeg)
+
+- **FAQ** - Common questions about trade processes
+
+![FAQ](demo/4.jpeg)
+
+- **Contact** - Get in touch with our consulting team
+
+![Contact](demo/5.jpeg)
 
 ## 🛠️ Technical Skills Demonstrated
 
@@ -83,16 +117,6 @@ Through this project, I developed proficiency in:
 - **Design Principles** - User experience, visual hierarchy, and mobile-first design
 - **Web Accessibility** - Creating inclusive web experiences for all users
 - **Project Planning** - From wireframes to final implementation
-
-## 🚀 Live Demo
-
-The website includes the following pages:
-
-- **Home** - Company introduction and service overview
-- **Whitepaper** - Comprehensive trade guides and market analysis
-- **News** - Latest developments in China-LAC trade
-- **FAQ** - Common questions about trade processes
-- **Contact** - Get in touch with our consulting team
 
 ## 💡 Design Philosophy & Real-World Impact
 
