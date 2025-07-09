@@ -107,6 +107,13 @@ WDFinalProject/
 └── 📁 appendices/         # Wireframes and mockups
 ```
 
+## 🔧 Setup & Usage
+
+1. Open the project folder in VS Code
+2. Install the "Live Server" extension if you haven't already
+3. Right-click on index.html and select "Open with Live Server"
+4. The webpage will open in your browser automatically
+
 ## 🎯 Learning Outcomes
 
 Through this project, I developed proficiency in:
